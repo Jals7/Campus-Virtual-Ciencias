@@ -1,0 +1,119 @@
+@startuml Campus Virtual Ciencias
+class CampusVirtualCiencias
+class Usuario{
+    #username: string
+    -password: string
+    #email:string
+    -cedula:int
+    #rol:string
+    +get_username():string
+    +get_email():string
+}
+class Estudiante{
+    #escuela: Escuela
+    #carrera: string
+    +publicar(): Publicacion
+}
+class Profesor{
+    #escuela: Escuela
+    #titulo: string
+    +publicar(): Publicacion
+}
+class PersonalDeApoyo{
+}
+class PersonalTecnico{
+}
+class PersonalObrero{
+}
+class PersonalAdministrativo{
+}
+class Publicacion{
+    #reacciones:string
+    #like:int
+    #fecha: int
+}
+class PublicacionEstudiantil{
+}
+class PublicacionDocente{
+    #fecha:int
+    #nombre:string
+}
+class PublicacionDePersonalDeApoyo{
+}
+class Comentario{
+    #texto:string
+}
+class EventoInstitucional{
+    #fecha:int
+    #nombre:string
+}
+class ProyectoDocente{
+}
+class Investigacion{
+}
+class Taller{
+}
+class Seminario{
+}
+class GrupoDeEstudio{
+}
+class ActividadDeportiva{
+}
+class ActividadCultural{
+}
+class Escuela{
+    #nombre:string
+    #carreras:list
+    +get_carrera(carreras: list): string
+}
+class Admin{
+    #id:int
+    -password: string
+    +eliminar_user(string): void
+    +crear_user(string): void
+    +aprobar_publicacion(): void
+    +recuperar_password(): void
+}
+class GrupoDeExtension{
+    #nombre:string
+    #integrantes:list
+    #description:string
+}
+class ModeradorDeGrupo{
+    +eliminar_publicacion(): void
+    +banear_participante(): void
+    +agregar_participante(): void
+}
+
+CampusVirtualCiencias "1"  *-- "*" Publicacion : se estructura
+Publicacion "1" *-- "n" Reaccion : tiene
+Publicacion "1" *-- "n" Comentario : tiene 
+Publicacion <|--PublicacionEstudiantil
+Publicacion <|--PublicacionDocente
+Publicacion <|--PublicacionDePersonalDeApoyo
+Usuario "*" -- "1" Publicacion : interacctuan
+Estudiante "1" -- "*" PublicacionEstudiantil: Publica
+Profesor "1" -- "*" PublicacionDocente: Publica
+PersonalDeApoyo "1" -- "*" PublicacionDePersonalDeApoyo : publica
+PublicacionEstudiantil <|-- Taller 
+PublicacionEstudiantil <|-- Seminario 
+PublicacionEstudiantil <|-- GrupoDeEstudio 
+PublicacionEstudiantil <|-- ActividadDeportiva 
+PublicacionEstudiantil <|-- ActividadCultural
+Usuario <|-- Estudiante 
+Usuario <|-- Profesor 
+Usuario <|-- PersonalDeApoyo
+PersonalDeApoyo <|-- PersonalTecnico
+PersonalDeApoyo <|-- PersonalAdministrativo
+PersonalDeApoyo <|-- PersonalObrero
+PublicacionDocente <|-- ProyectoDocente
+PublicacionDocente <|-- Investigacion
+PublicacionDePersonalDeApoyo <|-- EventoInstitucional
+CampusVirtualCiencias "1" *-- "*" Usuario : interactuan
+Escuela "1" o-- "1" Estudiante
+Escuela "1" o-- "1" Profesor
+GrupoDeExtension "1" o-- "1 ... * " Estudiante : pertenece
+Usuario <|-- Admin : puede ser
+Estudiante <|-- ModeradorDeGrupo: puede ser
+ModeradorDeGrupo "1..*" -- "1..*" GrupoDeExtension: modera
+@enduml
