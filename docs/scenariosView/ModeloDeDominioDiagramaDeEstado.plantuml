@@ -34,4 +34,5 @@ SesionActiva -> ModeracionPublicaciones: revisar publicación
 ModeracionPublicaciones --> PublicacionPendienteDeRevision: publicación recibida
 PublicacionPendienteDeRevision --> PublicacionAprobada: [Aprobacion]
 PublicacionPendienteDeRevision --> PublicacionRechazada: [Rechazo]
+
 @enduml
