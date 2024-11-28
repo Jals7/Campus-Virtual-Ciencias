@@ -14,5 +14,5 @@ Short Description about the project.
 3. 29595489    JELVIS ALEJANDRO    LARREAL SALCEDO
 
 ## Modelo del dominio
-####Diagrama de Clases.
+#### Diagrama de Clases.
 ![Campus Virtual Ciencias](https://github.com/user-attachments/assets/4dc54f93-8a6d-4cec-88e6-54aa93f77217)
