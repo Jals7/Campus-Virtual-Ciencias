@@ -34,16 +34,16 @@ SesionActiva -> ModeracionPublicaciones: revisar publicacion
 ModeracionPublicaciones --> PublicacionPendienteDeRevision: publicacion recibida
 PublicacionPendienteDeRevision --> PublicacionAprobada: [Aprobacion]
 PublicacionPendienteDeRevision --> PublicacionRechazada: [Rechazo]
-SesionActiva -> BuscandoGrupos : buscar grupos extension/estudio
-BuscandoGrupos -> VisualizandoGrupo : ver grupo
-VisualizandoGrupo -> SolicitandoUnirseAGrupo : unirse a grupo
+SesionActiva --> BuscandoGrupos : buscar grupos extension/estudio
+BuscandoGrupos --> VisualizandoGrupo : ver grupo
+VisualizandoGrupo --> SolicitandoUnirseAGrupo : unirse a grupo
 
 state c <<choice>>
 
 SolicitandoUnirseAGrupo -> c : solicitud de acceso a grupo
 c --> AccesoAGrupo : Solicitud Aprobada
 c --> CrearNotificacionDeRechazo : Solicitud Rechazada
-AccesoAGrupo -> PaginaDeGrupo : visualizar pagina de grupo
+AccesoAGrupo --> PaginaDeGrupo : visualizar pagina de grupo
 
 SesionActiva -> SistemaDeNotificaciones: Crear Notificación
 SistemaDeNotificaciones --> RevisarNotificaciones: Ver notificaciones
@@ -52,7 +52,6 @@ SistemaDeNotificaciones --> RevisarNotificaciones: Ver notificaciones
 SesionActiva -> CalendarioDeEventos: Ver Calendario
 
 CalendarioDeEventos --> VisualizarEventos: Visualizar
-'CalendarioDeEventos -> AgregarEvento : Agregar al Calendario
 CalendarioDeEventos -> CreacionDeEventos : Crear Evento 
 CreacionDeEventos --> EventoEnEdicion: Iniciar Edición
 EventoEnEdicion --> PublicandoEvento: publicar evento
