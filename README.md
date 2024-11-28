@@ -9,9 +9,10 @@ Short Description about the project.
 ***
 ## Integrantes
 ***
-24309195    CESAR ENRIQUE     PAREDES LEON
-32111550    FRANCISCO AMADO    ZERPA ZAPATA
-29595489    JELVIS ALEJANDRO    LARREAL SALCEDO
+1. 24309195    CESAR ENRIQUE     PAREDES LEON
+2. 32111550    FRANCISCO AMADO    ZERPA ZAPATA
+3. 29595489    JELVIS ALEJANDRO    LARREAL SALCEDO
 
 ## Modelo del dominio
-![Image text](/path/to/the/screenshot.png)
+#### Diagrama de Clases.
+![Campus Virtual Ciencias](https://github.com/user-attachments/assets/4dc54f93-8a6d-4cec-88e6-54aa93f77217)
