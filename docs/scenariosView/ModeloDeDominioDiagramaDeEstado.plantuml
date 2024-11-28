@@ -1,0 +1,27 @@
+@startuml
+
+[*] --> Inicio
+ Inicio--> IniciandoSesion : solicitar de inicio de sesion
+ Inicio --> RegistrandoCuenta: solicitar registro
+
+state a <<choice>> 
+
+IniciandoSesion --> a : ingresar datos
+
+a--> SesionActiva : [Si las credenciales son validas]
+a--> IniciandoSesion : [Si las credenciales son invalidas]
+
+state b <<choice>>
+
+RegistrandoCuenta --> b : ingresar datos a registrar
+ 
+b--> IniciandoSesion : [Los datos son validos]
+b-->RegistrandoCuenta : [Los datos son invalidos]
+
+SesionActiva --> Inicio : cerrar sesion
+
+Inicio --> [*] : salir de la app
+
+SesionActiva --> [*] : cerrar sesion y aplicacion
+
+@enduml
