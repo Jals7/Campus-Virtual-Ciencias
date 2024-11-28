@@ -6,18 +6,14 @@ class Usuario{
     #email:string
     -cedula:int
     #rol:string
-    +get_username():string
-    +get_email():string
 }
 class Estudiante{
     #escuela: Escuela
     #carrera: string
-    +publicar(): Publicacion
 }
 class Profesor{
     #escuela: Escuela
     #titulo: string
-    +publicar(): Publicacion
 }
 class PersonalDeApoyo{
 }
@@ -28,17 +24,14 @@ class PersonalObrero{
 class PersonalAdministrativo{
 }
 class Publicacion{
-    #reacciones:string
-    #like:int
-    #fecha: int
 }
 class PublicacionEstudiantil{
 }
 class PublicacionDocente{
-    #fecha:int
-    #nombre:string
 }
 class PublicacionDePersonalDeApoyo{
+}
+class PublicacionGrupoExtension{
 }
 class Comentario{
     #texto:string
@@ -64,25 +57,31 @@ class ActividadCultural{
 class Escuela{
     #nombre:string
     #carreras:list
-    +get_carrera(carreras: list): string
 }
 class Admin{
     #id:int
     -password: string
-    +eliminar_user(string): void
-    +crear_user(string): void
-    +aprobar_publicacion(): void
-    +recuperar_password(): void
 }
 class GrupoDeExtension{
     #nombre:string
     #integrantes:list
     #description:string
 }
+class GrupoActividadDeportiva{
+}
+class GrupoActividadCultural{
+}
 class ModeradorDeGrupo{
-    +eliminar_publicacion(): void
-    +banear_participante(): void
-    +agregar_participante(): void
+}
+class Calendario{
+}
+class GrupoDeEsparcimiento{
+}
+class ActividadEsparcimiento{
+}
+class FechaPublicacion {
+}
+class Notificacion {
 }
 
 CampusVirtualCiencias "1"  *-- "*" Publicacion : se estructura
@@ -91,6 +90,7 @@ Publicacion "1" *-- "n" Comentario : tiene
 Publicacion <|--PublicacionEstudiantil
 Publicacion <|--PublicacionDocente
 Publicacion <|--PublicacionDePersonalDeApoyo
+Publicacion <|--PublicacionGrupoExtension
 Usuario "*" -- "1" Publicacion : interacctuan
 Estudiante "1" -- "*" PublicacionEstudiantil: Publica
 Profesor "1" -- "*" PublicacionDocente: Publica
@@ -98,8 +98,9 @@ PersonalDeApoyo "1" -- "*" PublicacionDePersonalDeApoyo : publica
 PublicacionEstudiantil <|-- Taller 
 PublicacionEstudiantil <|-- Seminario 
 PublicacionEstudiantil <|-- GrupoDeEstudio 
-PublicacionEstudiantil <|-- ActividadDeportiva 
-PublicacionEstudiantil <|-- ActividadCultural
+PublicacionGrupoExtension <|-- ActividadDeportiva 
+PublicacionGrupoExtension <|-- ActividadCultural
+PublicacionGrupoExtension <|-- ActividadEsparcimiento
 Usuario <|-- Estudiante 
 Usuario <|-- Profesor 
 Usuario <|-- PersonalDeApoyo
@@ -116,4 +117,16 @@ GrupoDeExtension "1" o-- "1 ... * " Estudiante : pertenece
 Usuario <|-- Admin : puede ser
 Estudiante <|-- ModeradorDeGrupo: puede ser
 ModeradorDeGrupo "1..*" -- "1..*" GrupoDeExtension: modera
+GrupoDeExtension <|-- GrupoActividadDeportiva 
+GrupoDeExtension <|-- GrupoActividadCultural
+GrupoActividadDeportiva "1" -- "1...*" ActividadDeportiva : publica
+GrupoActividadCultural "1" -- "1...*" ActividadCultural : publica
+Calendario "1" *-- "0..*" Publicacion : representa
+Calendario "1" -- "1" Usuario : tiene
+GrupoDeEsparcimiento "1" -- "1...*" ActividadEsparcimiento : publica
+GrupoDeExtension <|-- GrupoDeEsparcimiento
+CampusVirtualCiencias "1" *-- "1" Calendario : es parte de
+Publicacion "1" *-- "1" FechaPublicacion : tiene
+Publicacion "1" *-- "1"Notificacion : genera
+Notificacion "1" -- "1...*" Usuario: informa 
 @enduml
