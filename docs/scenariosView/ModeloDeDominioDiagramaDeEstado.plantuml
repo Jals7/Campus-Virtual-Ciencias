@@ -34,5 +34,15 @@ SesionActiva -> ModeracionPublicaciones: revisar publicacion
 ModeracionPublicaciones --> PublicacionPendienteDeRevision: publicacion recibida
 PublicacionPendienteDeRevision --> PublicacionAprobada: [Aprobacion]
 PublicacionPendienteDeRevision --> PublicacionRechazada: [Rechazo]
+SesionActiva -> BuscandoGrupos : buscar grupos extension/estudio
+BuscandoGrupos -> VisualizandoGrupo : ver grupo
+VisualizandoGrupo -> SolicitandoUnirseAGrupo : unirse a grupo
+
+state c <<choice>>
+
+SolicitandoUnirseAGrupo -> c : solicitud de acceso a grupo
+c --> AccesoAGrupo : Solicitud Aprobada
+c --> CrearNotificacionDeRechazo : Solicitud Rechazada
+AccesoAGrupo -> PaginaDeGrupo : visualizar pagina de grupo
 
 @enduml
