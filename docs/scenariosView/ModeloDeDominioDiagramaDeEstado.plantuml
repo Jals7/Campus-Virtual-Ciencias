@@ -1,4 +1,4 @@
-@startuml
+@startuml Diagrama de estado
 
 [*] --> Inicio
  Inicio--> IniciandoSesion : solicitar de inicio de sesion
@@ -23,5 +23,15 @@ SesionActiva --> Inicio : cerrar sesion
 Inicio --> [*] : salir de la app
 
 SesionActiva --> [*] : cerrar sesion y aplicacion
-
+SesionActiva --> VisualizandoPublicaciones : ver publicaciones
+VisualizandoPublicaciones --> SesionActiva : volver
+VisualizandoPublicaciones --> EditandoPublicacion : nueva publicacion
+EditandoPublicacion --> InfoPublicada : publicar
+VisualizandoPublicaciones --> LeyendoPublicacion : ver publicacion concreta
+EditandoPublicacion --> VisualizandoPublicaciones : cancelar edicion
+SesionActiva --> GestionandoPerfil : actualizar perfil
+SesionActiva -> ModeracionPublicaciones: revisar publicación
+ModeracionPublicaciones --> PublicacionPendienteDeRevision: publicación recibida
+PublicacionPendienteDeRevision --> PublicacionAprobada: [Aprobacion]
+PublicacionPendienteDeRevision --> PublicacionRechazada: [Rechazo]
 @enduml
