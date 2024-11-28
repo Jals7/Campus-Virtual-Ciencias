@@ -35,4 +35,18 @@ ModeracionPublicaciones --> PublicacionPendienteDeRevision: publicación recibid
 PublicacionPendienteDeRevision --> PublicacionAprobada: [Aprobacion]
 PublicacionPendienteDeRevision --> PublicacionRechazada: [Rechazo]
 
+SesionActiva -> SistemaDeNotificaciones: Crear Notificación
+SistemaDeNotificaciones --> RevisarNotificaciones: Ver notificaciones
+
+
+SesionActiva -> CalendarioDeEventos: Ver Calendario
+
+CalendarioDeEventos --> VisualizarEventos: Visualizar
+'CalendarioDeEventos -> AgregarEvento : Agregar al Calendario
+CalendarioDeEventos -> CreacionDeEventos : Crear Evento 
+CreacionDeEventos --> EventoEnEdicion: Iniciar Edición
+EventoEnEdicion --> PublicandoEvento: publicar evento
+EventoEnEdicion --> CreacionDeEventos: cancelar edicion
+PublicandoEvento --> AgregarEvento : agregar al calendario
+
 @enduml
