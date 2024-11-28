@@ -30,8 +30,8 @@ EditandoPublicacion --> InfoPublicada : publicar
 VisualizandoPublicaciones --> LeyendoPublicacion : ver publicacion concreta
 EditandoPublicacion --> VisualizandoPublicaciones : cancelar edicion
 SesionActiva --> GestionandoPerfil : actualizar perfil
-SesionActiva -> ModeracionPublicaciones: revisar publicación
-ModeracionPublicaciones --> PublicacionPendienteDeRevision: publicación recibida
+SesionActiva -> ModeracionPublicaciones: revisar publicacion
+ModeracionPublicaciones --> PublicacionPendienteDeRevision: publicacion recibida
 PublicacionPendienteDeRevision --> PublicacionAprobada: [Aprobacion]
 PublicacionPendienteDeRevision --> PublicacionRechazada: [Rechazo]
 
