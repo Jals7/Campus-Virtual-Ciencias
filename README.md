@@ -16,3 +16,5 @@ Short Description about the project.
 ## Modelo del dominio
 #### Diagrama de Clases.
 ![Campus Virtual Ciencias](https://github.com/user-attachments/assets/4dc54f93-8a6d-4cec-88e6-54aa93f77217)
+### Diagrama de Estados.
+![Diagrama de estado](https://github.com/user-attachments/assets/c6c60c60-a238-4fcb-a6d8-7fcf93f2f165)
