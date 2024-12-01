@@ -12,7 +12,7 @@ User <|-- Apoyo
 User <|-- Pro
 User <|-- Mod
 
-rectangle Sistema {
+rectangle CampusVirtualCiencias {
 
 'Funciones de Usuario
 "Ingresar al sistema" as (IngresarS) 
@@ -28,7 +28,7 @@ rectangle Sistema {
 "Ver publicaciones" as (VerP)
 "Ver calendario de actividades" as (VerC)
 
-User -- (IngresarS)
+User -down- (IngresarS)
 User -- (RegistrarS)
 User -- (CrearP)
 User -- (EditarP)
