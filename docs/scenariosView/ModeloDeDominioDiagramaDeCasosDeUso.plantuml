@@ -1,0 +1,102 @@
+@startuml
+left to right direction
+
+:Usuario: as User
+:Estudiante: as Est
+:Profesor: as Pro
+:Personal de apoyo: as Apoyo
+:Moderador: as Mod
+User <|-- Est 
+User <|-- Apoyo
+
+User <|-- Pro
+User <|-- Mod
+
+rectangle Sistema {
+
+'Funciones de Usuario
+"Ingresar al sistema" as (IngresarS) 
+"Registrase en el sistema" as (RegistrarS) 
+"Crear Publicacion " as (CrearP)
+"Comentar Publicacion" as (ComentarP)
+"Editar mi Publicacion" as (EditarP)
+"Crear Grupo" as (CrearG)
+"Registrase en grupo" as (RegitrarseG)
+"Crear Evento"as (CrearE)
+"Editar mi evento" as (EditarE)
+"Ver mis notificaciones" as (VerN)
+"Ver publicaciones" as (VerP)
+"Ver calendario de actividades" as (VerC)
+
+User -- (IngresarS)
+User -- (RegistrarS)
+User -- (CrearP)
+User -- (EditarP)
+User -- (EliminarP)
+User -- (ComentarP)
+User -- (CrearE)
+User -- (EditarE)
+User -- (EliminarE)
+User -- (VerN)
+User -- (VerP)
+User -- (RegitrarseG)
+User -- (VerC)
+
+
+"Editar Perfil" as (EditarPe)
+"Cambiar Contraseña" as (CambiarCon)
+"Cambiar foto de Perfil" as  (CambiarF)
+"Cambiar correo" as (CambiarC)
+
+User -- (EditarPe)
+
+(EditarPe) <.. (CambiarC) 
+(EditarPe) <.. (CambiarCon) 
+(EditarPe) <.. (CambiarF) 
+
+'|||||||||||||||||||||||||||||||||||||||||||||||||||
+
+'Funciones del MODERADOR
+"Aprobar publicacion" as (AprobarP)
+"Eliminar publicacion" as (EliminarP)
+"Aprobar Evento" as (AprobarE)
+"Eliminar Evento" as (EliminarE)
+"Aprovar Creacion de Grupo" as (AprobarG)
+"Eliminar publicion de usuario" as (EliminarPU)
+"Aprovar edicion de Evento" as (AprobarEV)
+
+Mod -- EliminarPU 
+Mod -- AprobarE
+Mod -- AprobarP
+Mod -- AprobarG
+Mod -- AprobarEV
+
+''|||||||||||||||||||||||||||||||||||||||||||||||||
+
+'Funciones Estudiante 
+"Crear Grupo de Estudio" as (CrearG)
+"Ingresar a grupo de estudio" as (IngresarG)
+
+Est -- (CrearG)
+Est -- (IngresarG)
+'||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+
+'Funciones Personal de apoyo
+
+'||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+ 'Include
+(CrearE) <-- (AprobarE)
+(CrearP) <-- (AprobarP)
+(EditarE) <-- (AprobarEV)
+
+' EXTEND
+
+
+
+}
+
+@enduml
