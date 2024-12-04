@@ -50,6 +50,6 @@ Short Description about the project.
 ![Registrarse en grupo](https://github.com/user-attachments/assets/8b8e7415-4aa4-42a4-9ae7-e092a9441a19)
 #### Ver calendario de actividades.
 ![Ver calendario de actividades](https://github.com/user-attachments/assets/05d87640-f9c5-4b1b-b271-4d68b5abd8d4)
-#### Ver mis notidicaiones.
+#### Ver mis notificaciones.
 ![Ver mis notificaciones](https://github.com/user-attachments/assets/e133e288-db6f-438d-8da1-1ae9a935e999)
 
