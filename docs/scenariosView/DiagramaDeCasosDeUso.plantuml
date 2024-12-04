@@ -1,4 +1,4 @@
-@startuml
+@startuml Diagrama de casos de uso
 left to right direction
 
 :Usuario: as User
@@ -12,7 +12,7 @@ User <|-- Apoyo
 User <|-- Pro
 User <|-- Mod
 
-rectangle CampusVirtualCiencias {
+rectangle Sistema {
 
 'Funciones de Usuario
 "Ingresar al sistema" as (IngresarS) 
@@ -28,7 +28,7 @@ rectangle CampusVirtualCiencias {
 "Ver publicaciones" as (VerP)
 "Ver calendario de actividades" as (VerC)
 
-User -down- (IngresarS)
+User -- (IngresarS)
 User -- (RegistrarS)
 User -- (CrearP)
 User -- (EditarP)
@@ -61,9 +61,9 @@ User -- (EditarPe)
 "Eliminar publicacion" as (EliminarP)
 "Aprobar Evento" as (AprobarE)
 "Eliminar Evento" as (EliminarE)
-"Aprovar Creacion de Grupo" as (AprobarG)
-"Eliminar publicion de usuario" as (EliminarPU)
-"Aprovar edicion de Evento" as (AprobarEV)
+"Aprobar Creacion de Grupo" as (AprobarG)
+"Eliminar publicacion de usuario" as (EliminarPU)
+"Aprobar edicion de Evento" as (AprobarEV)
 
 Mod -- EliminarPU 
 Mod -- AprobarE

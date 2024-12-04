@@ -1,0 +1,27 @@
+@startuml Diagrama de estado de los casos de uso
+
+[*] -> Inicio
+Inicio -> IngresarAlSistema
+Inicio --> RegistrarseEnElSistema
+IngresarAlSistema --> VerPublicaciones
+IngresarAlSistema -> EditarPerfil
+IngresarAlSistema --> VerMisNotificaciones
+EditarPerfil --> CambiarFotoDePerfil
+EditarPerfil --> CambiarCorreo
+EditarPerfil --> CambiarContraseña
+IngresarAlSistema --> CrearPublicacion
+CrearPublicacion --> AprobarPublicacion
+CrearPublicacion --> EditarMiPublicacion
+EditarMiPublicacion --> EliminarPublicacion
+EliminarPublicacion --> EliminarPublicacionDeUsuario
+IngresarAlSistema --> VerCalendarioDeActividades
+IngresarAlSistema --> CrearEvento
+CrearEvento --> EditarMiEvento
+EditarMiEvento --> EliminarEvento
+EditarMiEvento -> AprobarEdicionDeEvento
+CrearEvento --> AprobarEvento
+VerPublicaciones --> ComentarPublicacion
+IngresarAlSistema --> CrearGrupoDeEstudio
+CrearGrupoDeEstudio --> IngresarGrupoDeEstudio
+CrearGrupoDeEstudio --> AprobarCreacionDeGrupo
+@enduml

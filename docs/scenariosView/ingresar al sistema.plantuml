@@ -1,0 +1,7 @@
+@startuml Ingresar al sistema
+[*] --> Inicio
+Inicio --> IngresandoCredenciales : Colocar credenciales de usuario
+IngresandoCredenciales --> ValidandoCredenciales : Validando credenciales de usuario
+ValidandoCredenciales --> SesionIniciada
+SesionIniciada --> [*]
+@enduml

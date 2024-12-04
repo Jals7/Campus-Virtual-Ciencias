@@ -1,0 +1,5 @@
+@startuml Crear Evento
+[*] --> GestionandoPublicacion : Pulsar boton crear publicacion
+GestionandoPublicacion --> EsperandoPorAprobacionDeModerador : Creando evento
+EsperandoPorAprobacionDeModerador --> [*]
+@enduml

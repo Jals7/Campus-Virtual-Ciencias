@@ -1,0 +1,5 @@
+@startuml Ver mis notificaciones
+[*] --> VerNotificaciones : seleccionar boton de notificaciones
+VerNotificaciones --> PaginaPrincipal : cerrar pestaña de notificaciones
+PaginaPrincipal --> [*]
+@enduml

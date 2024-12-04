@@ -1,0 +1,9 @@
+@startuml Eliminar evento
+[*] --> VisualizandoPaginaPrincipal
+VisualizandoPaginaPrincipal --> VisualizandoEventos : Pulsar boton de eventos.
+VisualizandoEventos --> VisualizandoMisEventos : Pulsar boton de mis eventos
+VisualizandoMisEventos --> VisualizandoEventoEspecifico : Seleccionar evento a eliminar
+VisualizandoEventoEspecifico --> EliminandoEvento : Pulsar boton eliminar
+EliminandoEvento --> ConfirmarEliminar : pulsar boton de confirmar
+ConfirmarEliminar --> [*]
+@enduml

@@ -1,0 +1,5 @@
+@startuml Ver calendario de actividades
+[*] --> VisualizandoCalendario : Seleccionar boton del calendario
+VisualizandoCalendario --> Dashboard : Cerrar Calendario
+Dashboard --> [*]
+@enduml

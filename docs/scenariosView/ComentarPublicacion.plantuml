@@ -1,0 +1,6 @@
+@startuml Comentar publicacion
+[*] --> ViendoPublicacion : buscar publicacion
+ViendoPublicacion --> ComentandoPublicacion : Seleccionar boton de comentar 
+ComentandoPublicacion --> PublicacionComentada : publicar comentario
+PublicacionComentada --> [*]
+@enduml

@@ -1,0 +1,6 @@
+@startuml Editar perfil
+[*] --> VisualizandoPaginaPrincipal
+VisualizandoPaginaPrincipal --> EditandoPerfil : Pulsar boton editar perfil
+EditandoPerfil --> VisualizandoPaginaPrincipal : Guardar los cambios o cancelar
+VisualizandoPaginaPrincipal --> [*]
+@enduml

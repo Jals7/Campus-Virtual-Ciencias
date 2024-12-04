@@ -1,0 +1,7 @@
+@startuml Registrarse en grupo
+[*] --> VisualizandoGruposDeExtension : Pulsar boton de grupos de extension
+VisualizandoGruposDeExtension --> VisualizandoUnGrupoEspecifico : Seleccionar un grupo
+VisualizandoUnGrupoEspecifico --> CreandoSolicitudDeIngreso : Rellenar formulario de ingreso
+CreandoSolicitudDeIngreso --> EsperandoAprobacion : Esperando aprobacion de moderador de grupo
+EsperandoAprobacion --> [*]
+@enduml

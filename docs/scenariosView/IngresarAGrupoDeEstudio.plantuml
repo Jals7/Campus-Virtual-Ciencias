@@ -1,0 +1,8 @@
+@startuml Ingresar a grupo de estudio
+[*] --> VisualizandoPaginaPrincipal
+VisualizandoPaginaPrincipal --> VisualizandoGruposDeEstudio : Pulsar boton de grupos de estudio
+VisualizandoGruposDeEstudio --> VisualizandoGrupoEspecifico : Seleccionar un grupo
+VisualizandoGrupoEspecifico --> CreandoSolicitudDeIngreso : Rellenar formulario de ingreso
+CreandoSolicitudDeIngreso --> EsperandoAprobacion : Esperando aprobacion de moderador de grupo
+EsperandoAprobacion --> [*]
+@enduml

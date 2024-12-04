@@ -1,0 +1,8 @@
+@startuml Registrarse en el sistema
+[*] --> Inicio
+Inicio --> Registro : El Usuario pulsa \n el boton de registro
+Registro --> IngresandoCredenciales : Colocar credenciales de usuario
+IngresandoCredenciales --> ValidandoCredenciales : Validando requisitos de credenciales
+ValidandoCredenciales --> InicioSesion : Se envia al usuario a la pantalla \n de inicio de sesion
+InicioSesion --> [*]
+@enduml

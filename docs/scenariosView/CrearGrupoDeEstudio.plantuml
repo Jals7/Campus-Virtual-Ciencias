@@ -1,0 +1,7 @@
+@startuml Crear grupo de estudio
+[*] --> VisualizandoPaginaPrincipal
+VisualizandoPaginaPrincipal --> VisualizandoGruposDeEstudio : Pulsar boton grupos de estudio
+VisualizandoGruposDeEstudio --> GestionandoInformacionDeGrupoNuevo : pulsar boton crear nuevo grupo de estudio
+GestionandoInformacionDeGrupoNuevo --> EsperandoAprobacionDeModerador : Creando grupo de estudio
+EsperandoAprobacionDeModerador --> [*]
+@enduml

@@ -1,0 +1,5 @@
+@startuml Eliminar publicacion
+[*] --> GestionandoPublicacion : Seleccionar publicacion
+GestionandoPublicacion --> PublicacionEliminada : Eliminar publicacion
+PublicacionEliminada --> [*]
+@enduml

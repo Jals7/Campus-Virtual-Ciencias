@@ -1,0 +1,7 @@
+@startuml Crear publicacion
+[*] --> VisualizandoPaginaPrincipal
+VisualizandoPaginaPrincipal --> EditandoPublicacion : Pulsar boton de nueva publicacion
+EditandoPublicacion --> SubiendoArchivosNecesarios : Subir archivos(Fotos, videos, entre otros.)
+SubiendoArchivosNecesarios --> Publicando : Pulsar boton publicar
+Publicando --> [*]
+@enduml
