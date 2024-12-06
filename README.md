@@ -52,4 +52,17 @@ Short Description about the project.
 ![Ver calendario de actividades](https://github.com/user-attachments/assets/05d87640-f9c5-4b1b-b271-4d68b5abd8d4)
 #### Ver mis notificaciones.
 ![Ver mis notificaciones](https://github.com/user-attachments/assets/e133e288-db6f-438d-8da1-1ae9a935e999)
+***
+### Prototipos de pantallas
+#### Inicio de sesión
+![Inicio de sesion](https://github.com/user-attachments/assets/1d047476-8a1c-4ede-bade-25f3f797fc69)
+#### Main
+![Main](https://github.com/user-attachments/assets/dfdeee9a-e59c-4c74-a184-8743f3e0778d)
+#### Calendario
+![Calendario](https://github.com/user-attachments/assets/88daab2b-f401-4a82-a106-d7875205bfe8)
+#### Editar Perfil
+![Editar Perfil](https://github.com/user-attachments/assets/0079278d-fa99-4560-92fc-afb2f516e47c)
+#### Diagrama de flujo de pantallas prototipo
+![DiagramaDeFlujoEntreInterfaces](https://github.com/user-attachments/assets/452ac937-11ee-44ef-8cae-a77c2d1164b2)
+
 
