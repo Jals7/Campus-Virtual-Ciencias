@@ -1,6 +1,6 @@
-package Personas;
+package Users;
 
-public class Usuario {
+public class Personas {
     private String nombre;
     private String apellido;
     private String fechaDeNacimiento;
@@ -9,8 +9,9 @@ public class Usuario {
     private String CI;
     private String correo;
     private String contrasena;
+    private String roll;
 
-    public Usuario(String nombre, String apellido, String fechaDeNacimiento, int edad, String sexo, String CI, String correo, String contrasena) {
+    public Personas(String nombre, String apellido, String fechaDeNacimiento, int edad, String sexo, String CI, String correo, String contrasena, String roll) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaDeNacimiento = fechaDeNacimiento;
@@ -19,8 +20,10 @@ public class Usuario {
         this.CI = CI;
         this.correo = correo;
         this.contrasena = contrasena;
+        this.roll = roll;
     }
 
+    // Getters y Setters
     public String getNombre() {
         return nombre;
     }
@@ -84,5 +87,12 @@ public class Usuario {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-    
+
+    public String getRoll() {
+        return roll;
+    }
+
+    public void setRoll(String roll) {
+        this.roll = roll;
+    }
 }

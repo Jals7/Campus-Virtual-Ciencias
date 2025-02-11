@@ -1,13 +1,13 @@
-package Personas;
+package Users;
 
-public class Profesor extends Usuario {
+public class Profesor extends Personas {
     private String escuela;
     private int anoDeIngreso;
     private String ultimaMateriaDada;
     private String cargo;
 
-    public Profesor(String nombre, String apellido, String fechaDeNacimiento, int edad, String sexo, String CI, String correo, String contrasena, String escuela, int anoDeIngreso, String ultimaMateriaDada, String cargo) {
-        super(nombre, apellido, fechaDeNacimiento, edad, sexo, CI, correo, contrasena);
+    public Profesor(String nombre, String apellido, String fechaDeNacimiento, int edad, String sexo, String CI, String correo, String contrasena, String roll, String escuela, int anoDeIngreso, String ultimaMateriaDada, String cargo) {
+        super(nombre, apellido, fechaDeNacimiento, edad, sexo, CI, correo, contrasena, roll);
         this.escuela = escuela;
         this.anoDeIngreso = anoDeIngreso;
         this.ultimaMateriaDada = ultimaMateriaDada;
