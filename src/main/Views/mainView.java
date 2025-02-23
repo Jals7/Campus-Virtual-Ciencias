@@ -7,7 +7,7 @@ import java.awt.event.*;
 public class MainView extends JFrame implements ActionListener{
     private JPanel barraTitulo, topPanel, panelFondo, panelCentro, panelBotones, leftPanel, rightPanel;
     private Point puntoInicial;
-    private JButton closeButton, maximizeButton, minimizeButton, newsButton, logoutButton, newEvent, goToEvents, newPublicationButton,
+    private JButton closeButton, maximizeButton, minimizeButton, newsButton, logoutButton, goToEvents, newPublicationButton,
     myPublicationsButton, editProfileButton, extensionGroupButton, studyGroupButton;
     private JLabel logo, events, calendar, opciones, userName;
 
