@@ -1,0 +1,294 @@
+@startuml Diagrama de Clases de diseño
+
+class MainView {
+ +signUp(signUpController: SignUpController)
+ +login(loginUpController: LoginUpController)
+ - panel: JPanel
+ - title: String
+ - emailField: JTextField
+ - passwordField: JPasswordField
+ - signUpButton: JButton
+ - loginButton: JButton
+ - recoverAccountButton: JButton
+ +showWindow(): void
+ +enterDataForLogin(email: String, password: String): void
+}
+
+class StudyGroupManagementView {
+ +joinStudyGroup(joinStudyGroupController: StudyGroupController)
+ +createStudyGroup(createStudyGroupController: StudyGroupController)
+ - panel: JPanel
+ - joinButton: JButton
+ - createButton: JButton
+ +showWindow(): void
+ +selectStudyGroup(): void
+}
+
+class ExtensionGroupManagementView {
+ +joinExtensionGroup(joinExtensionGroupController: ExtensionGroupController)
+ +createExtensionGroup(): void
+ +joinExtensionGroup(): void
+ - panel: JPanel
+ - joinButton: JButton
+ - createButton: JButton
+ +showWindow(): void
+}
+
+class DashboardView {
+ +news(newsController: NewsController)
+ - panel: JPanel
+ - welcomeLabel: JLabel
+ - postsPanel: JPanel
+ - calendarButton: JButton
+ - notificationsButton: JButton
+ +showWindow(): void
+ +viewNews(): void
+ +editCalendar(): void
+}
+
+class CalendarView {
+ - panel: JPanel
+ - calendar: JCalendar
+ - returnButton: JButton
+ +showWindow(): void
+}
+
+class NotificationView {
+ - panel: JPanel
+ - notificationsList: JList<String>
+ - closeButton: JButton
+ +showWindow(): void
+ +closeNotificationWindow(): void
+ +navigateToNotifications(): void
+}
+
+class PostManagementView {
+ +createPost(createPostController: PublicationController)
+ +editPost(editPostController: EditPostController)
+ - panel: JPanel
+ - textField: JTextField
+ - publishButton: JButton
+ - modifyButton: JButton
+ +showWindow(): void
+ +selectPost(): void
+ +enterNewData(): void
+ +confirmModification(): void
+ +confirmCreation(): void
+ +enterNewPostData(): void
+ +confirmDeletionOfSelectedPost(): void
+}
+
+class EventManagementView {
+ +createEvent(createEventController: EventController)
+ +deleteEvent(deleteEventController: EventController)
+ - panel: JPanel
+ - eventList: JList<String>
+ - createButton: JButton
+ - deleteButton: JButton
+ +showWindow(): void
+ +enterNewEventDetails(): void
+ +confirmCreation(): void
+ +selectEvent(): void
+ +confirmEventDeletion(): void
+}
+
+class SignUpController {
+ - registeredUsersCount: int
+ +validateData(email: String, password: String): boolean
+ +registerUser(isValid: boolean, email: String, password: String): void
+}
+
+class LoginUpController {
+ +validateCredentials(email: String, password: String): boolean
+}
+
+class PublicationController {
+ +render(): void
+ +validateData(): boolean
+}
+
+class EditPostController {
+ +searchAndRenderPost(): void
+ +renderModifications(): void
+ +validateData(): boolean
+}
+
+class DeletePostController {
+ +findSelectedPost(): void
+ +deletePost(): void
+}
+
+class StudyGroupController {
+ +admissionRequest(): void
+ +generateNotification(): void
+}
+
+class EventController {
+ +createEvent(): void
+ +validateData(): void
+ +searchSelectedEvent(): void
+ +deleteEvent(): void
+}
+
+class NewsController {
+ +handleNotificationTransition(): void
+}
+
+class ExtensionGroupController {
+ +admissionRequest(): void
+ +createGroup(): void
+}
+
+class CalendarController {
+ +handleEditCalendar(): void
+ +confirmation(): void
+}
+
+class Users {
+ - users: List<UserData>
+ +getUsers(): List<UserData>
+ +setUsers(users: List<UserData>): void
+ +getUser(email: String, password: String): UserData
+ +createNewUser(name: String, email: String, password: String): void
+ +restorePassword(email: String): void
+}
+
+class UserData {
+ - id: int
+ - name: String
+ - email: String
+ - password: String
+ +UserData(name: String, email: String, password: String)
+ +getId(): int
+ +setId(id: int): void
+ +getName(): String
+ +setName(name: String): void
+ +getEmail(): String
+ +setEmail(email: String): void
+ +getPassword(): String
+ +setPassword(password: String): void
+}
+
+class PublicationData {
+ - id: int
+ - title: String
+ - content: String
+ - author: UserData
+ +PublicationData(title: String, content: String, author: UserData)
+ +getId(): int
+ +setId(id: int): void
+ +getTitle(): String
+ +setTitle(title: String): void
+ +getContent(): String
+ +setContent(content: String): void
+ +getAuthor(): UserData
+ +setAuthor(author: UserData): void
+ +modifyAndSavePostData(): void
+}
+
+class EventData {
+ - id: int
+ - name: String
+ - date: Date
+ - location: String
+ +EventData(name: String, date: Date, location: String)
+ +getId(): int
+ +setId(id: int): void
+ +getName(): String
+ +setName(name: String): void
+ +getDate(): Date
+ +setDate(date: Date): void
+ +getLocation(): String
+ +setLocation(location: String): void
+ +saveEventData(): void
+ +deleteEventData(): void
+ +updateCalendarData(): void
+}
+
+class GroupData {
+ - id: int
+ - name: String
+ - description: String
+ - members: List<UserData>
+ +GroupData(name: String, description: String, members: List<UserData>)
+ +getId(): int
+ +setId(id: int): void
+ +getName(): String
+ +setName(name: String): void
+ +getDescription(): String
+ +setDescription(description: String): void
+ +getMembers(): List<UserData>
+ +setMembers(members: List<UserData>): void
+ +confirmAdmission(admin: boolean): boolean
+ +waitingForConfirmation(): void
+ +admissionApproval(): void
+}
+
+class Calendar {
+ - id: int
+ - name: String
+ - description: String
+ - owner: UserData
+ - timeZone: String
+ - creationDate: Date
+ - lastUpdate: Date
+ - events: List<EventData>
+ - notificationsEnabled: boolean
+ - color: String
+ - isPublic: boolean
+ - sharedWith: List<UserData>
+ +Calendar(name: String, description: String, owner: UserData, timeZone: String, creationDate: Date)
+ +getId(): int
+ +setId(id: int): void
+ +getName(): String
+ +setName(name: String): void
+ +getDescription(): String
+ +setDescription(description: String): void
+ +getOwner(): UserData
+ +setOwner(owner: UserData): void
+ +getTimeZone(): String
+ +setTimeZone(timeZone: String): void
+ +getCreationDate(): Date
+ +setCreationDate(creationDate: Date): void
+ +getLastUpdate(): Date
+ +setLastUpdate(lastUpdate: Date): void
+ +getEvents(): List<EventData>
+ +isNotificationsEnabled(): boolean
+ +setNotificationsEnabled(notificationsEnabled: boolean): void
+ +getColor(): String
+ +setColor(color: String): void
+ +newEvent(isPublic): void
+ +updateCalendarData(): void
+}
+
+SignUpController --> Users
+LoginUpController --> Users
+
+Users <.- MainView
+UserData *- Users
+Calendar <.. DashboardView
+PublicationData <.. PostManagementView
+EventData <.. EventManagementView
+GroupData <.. StudyGroupManagementView
+GroupData <.. ExtensionGroupManagementView
+
+DashboardView --> CalendarController
+StudyGroupManagementView --> StudyGroupController
+ExtensionGroupManagementView --> ExtensionGroupController
+MainView --> SignUpController
+MainView --> LoginUpController
+PostManagementView --> PublicationController
+PostManagementView --> EditPostController
+
+EventManagementView --> EventController
+DashboardView --> NewsController
+
+MainView *- DashboardView
+DashboardView *- CalendarView
+DashboardView *- StudyGroupManagementView
+DashboardView *-- ExtensionGroupManagementView
+DashboardView *-- NotificationView
+DashboardView *-- PostManagementView
+DashboardView *-- EventManagementView
+PostManagementView --> DeletePostController
+@enduml

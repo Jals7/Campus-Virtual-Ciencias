@@ -1,0 +1,19 @@
+@startuml DiagramaDeDespliegue
+node Cliente[
+    Personal Computer
+    ----
+]
+
+card App[
+    Campus Virtual Ciencias
+    ----
+]
+
+card Data[
+    Data
+    ----
+]
+
+Cliente *--> App
+App - Data
+@enduml

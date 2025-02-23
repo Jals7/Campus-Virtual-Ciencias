@@ -1,0 +1,88 @@
+@startuml Diagrama de traza
+package "front" <<Java 1.8.0>>{
+    boundary JFrame <<Java Swing>>
+    boundary Validators <<Java AWT>>
+    control Controller <<Java AWT>>
+}
+
+package "backend" <<Data en TXT>>{
+    entity "UserData-TXT"
+    entity "PublicationData-TXT"
+    entity "GroupData-TXT"
+    entity "EventData-TXT"
+}
+
+package "analysis"{
+    boundary MainView
+    boundary DashboardView
+    boundary NotificationView
+    boundary PostManegementView
+    boundary EventManegementView
+    boundary ExtensionGroupManegementView
+    boundary StudyGroupManegementView
+    control SignUpController
+    control LoginUpController
+    control PublicationController
+    control CalendarController
+    control NewsController
+    control DeletePostController
+    control EditPostController
+    control EventController
+    control ExtensionGroupController
+    control StudyGroupController
+    entity UserData
+    entity PublicationData
+    entity GroupData
+    entity EventData
+}
+
+JFrame .> MainView: <<trace>>
+JFrame ..> DashboardView: <<trace>>
+JFrame ..> NotificationView: <<trace>>
+JFrame ..> PostManegementView: <<trace>>
+JFrame ..> EventManegementView: <<trace>>
+JFrame ..> ExtensionGroupManegementView: <<trace>>
+JFrame ..> StudyGroupManegementView: <<trace>>
+Validators ..> MainView: <<trace>>
+Validators .> EventManegementView: <<trace>>
+Validators ..> PostManegementView: <<trace>>
+Validators .> StudyGroupManegementView: <<trace>>
+Validators .> ExtensionGroupManegementView: <<trace>>
+Controller .> "UserData-TXT": <<trace>>
+Controller ..>  "PublicationData-TXT": <<trace>>
+Controller ..>  "GroupData-TXT": <<trace>>
+Controller ..>  "EventData-TXT": <<trace>>
+Controller ..> SignUpController: <<trace>>
+Controller ..> LoginUpController: <<trace>>
+Controller ..> PublicationController: <<trace>>
+Controller ..> CalendarController: <<trace>>
+Controller ..> NewsController: <<trace>>
+Controller .> DeletePostController: <<trace>>
+Controller .> EditPostController: <<trace>>
+Controller .> EventController: <<trace>>
+Controller .> ExtensionGroupController: <<trace>>
+Controller .> StudyGroupController: <<trace>>
+"UserData-TXT" ..> UserData
+"PublicationData-TXT" ..> PublicationData
+"GroupData-TXT" ..> GroupData
+"EventData-TXT" .> EventData
+
+JFrame -> Validators
+Validators --> Controller
+DashboardView -> MainView
+NotificationView --> DashboardView
+PostManegementView --> DashboardView
+EventManegementView --> DashboardView
+ExtensionGroupManegementView --> DashboardView
+StudyGroupManegementView --> DashboardView
+StudyGroupManegementView --> StudyGroupController
+ExtensionGroupManegementView --> ExtensionGroupController
+EventManegementView --> EventController
+PostManegementView --> EditPostController
+PostManegementView --> PublicationController
+PostManegementView --> DeletePostController
+NotificationView --> NewsController
+MainView --> SignUpController
+MainView --> LoginUpController
+CalendarController --> DashboardView
+@enduml

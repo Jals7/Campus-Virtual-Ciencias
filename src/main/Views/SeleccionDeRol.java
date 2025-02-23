@@ -78,7 +78,7 @@ public class SeleccionDeRol extends JFrame implements ActionListener {
             this.dispose();
         } else if (ae.getSource() == backButton) {
             // Volver a la pantalla de inicio de sesión
-            Login login = new Login();
+            Login2cesar login = new Login2cesar();
             login.setSize(800, 700);
             login.setLocationRelativeTo(null);
             login.setVisible(true);

@@ -137,7 +137,7 @@ public class Registro extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(this, "Registro exitoso");
 
                 // Redirigir a la pantalla de Login
-                Login login = new Login();
+                Login2cesar login = new Login2cesar();
                 login.setSize(800, 700);
                 login.setLocationRelativeTo(null);
                 login.setVisible(true);

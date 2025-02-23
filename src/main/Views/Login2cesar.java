@@ -10,7 +10,6 @@ public class Login2cesar extends JFrame implements ActionListener {
     private JButton loginButton, signUpButton;
     private JLabel title, labelUsername, labelPassword;
     private JTextField txtUsername, txtPassword;
-
     // Constructor para inicializar la ventana de inicio de sesión
     public Login2cesar() {
         setLayout(null);

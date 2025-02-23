@@ -1,0 +1,27 @@
+@startuml DiagramaDeSecuenciaCrearGrupoDeEstudio
+actor User
+boundary StudyGroupManegementView
+control StudyGroupController
+entity GroupData
+
+activate User
+User->StudyGroupManegementView: 1:selectStudyGroup()
+activate StudyGroupManegementView
+
+StudyGroupManegementView->StudyGroupController: 2:admissionRequest()
+activate StudyGroupController
+
+StudyGroupController->GroupData: 3:Waiting for confirmation
+activate GroupData
+note right: Se espera a que los administradores \n confirmen la admision del usuario al grupo
+
+GroupData->GroupData: 4:CONFIRMAR(ADMIN)
+
+GroupData->StudyGroupController: 5:admissionApproval()
+deactivate GroupData
+
+StudyGroupController->StudyGroupManegementView: 6:generateNotification()
+deactivate StudyGroupController
+deactivate StudyGroupManegementView
+
+@enduml
