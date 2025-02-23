@@ -4,14 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class MainView extends JFrame implements ActionListener{
-    private JPanel barraTitulo, topPanel, panelFondo, panelCentro, panelBotones, leftPanel, rightPanel;
+public class EditProfileView extends JFrame implements ActionListener{
+    private JPanel barraTitulo, topPanel, panelFondo, panelCentro, panelBotones, leftPanel;
     private Point puntoInicial;
-    private JButton closeButton, maximizeButton, minimizeButton, newsButton, logoutButton, newEvent, goToEvents, newPublicationButton,
-    myPublicationsButton, editProfileButton, extensionGroupButton, studyGroupButton;
-    private JLabel logo, events, calendar, opciones, userName;
+    private JButton closeButton, maximizeButton, minimizeButton, newsButton, logoutButton, cancelButton, supportButton, saveButton,
+    deleteProfileButton, changeProfileImgButton, backToMaiButton;
+    private JLabel logo, nameLabel, schoolLabel, profileTypeLabel, phoneLabel, editViewLabel, userName, opcionesLabel, informacionLabel,
+    profileAvatar;
 
-    public MainView(){
+    public EditProfileView(){
         setTitle("Campus Virtual Ciencias");
         setSize(1280,720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -53,7 +54,7 @@ public class MainView extends JFrame implements ActionListener{
         panelCentro = new JPanel();
         panelCentro.setLayout(null);
         panelCentro.setBackground(new Color(3, 34, 63));
-        panelCentro.setPreferredSize(new Dimension(550, 540)); //Para colocarle los tamanios al panel central
+        panelCentro.setPreferredSize(new Dimension(870, 540)); //Para colocarle los tamanios al panel central
 
         //Crear ImageIcon y JLabel para el Icono de Ciencias
         ImageIcon icono = new ImageIcon("src/main/Datas/logo.jpg");
@@ -120,7 +121,7 @@ public class MainView extends JFrame implements ActionListener{
         panelFondo.add(northContainer, BorderLayout.NORTH);
         add(panelFondo);
 
-        //Paneles izquierdo y derecho
+        //Panel izquierdo
         leftPanel = new JPanel();
         leftPanel.setLayout(null);
         leftPanel.setBackground(new Color(3, 34, 63));
@@ -132,41 +133,63 @@ public class MainView extends JFrame implements ActionListener{
         gbcLeft.insets = new Insets(0, 0, 0, 50);
         PanelExtra.add(leftPanel, gbcLeft);
 
-        rightPanel = new JPanel();
-        rightPanel.setLayout(null);
-        rightPanel.setBackground(new Color(3, 34, 63));
-        rightPanel.setPreferredSize(new Dimension(300, 540));
-        GridBagConstraints gbcRight = new GridBagConstraints();
-        gbcRight.gridx = 2;
-        gbcRight.gridy = 0;
-        gbcRight.anchor = GridBagConstraints.EAST;
-        gbcRight.insets = new Insets(0, 50, 0, 0);
-        PanelExtra.add(rightPanel, gbcRight);
-
-        //JLABELS de paneles
-        events = new JLabel("Eventos");
-        events.setFont(new Font("Roboto", Font.BOLD, 16));
-        events.setForeground(Color.WHITE);
-        events.setBounds(115, 300, 200, 20);
-        rightPanel.add(events);
-
-        calendar = new JLabel("Calendario");
-        calendar.setFont(new Font("Roboto", Font.BOLD, 16));
-        calendar.setForeground(Color.WHITE);
-        calendar.setBounds(115, 30, 200, 20);
-        rightPanel.add(calendar);
-
-        opciones = new JLabel("Opciones");
-        opciones.setFont(new Font("Roboto", Font.BOLD, 16));
-        opciones.setForeground(Color.WHITE);
-        opciones.setBounds(115, 30, 200, 20);
-        leftPanel.add(opciones);
+        //JLABELS y JTEXTFIELDS
+        editViewLabel = new JLabel("Editar Perfil");
+        editViewLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+        editViewLabel.setForeground(Color.WHITE);
+        editViewLabel.setBounds(300, 30, 200, 20);
+        panelCentro.add(editViewLabel);
 
         userName = new JLabel("Nombre de Usuario");
         userName.setFont(new Font("Roboto", Font.BOLD, 16));
         userName.setForeground(Color.WHITE);
         userName.setBounds(720, 22, 200, 20);
         topPanel.add(userName);
+
+        informacionLabel = new JLabel("Informacion");
+        informacionLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+        informacionLabel.setForeground(Color.WHITE);
+        informacionLabel.setBounds(640, 60, 200, 20);
+        panelCentro.add(informacionLabel);
+
+        nameLabel = new JLabel("Nombre y Apellido: ");
+        nameLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+        nameLabel.setForeground(Color.WHITE);
+        nameLabel.setBounds(600, 130, 200, 20);
+        panelCentro.add(nameLabel);
+
+        schoolLabel = new JLabel("Escuela: ");
+        schoolLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+        schoolLabel.setForeground(Color.WHITE);
+        schoolLabel.setBounds(600, 200, 200, 20);
+        panelCentro.add(schoolLabel);
+
+        profileTypeLabel = new JLabel("Tipo de perfil: ");
+        profileTypeLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+        profileTypeLabel.setForeground(Color.WHITE);
+        profileTypeLabel.setBounds(600, 270, 200, 20);
+        panelCentro.add(profileTypeLabel);
+
+        phoneLabel = new JLabel("Telefono: ");
+        phoneLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+        phoneLabel.setForeground(Color.WHITE);
+        phoneLabel.setBounds(600, 340, 200, 20);
+        panelCentro.add(phoneLabel);
+
+        opcionesLabel = new JLabel("Opciones");
+        opcionesLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+        opcionesLabel.setForeground(Color.WHITE);
+        opcionesLabel.setBounds(110, 90, 195, 30);
+        leftPanel.add(opcionesLabel);
+
+        ImageIcon avatar = new ImageIcon("src/main/Datas/avatarProfileDefault.png");
+        Image avat = avatar.getImage();
+        Image avatRedimensionado = avat.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+        avatar = new ImageIcon(avatRedimensionado);
+        profileAvatar = new JLabel(avatar);
+        profileAvatar.setBorder(BorderFactory.createEmptyBorder(10, 20, 30, 20));
+        profileAvatar.setBounds(50,10, 160, 160);
+        panelCentro.add(profileAvatar);
 
         //Buttons
         newsButton = new JButton("Notificaciones");
@@ -183,47 +206,47 @@ public class MainView extends JFrame implements ActionListener{
         logoutButton.addActionListener(this);
         topPanel.add(logoutButton);
 
-        goToEvents = new JButton("Ver eventos");
-        goToEvents.setFont(new Font("Roboto", 1, 14));
-        goToEvents.setBounds(80, 430, 140, 30);
-        goToEvents.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        goToEvents.addActionListener(this);
-        leftPanel.add(goToEvents);
+        cancelButton = new JButton("Cancelar");
+        cancelButton.setFont(new Font("Roboto", 1, 14));
+        cancelButton.setBounds(200, 480, 155, 30);
+        cancelButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        cancelButton.addActionListener(this);
+        panelCentro.add(cancelButton);
 
-        editProfileButton = new JButton("Editar Perfil");
-        editProfileButton.setFont(new Font("Roboto", 1, 14));
-        editProfileButton.setBounds(71, 80, 155, 30);
-        editProfileButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        editProfileButton.addActionListener(this);
-        leftPanel.add(editProfileButton);
+        saveButton = new JButton("Guardar");
+        saveButton.setFont(new Font("Roboto", 1, 14));
+        saveButton.setBounds(400, 480, 155, 30);
+        saveButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        saveButton.addActionListener(this);
+        panelCentro.add(saveButton);
 
-        newPublicationButton = new JButton("Nueva Publicacion");
-        newPublicationButton.setFont(new Font("Roboto", 1, 14));
-        newPublicationButton.setBounds(71, 150, 155, 30);
-        newPublicationButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        newPublicationButton.addActionListener(this);
-        leftPanel.add(newPublicationButton);
+        changeProfileImgButton = new JButton("Cambiar foto de perfil");
+        changeProfileImgButton.setFont(new Font("Roboto", 1, 10));
+        changeProfileImgButton.setBounds(50, 150, 155, 20);
+        changeProfileImgButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        changeProfileImgButton.addActionListener(this);
+        panelCentro.add(changeProfileImgButton);
 
-        myPublicationsButton = new JButton("Mis publicaciones");
-        myPublicationsButton.setFont(new Font("Roboto", 1, 14));
-        myPublicationsButton.setBounds(71, 220, 155, 30);
-        myPublicationsButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        myPublicationsButton.addActionListener(this);
-        leftPanel.add(myPublicationsButton);
+        backToMaiButton = new JButton("Volver a inicio");
+        backToMaiButton.setFont(new Font("Roboto", 1, 14));
+        backToMaiButton.setBounds(51, 260, 195, 30);
+        backToMaiButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        backToMaiButton.addActionListener(this);
+        leftPanel.add(backToMaiButton);
+        
+        deleteProfileButton = new JButton("Borrar tu perfil de usuario");
+        deleteProfileButton.setFont(new Font("Roboto", 1, 12));
+        deleteProfileButton.setBounds(51, 190, 195, 30);
+        deleteProfileButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        deleteProfileButton.addActionListener(this);
+        leftPanel.add(deleteProfileButton);
 
-        extensionGroupButton = new JButton("Ver Grupos de Extension");
-        extensionGroupButton.setFont(new Font("Roboto", 1, 14));
-        extensionGroupButton.setBounds(51, 290, 195, 30);
-        extensionGroupButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        extensionGroupButton.addActionListener(this);
-        leftPanel.add(extensionGroupButton);
-
-        studyGroupButton = new JButton("Ver Grupos de Estudio");
-        studyGroupButton.setFont(new Font("Roboto", 1, 14));
-        studyGroupButton.setBounds(51, 360, 195, 30);
-        studyGroupButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        studyGroupButton.addActionListener(this);
-        leftPanel.add(studyGroupButton);
+        supportButton = new JButton("Contacta a nuestro soporte");
+        supportButton.setFont(new Font("Roboto", 1, 12));
+        supportButton.setBounds(51, 330, 195, 30);
+        supportButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        supportButton.addActionListener(this);
+        leftPanel.add(supportButton);
     }
 
     public void actionPerformed(ActionEvent ae){
@@ -242,9 +265,9 @@ public class MainView extends JFrame implements ActionListener{
         }
     }
     public static void main(String args[]){
-        MainView ventana = new MainView();
-        ventana.setVisible(true);
-        ventana.setLocationRelativeTo(null);
-        ventana.setResizable(false);
+        EditProfileView profileView = new EditProfileView();
+        profileView.setVisible(true);
+        profileView.setLocationRelativeTo(null);
+        profileView.setResizable(false);
     }
 }

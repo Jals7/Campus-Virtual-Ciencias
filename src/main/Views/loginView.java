@@ -1,15 +1,17 @@
+package Views;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class loginView extends JFrame implements ActionListener{
+public class LoginView extends JFrame implements ActionListener{
     private JPanel panelFondo, topPanel, panelCentro, barraTitulo, panelBotones;
     private JButton closeButton, maximizeButton, minimizeButton, botonIniciar, botonRegistrarse, olvidoDeClave, soporte;
     private JLabel logo, nombreDelSoftware, contrasenia, userCorreo;
     private JTextField txtUserCorreo, txtcontrasenia;
     private Point puntoInicial;
 
-    loginView(){
+    public LoginView(){
         setTitle("Campus Virtual Ciencias");
         setSize(1280,720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -60,7 +62,7 @@ public class loginView extends JFrame implements ActionListener{
         topPanel.add(nombreDelSoftware, BorderLayout.EAST);
 
         //Crear ImageIcon y JLabel para el Icono de Ciencias
-        ImageIcon icono = new ImageIcon("logo.jpg");
+        ImageIcon icono = new ImageIcon("src/main/Datas/logo.jpg");
         Image imagen = icono.getImage();
         Image imagenRedimensionada = imagen.getScaledInstance(106, 91, Image.SCALE_SMOOTH);
         icono = new ImageIcon(imagenRedimensionada);
@@ -193,7 +195,7 @@ public class loginView extends JFrame implements ActionListener{
         }
     }
     public static void main(String args[]){
-        loginView ventanaLogin = new loginView();
+        LoginView ventanaLogin = new LoginView();
         ventanaLogin.setVisible(true);
         ventanaLogin.setLocationRelativeTo(null);
         ventanaLogin.setResizable(false);

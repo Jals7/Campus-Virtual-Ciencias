@@ -1,17 +1,24 @@
 package Views;
 
 import javax.swing.*;
+
+import Controllers.EventController;
+import Datas.EventData;
+
 import java.awt.*;
 import java.awt.event.*;
 
-public class MainView extends JFrame implements ActionListener{
+public class CalendarView extends JFrame implements ActionListener{
     private JPanel barraTitulo, topPanel, panelFondo, panelCentro, panelBotones, leftPanel, rightPanel;
     private Point puntoInicial;
-    private JButton closeButton, maximizeButton, minimizeButton, newsButton, logoutButton, newEvent, goToEvents, newPublicationButton,
-    myPublicationsButton, editProfileButton, extensionGroupButton, studyGroupButton;
-    private JLabel logo, events, calendar, opciones, userName;
+    private JButton closeButton, maximizeButton, minimizeButton, newsButton, logoutButton, newEventButton,
+    calendarMarkButton, goToMainButton, supportButton;
+    private JLabel logo, eventsLabel, calendarLabel, opciones, userName;
+    private EventController controller;
+    private DefaultListModel<String> listModel;
+    private JList<String> eventList;
 
-    public MainView(){
+    public CalendarView(){
         setTitle("Campus Virtual Ciencias");
         setSize(1280,720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -68,7 +75,7 @@ public class MainView extends JFrame implements ActionListener{
         northContainer.add(barraTitulo);
         northContainer.add(topPanel);
         
-        //Panel extra que sirve para centrar el rectangulo central donde van los JTEXTFIELD
+        //Panel extra que sirve para centrar el rectangulo central
         JPanel PanelExtra = new JPanel(new GridBagLayout());
         PanelExtra.setBackground(new Color(252,203,111));
         //Configurar GridBagConstraints para panelCentro, esto sirve para alinear en el grid los paneles
@@ -144,17 +151,17 @@ public class MainView extends JFrame implements ActionListener{
         PanelExtra.add(rightPanel, gbcRight);
 
         //JLABELS de paneles
-        events = new JLabel("Eventos");
-        events.setFont(new Font("Roboto", Font.BOLD, 16));
-        events.setForeground(Color.WHITE);
-        events.setBounds(115, 300, 200, 20);
-        rightPanel.add(events);
+        eventsLabel = new JLabel("Eventos");
+        eventsLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+        eventsLabel.setForeground(Color.WHITE);
+        eventsLabel.setBounds(125, 40, 200, 20);
+        rightPanel.add(eventsLabel);
 
-        calendar = new JLabel("Calendario");
-        calendar.setFont(new Font("Roboto", Font.BOLD, 16));
-        calendar.setForeground(Color.WHITE);
-        calendar.setBounds(115, 30, 200, 20);
-        rightPanel.add(calendar);
+        calendarLabel = new JLabel("Calendario de eventos");
+        calendarLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+        calendarLabel.setForeground(Color.WHITE);
+        calendarLabel.setBounds(200, 30, 200, 20);
+        panelCentro.add(calendarLabel);
 
         opciones = new JLabel("Opciones");
         opciones.setFont(new Font("Roboto", Font.BOLD, 16));
@@ -183,47 +190,48 @@ public class MainView extends JFrame implements ActionListener{
         logoutButton.addActionListener(this);
         topPanel.add(logoutButton);
 
-        goToEvents = new JButton("Ver eventos");
-        goToEvents.setFont(new Font("Roboto", 1, 14));
-        goToEvents.setBounds(80, 430, 140, 30);
-        goToEvents.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        goToEvents.addActionListener(this);
-        leftPanel.add(goToEvents);
+        newEventButton = new JButton("Gestionar eventos");
+        newEventButton.setFont(new Font("Roboto", 1, 14));
+        newEventButton.setBounds(71, 110, 160, 30);
+        newEventButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        newEventButton.addActionListener(this);
+        leftPanel.add(newEventButton);
+        
+        calendarMarkButton = new JButton("Marcar evento en calendario");
+        calendarMarkButton.setFont(new Font("Roboto", 1, 12));
+        calendarMarkButton.setBounds(58, 210, 185, 30);
+        calendarMarkButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        calendarMarkButton.addActionListener(this);
+        leftPanel.add(calendarMarkButton);
 
-        editProfileButton = new JButton("Editar Perfil");
-        editProfileButton.setFont(new Font("Roboto", 1, 14));
-        editProfileButton.setBounds(71, 80, 155, 30);
-        editProfileButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        editProfileButton.addActionListener(this);
-        leftPanel.add(editProfileButton);
+        goToMainButton = new JButton("Volver a inicio");
+        goToMainButton.setFont(new Font("Roboto", 1, 14));
+        goToMainButton.setBounds(71, 310, 155, 30);
+        goToMainButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        goToMainButton.addActionListener(this);
+        leftPanel.add(goToMainButton);
 
-        newPublicationButton = new JButton("Nueva Publicacion");
-        newPublicationButton.setFont(new Font("Roboto", 1, 14));
-        newPublicationButton.setBounds(71, 150, 155, 30);
-        newPublicationButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        newPublicationButton.addActionListener(this);
-        leftPanel.add(newPublicationButton);
+        supportButton = new JButton("Contacta al soporte");
+        supportButton.setFont(new Font("Roboto", 1, 14));
+        supportButton.setBounds(51, 410, 195, 30);
+        supportButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        supportButton.addActionListener(this);
+        leftPanel.add(supportButton);
 
-        myPublicationsButton = new JButton("Mis publicaciones");
-        myPublicationsButton.setFont(new Font("Roboto", 1, 14));
-        myPublicationsButton.setBounds(71, 220, 155, 30);
-        myPublicationsButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        myPublicationsButton.addActionListener(this);
-        leftPanel.add(myPublicationsButton);
+        //Agregar Lista para Visualizar los Eventos
+        listModel = new DefaultListModel<>();
+        updateList();
+        eventList = new JList<>(listModel);
+        JScrollPane listScrollPane = new JScrollPane(eventList);
+        listScrollPane.setBounds(50,50,300,200);
+        rightPanel.add(listScrollPane);
+    }
 
-        extensionGroupButton = new JButton("Ver Grupos de Extension");
-        extensionGroupButton.setFont(new Font("Roboto", 1, 14));
-        extensionGroupButton.setBounds(51, 290, 195, 30);
-        extensionGroupButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        extensionGroupButton.addActionListener(this);
-        leftPanel.add(extensionGroupButton);
-
-        studyGroupButton = new JButton("Ver Grupos de Estudio");
-        studyGroupButton.setFont(new Font("Roboto", 1, 14));
-        studyGroupButton.setBounds(51, 360, 195, 30);
-        studyGroupButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        studyGroupButton.addActionListener(this);
-        leftPanel.add(studyGroupButton);
+    private void updateList() {
+        listModel.clear();
+        for (EventData event : controller.getEvents()) {
+            listModel.addElement(event.getId() + " - " + event.getName());
+        }
     }
 
     public void actionPerformed(ActionEvent ae){
@@ -242,9 +250,9 @@ public class MainView extends JFrame implements ActionListener{
         }
     }
     public static void main(String args[]){
-        MainView ventana = new MainView();
-        ventana.setVisible(true);
-        ventana.setLocationRelativeTo(null);
-        ventana.setResizable(false);
+        CalendarView calendarView = new CalendarView();
+        calendarView.setVisible(true);
+        calendarView.setLocationRelativeTo(null);
+        calendarView.setResizable(false);
     }
 }
