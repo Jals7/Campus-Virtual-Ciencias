@@ -6,13 +6,13 @@ import java.awt.event.*;
 import java.io.*;
 
 // Clase para la ventana de inicio de sesión
-public class Login extends JFrame implements ActionListener {
+public class Login2cesar extends JFrame implements ActionListener {
     private JButton loginButton, signUpButton;
     private JLabel title, labelUsername, labelPassword;
     private JTextField txtUsername, txtPassword;
 
     // Constructor para inicializar la ventana de inicio de sesión
-    public Login() {
+    public Login2cesar() {
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -87,7 +87,7 @@ public class Login extends JFrame implements ActionListener {
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("\\$");
                 if (parts.length > 2) {
-                    String storedUsername = parts[0];
+                String storedUsername = parts[0];
                     String storedPassword = parts[1];
                     if (storedUsername.equals(username) && storedPassword.equals(password)) {
                         return true;
@@ -102,7 +102,7 @@ public class Login extends JFrame implements ActionListener {
 
     // Método principal para ejecutar la aplicación
     public static void main(String args[]) {
-        Login login = new Login();
+        Login2cesar login = new Login2cesar();
         login.setVisible(true);
         login.setBounds(0, 0, 800, 700);
         login.setLocationRelativeTo(null);
