@@ -13,7 +13,7 @@ public class CalendarView extends JFrame implements ActionListener{
     private Point puntoInicial;
     private JButton closeButton, maximizeButton, minimizeButton, newsButton, logoutButton, newEventButton,
     calendarMarkButton, goToMainButton, supportButton;
-    private JLabel logo, eventsLabel, calendarLabel, opciones, userName;
+    private JLabel logo, eventsLabel, calendarLabel, opciones, userName, profileAvatarLabel;
     private EventController controller;
     private DefaultListModel<String> listModel;
     private JList<String> eventList;
@@ -23,6 +23,7 @@ public class CalendarView extends JFrame implements ActionListener{
         setSize(1280,720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setUndecorated(true); //Para quitar la barra de titulo y los bordes
+        controller = new EventController();
 
         panelFondo = new JPanel(new BorderLayout());
         panelFondo.setBackground(new Color(255,255,255));
@@ -63,7 +64,7 @@ public class CalendarView extends JFrame implements ActionListener{
         panelCentro.setPreferredSize(new Dimension(550, 540)); //Para colocarle los tamanios al panel central
 
         //Crear ImageIcon y JLabel para el Icono de Ciencias
-        ImageIcon icono = new ImageIcon("src/main/Datas/logo.jpg");
+        ImageIcon icono = new ImageIcon("src/main/Datas/images/logo.jpg");
         Image imagen = icono.getImage();
         Image imagenRedimensionada = imagen.getScaledInstance(66, 51, Image.SCALE_SMOOTH);
         icono = new ImageIcon(imagenRedimensionada);
@@ -71,6 +72,15 @@ public class CalendarView extends JFrame implements ActionListener{
         logo.setBorder(BorderFactory.createEmptyBorder(10, 20, 30, 20));
         logo.setBounds(0,0, 90, 90);
         topPanel.add(logo);
+        //Agregar avatar
+        ImageIcon avatar = new ImageIcon("src/main/Datas/images/avatarProfileDefault.png");
+        Image avatarSet = avatar.getImage();
+        Image avatarRedimension = avatarSet.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+        avatar = new ImageIcon(avatarRedimension);
+        profileAvatarLabel = new JLabel(avatar);
+        profileAvatarLabel.setBorder(BorderFactory.createEmptyBorder(0, 20, 30, 20));
+        profileAvatarLabel.setBounds(580,0, 90, 90);
+        topPanel.add(profileAvatarLabel);
 
         northContainer.add(barraTitulo);
         northContainer.add(topPanel);
@@ -222,8 +232,10 @@ public class CalendarView extends JFrame implements ActionListener{
         listModel = new DefaultListModel<>();
         updateList();
         eventList = new JList<>(listModel);
+        eventList.setBackground(new Color(3, 34, 63));
+        eventList.setForeground(Color.WHITE);
         JScrollPane listScrollPane = new JScrollPane(eventList);
-        listScrollPane.setBounds(50,50,300,200);
+        listScrollPane.setBounds(0,80,300,460);
         rightPanel.add(listScrollPane);
     }
 

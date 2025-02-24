@@ -7,13 +7,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
 
-public class EventView {
+public class EventManagementView {
     private EventController controller;
     private DefaultListModel<String> listModel;
     private JList<String> eventList;
     private JTextField nameField, descriptionField, organizerField;
+    private JLabel nameLabel, descriptionLabel, organizerLabel;
 
-    public EventView() {
+    public EventManagementView() {
         controller = new EventController();
         showMainInterface();
     }
@@ -26,6 +27,7 @@ public class EventView {
 
         JPanel panel = new JPanel(new GridLayout(4, 2, 5, 5));
         panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        panel.setBackground(new Color(3, 34, 63));
         nameField = new JTextField();
         descriptionField = new JTextField();
         organizerField = new JTextField();
@@ -34,13 +36,22 @@ public class EventView {
         listModel = new DefaultListModel<>();
         updateList();
         eventList = new JList<>(listModel);
+        eventList.setBackground(new Color(3, 34, 63));
+        eventList.setForeground(Color.WHITE);
         JScrollPane listScrollPane = new JScrollPane(eventList);
 
-        panel.add(new JLabel("Nombre:"));
+        nameLabel = new JLabel("Nombre:");
+        nameLabel.setForeground(Color.WHITE);
+        descriptionLabel = new JLabel("Descripción:");
+        descriptionLabel.setForeground(Color.WHITE);
+        organizerLabel = new JLabel("Organizador:");
+        organizerLabel.setForeground(Color.WHITE);
+
+        panel.add(nameLabel);
         panel.add(nameField);
-        panel.add(new JLabel("Descripción:"));
+        panel.add(descriptionLabel);
         panel.add(descriptionField);
-        panel.add(new JLabel("Organizador:"));
+        panel.add(organizerLabel);
         panel.add(organizerField);
         panel.add(addButton);
 
@@ -86,6 +97,7 @@ public class EventView {
 
     private void showEventDetails(int index) {
         EventData event = controller.getEvents().get(index);
+        JLabel nameLabelDetail, descriptionLabelDetail, organizerLabelDetail;
         JDialog dialog = new JDialog();
         dialog.setTitle("Detalles del Evento");
         dialog.setSize(450, 400);
@@ -93,6 +105,7 @@ public class EventView {
 
         JPanel contentPanel = new JPanel(new GridLayout(6, 1, 5, 5));
         contentPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        contentPanel.setBackground(new Color(3, 34, 63));
         JTextField nameField = new JTextField(event.getName());
         JTextField descriptionField = new JTextField(event.getDescription());
         JTextField organizerField = new JTextField(event.getOrganizer());
@@ -117,14 +130,22 @@ public class EventView {
 
         closeButton.addActionListener(e -> dialog.dispose());
 
-        contentPanel.add(new JLabel("Nombre:"));
+        nameLabelDetail = new JLabel("Nombre:");
+        nameLabelDetail.setForeground(Color.WHITE);
+        descriptionLabelDetail = new JLabel("Descripción:");
+        descriptionLabelDetail.setForeground(Color.WHITE);
+        organizerLabelDetail = new JLabel("Organizador:");
+        organizerLabelDetail.setForeground(Color.WHITE);
+
+        contentPanel.add(nameLabelDetail);
         contentPanel.add(nameField);
-        contentPanel.add(new JLabel("Descripción:"));
+        contentPanel.add(descriptionLabelDetail);
         contentPanel.add(descriptionField);
-        contentPanel.add(new JLabel("Organizador:"));
+        contentPanel.add(organizerLabelDetail);
         contentPanel.add(organizerField);
 
         JPanel buttonPanel = new JPanel();
+        buttonPanel.setBackground(new Color(3, 34, 63));
         buttonPanel.add(editButton);
         buttonPanel.add(saveButton);
         buttonPanel.add(closeButton);
@@ -136,6 +157,6 @@ public class EventView {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(EventView::new);
+        SwingUtilities.invokeLater(EventManagementView::new);
     }
 }

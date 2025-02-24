@@ -1,6 +1,10 @@
 package Views;
 
 import javax.swing.*;
+
+import Controllers.EventController;
+import Datas.EventData;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -10,12 +14,16 @@ public class MainView extends JFrame implements ActionListener{
     private JButton closeButton, maximizeButton, minimizeButton, newsButton, logoutButton, goToEvents, newPublicationButton,
     myPublicationsButton, editProfileButton, extensionGroupButton, studyGroupButton;
     private JLabel logo, events, calendar, opciones, userName, profileAvatarLabel;
+    private EventController controller;
+    private DefaultListModel<String> listModel;
+    private JList<String> eventList;
 
     public MainView(){
         setTitle("Campus Virtual Ciencias");
         setSize(1280,720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setUndecorated(true); //Para quitar la barra de titulo y los bordes
+        controller = new EventController();
 
         panelFondo = new JPanel(new BorderLayout());
         panelFondo.setBackground(new Color(255,255,255));
@@ -64,7 +72,7 @@ public class MainView extends JFrame implements ActionListener{
         logo.setBorder(BorderFactory.createEmptyBorder(10, 20, 30, 20));
         logo.setBounds(0,0, 90, 90);
         topPanel.add(logo);
-
+        //Agregar avatar
         ImageIcon avatar = new ImageIcon("src/main/Datas/images/avatarProfileDefault.png");
         Image avatarSet = avatar.getImage();
         Image avatarRedimension = avatarSet.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
@@ -233,6 +241,23 @@ public class MainView extends JFrame implements ActionListener{
         studyGroupButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         studyGroupButton.addActionListener(this);
         leftPanel.add(studyGroupButton);
+
+        //Agregar Lista para Visualizar los Eventos
+        listModel = new DefaultListModel<>();
+        updateList();
+        eventList = new JList<>(listModel);
+        eventList.setBackground(new Color(3, 34, 63));
+        eventList.setForeground(Color.WHITE);
+        JScrollPane listScrollPane = new JScrollPane(eventList);
+        listScrollPane.setBounds(0,330,300,320);
+        rightPanel.add(listScrollPane);
+    }
+
+    private void updateList(){
+        listModel.clear();
+        for (EventData event : controller.getEvents()) {
+            listModel.addElement(event.getId() + " - " + event.getName());
+        }
     }
 
     public void actionPerformed(ActionEvent ae){
