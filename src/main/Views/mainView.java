@@ -274,6 +274,37 @@ public class MainView extends JFrame implements ActionListener{
         if(ae.getSource() == minimizeButton){
             setState(JFrame.ICONIFIED);
         }
+        if(ae.getSource() == editProfileButton){
+            EditProfileView editProfile = new EditProfileView();
+            editProfile.setVisible(true);
+            editProfile.setLocationRelativeTo(null);
+            editProfile.setResizable(false);
+        }
+        /*if(ae.getSource() == newPublicationButton){
+            NewPublicationView newPublication = new NewPublicationView();
+            newPublication.setVisible(true);
+            newPublication.setLocationRelativeTo(null);
+            newPublication.setResizable(false);
+        }   
+        if(ae.getSource() == myPublicationsButton){
+            MyPublicationsView myPublications = new MyPublicationsView();
+            myPublications.setVisible(true);
+            myPublications.setLocationRelativeTo(null);
+            myPublications.setResizable(false);
+        }   */
+        if(ae.getSource() == extensionGroupButton){
+            SwingUtilities.invokeLater(ExtensionGroupView::new);
+        }
+        if(ae.getSource() == studyGroupButton){
+            SwingUtilities.invokeLater(ExtensionGroupView::new);    
+        }
+        if(ae.getSource() == logoutButton){
+            LoginView login = new LoginView();
+            login.setVisible(true);
+            login.setLocationRelativeTo(null);
+            login.setResizable(false);
+            dispose();
+        }
     }
     public static void main(String args[]){
         MainView ventana = new MainView();
