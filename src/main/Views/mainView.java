@@ -306,10 +306,4 @@ public class MainView extends JFrame implements ActionListener{
             dispose();
         }
     }
-    public static void main(String args[]){
-        MainView ventana = new MainView();
-        ventana.setVisible(true);
-        ventana.setLocationRelativeTo(null);
-        ventana.setResizable(false);
-    }
 }
