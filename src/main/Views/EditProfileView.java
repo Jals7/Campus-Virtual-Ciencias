@@ -283,6 +283,18 @@ public class EditProfileView extends JFrame implements ActionListener{
         if(ae.getSource() == minimizeButton){
             setState(JFrame.ICONIFIED);
         }
+        if(ae.getSource() == backToMaiButton){
+            MainView ventana = new MainView();
+            ventana.setVisible(true);
+            ventana.setLocationRelativeTo(null);
+            ventana.setResizable(false);
+        }
+        if(ae.getSource() == logoutButton){
+            LoginView login = new LoginView();
+            login.setVisible(true);
+            login.setLocationRelativeTo(null);
+            login.setResizable(false);
+        }
     }
     public static void main(String args[]){
         EditProfileView profileView = new EditProfileView();
