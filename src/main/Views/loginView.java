@@ -3,12 +3,14 @@ package Views;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import Controllers.LoginController;
 
 public class LoginView extends JFrame implements ActionListener{
     private JPanel panelFondo, topPanel, panelCentro, barraTitulo, panelBotones;
     private JButton closeButton, maximizeButton, minimizeButton, botonIniciar, botonRegistrarse, olvidoDeClave, soporte;
     private JLabel logo, nombreDelSoftware, contrasenia, userCorreo;
-    private JTextField txtUserCorreo, txtcontrasenia;
+    private JTextField txtUserCorreo;
+    private JPasswordField txtPasswordField;
     private Point puntoInicial;
 
     public LoginView(){
@@ -142,10 +144,10 @@ public class LoginView extends JFrame implements ActionListener{
         contrasenia.setBounds(150, 110, 200, 20);
         panelCentro.add(contrasenia);
 
-        txtcontrasenia = new JTextField();
-        txtcontrasenia.setFont(new Font("Roboto", Font.BOLD, 12));
-        txtcontrasenia.setBounds(150, 150, 290, 25);
-        panelCentro.add(txtcontrasenia);
+        txtPasswordField = new JPasswordField();
+        txtPasswordField.setFont(new Font("Roboto", Font.BOLD, 12));
+        txtPasswordField.setBounds(150, 150, 290, 25);
+        panelCentro.add(txtPasswordField);
 
         //Creando botones de panel central
         botonIniciar = new JButton("Iniciar Sesion");
@@ -180,6 +182,7 @@ public class LoginView extends JFrame implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent ae){
+        //Para las acciones de los botones del panel superior
         if(ae.getSource() == closeButton){
             System.exit(0);
         }
@@ -192,6 +195,33 @@ public class LoginView extends JFrame implements ActionListener{
         }
         if(ae.getSource() == minimizeButton){
             setState(JFrame.ICONIFIED);
+        }
+        //Para el Boton de iniciar Sesion
+        if(ae.getSource() == botonIniciar){
+            String email = txtUserCorreo.getText();
+            char[] passwordChars = txtPasswordField.getPassword();
+            String password = new String(passwordChars);
+            if((email.trim().isEmpty()) || (password.trim().isEmpty())){
+                JOptionPane.showMessageDialog(null,"Debe introducir Usuario y Contraseña.");
+            }
+            if(LoginController.validateLogin(email, password) == true){
+                this.dispose();
+                MainView ventanaPrincipal = new MainView();
+                ventanaPrincipal.setVisible(true);
+                ventanaPrincipal.setLocationRelativeTo(null);
+                ventanaPrincipal.setResizable(false);
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Usuario o Contraseña incorrectos.");
+            };
+        }
+        //Para la accion del boton registrar
+        if(ae.getSource() == botonRegistrarse){
+            this.dispose();
+            SignUpView registro = new SignUpView();
+            registro.setVisible(true);
+            registro.setLocationRelativeTo(null);
+            registro.setResizable(false);
         }
     }
     public static void main(String args[]){

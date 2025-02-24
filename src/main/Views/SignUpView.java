@@ -6,30 +6,30 @@ import java.awt.event.*;
 import java.io.*;
 
 // Clase para la ventana de registro de usuarios
-public class Registro extends JFrame implements ActionListener {
+public class SignUpView extends JFrame implements ActionListener {
     // Campos de texto para los datos del usuario
     private JTextField txtNombre, txtApellido, txtFechaNacimiento, txtEdad, txtSexo, txtCI, txtCorreo, txtContrasena;
     private JTextField txtCarrera, txtAnoDeIngreso, txtEscuela, txtCargo, txtUltimaMateriaDada;
     private JButton registerButton;
-    private String roll;
     private JButton backButton;
 
     // Constructor para inicializar la ventana de registro
-    public Registro(String roll) {
-        this.roll = roll;
+    public SignUpView(){
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(1280, 720);
+        setBackground(new Color(3, 34, 63));
 
         // Crear y posicionar el título
         JLabel title = new JLabel("Campus Virtual Ciencias");
-        title.setBounds(240, 30, 350, 50);
-        title.setFont(new Font("Andale Mono", Font.BOLD, 30));
+        title.setBounds(500, 30, 350, 50);
+        title.setFont(new Font("Roboto", Font.BOLD, 30));
         add(title);
 
         // Mensaje para saber qué rol está registrándose
-        JLabel rolLabel = new JLabel("Registrando como: " + roll);
-        rolLabel.setBounds(240, 70, 300, 30);
-        rolLabel.setFont(new Font("Andale Mono", Font.BOLD, 18));
+        JLabel rolLabel = new JLabel("Registro de nuevo usuario");
+        rolLabel.setBounds(500, 70, 300, 30);
+        rolLabel.setFont(new Font("Roboto", Font.BOLD, 18));
         add(rolLabel);
 
         // Crear y posicionar los campos comunes
@@ -43,15 +43,15 @@ public class Registro extends JFrame implements ActionListener {
         createLabelAndTextField("Contraseña:", 380);
 
         // Crear y posicionar los campos específicos según el rol
-        if ("Alumno".equals(roll)) {
+        if ("Alumno".equals("")) {
             createLabelAndTextField("Carrera:", 420);
             createLabelAndTextField("Año de Ingreso:", 460);
-        } else if ("Profesor".equals(roll)) {
+        } else if ("Profesor".equals("roll")) {
             createLabelAndTextField("Escuela:", 420);
             createLabelAndTextField("Año de Ingreso:", 460);
             createLabelAndTextField("Última Materia Dada:", 500);
             createLabelAndTextField("Cargo:", 540);
-        } else if ("Administrativo".equals(roll)) {
+        } else if ("Administrativo".equals("")) {
             createLabelAndTextField("Escuela:", 420);
             createLabelAndTextField("Cargo:", 460);
         }
@@ -77,6 +77,7 @@ public class Registro extends JFrame implements ActionListener {
 
         JTextField textField = new JTextField();
         textField.setBounds(300, yPosition, 200, 30);
+        textField.setForeground(Color.WHITE);
         add(textField);
 
         // Asignar el campo de texto a la variable correspondiente
@@ -109,22 +110,22 @@ public class Registro extends JFrame implements ActionListener {
                 String correo = txtCorreo.getText();
                 String contrasena = txtContrasena.getText();
 
-                BufferedWriter writer = new BufferedWriter(new FileWriter("usuarios.txt", true));
-                writer.write(CI + "$" + contrasena + "$" + roll + "$" + nombre + "$" + apellido + "$" + fechaDeNacimiento + "$" +
-                        edad + "$" + sexo + "$" + correo);
+                BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/Datas/userData.txt", true));
+                writer.write(CI + "$" + contrasena + "$" + "$" + nombre + "$" + apellido + "$" + fechaDeNacimiento + "$" +
+                        edad + "$" + sexo + "$" + correo + "\n");
 
                 // Guardar datos específicos según el rol
-                if ("Alumno".equals(roll)) {
+                if ("Alumno".equals("roll")) {
                     String carrera = txtCarrera.getText();
                     int anoDeIngreso = Integer.parseInt(txtAnoDeIngreso.getText());
                     writer.write("$" + carrera + "$" + anoDeIngreso);
-                } else if ("Profesor".equals(roll)) {
+                } else if ("Profesor".equals("roll")) {
                     String escuela = txtEscuela.getText();
                     int anoDeIngreso = Integer.parseInt(txtAnoDeIngreso.getText());
                     String ultimaMateriaDada = txtUltimaMateriaDada.getText();
                     String cargo = txtCargo.getText();
                     writer.write("$" + escuela + "$" + anoDeIngreso + "$" + ultimaMateriaDada + "$" + cargo);
-                } else if ("Administrativo".equals(roll)) {
+                } else if ("Administrativo".equals("roll")) {
                     String escuela = txtEscuela.getText();
                     String cargo = txtCargo.getText();
                     writer.write("$" + escuela + "$" + cargo);
@@ -137,7 +138,7 @@ public class Registro extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(this, "Registro exitoso");
 
                 // Redirigir a la pantalla de Login
-                Login2cesar login = new Login2cesar();
+                LoginView login = new LoginView();
                 login.setSize(800, 700);
                 login.setLocationRelativeTo(null);
                 login.setVisible(true);
@@ -150,11 +151,18 @@ public class Registro extends JFrame implements ActionListener {
 
         if (ae.getSource() == backButton) {
             // Volver a la pantalla de selección de rol
-            SeleccionDeRol seleccionDeRol = new SeleccionDeRol();
-            seleccionDeRol.setSize(800, 700);
-            seleccionDeRol.setLocationRelativeTo(null);
-            seleccionDeRol.setVisible(true);
+            LoginView login = new LoginView();
+            login.setSize(800, 700);
+            login.setLocationRelativeTo(null);
+            login.setVisible(true);
             this.dispose();
         }
+    }
+
+    public static void main(String[] args){
+            SignUpView registro = new SignUpView();
+            registro.setVisible(true);
+            registro.setLocationRelativeTo(null);
+            registro.setResizable(false);
     }
 }
