@@ -62,7 +62,7 @@ public class LoginView extends JFrame implements ActionListener{
         topPanel.add(nombreDelSoftware, BorderLayout.EAST);
 
         //Crear ImageIcon y JLabel para el Icono de Ciencias
-        ImageIcon icono = new ImageIcon("src/main/Datas/logo.jpg");
+        ImageIcon icono = new ImageIcon("src/main/Datas/images/logo.jpg");
         Image imagen = icono.getImage();
         Image imagenRedimensionada = imagen.getScaledInstance(106, 91, Image.SCALE_SMOOTH);
         icono = new ImageIcon(imagenRedimensionada);

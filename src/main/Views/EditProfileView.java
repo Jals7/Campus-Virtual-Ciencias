@@ -11,6 +11,7 @@ public class EditProfileView extends JFrame implements ActionListener{
     deleteProfileButton, changeProfileImgButton, backToMaiButton;
     private JLabel logo, nameLabel, schoolLabel, profileTypeLabel, phoneLabel, editViewLabel, userName, opcionesLabel, informacionLabel,
     profileAvatar;
+    private JTextField emailField, passwordField, phoneField;
 
     public EditProfileView(){
         setTitle("Campus Virtual Ciencias");
@@ -57,7 +58,7 @@ public class EditProfileView extends JFrame implements ActionListener{
         panelCentro.setPreferredSize(new Dimension(870, 540)); //Para colocarle los tamanios al panel central
 
         //Crear ImageIcon y JLabel para el Icono de Ciencias
-        ImageIcon icono = new ImageIcon("src/main/Datas/logo.jpg");
+        ImageIcon icono = new ImageIcon("src/main/Datas/images/logo.jpg");
         Image imagen = icono.getImage();
         Image imagenRedimensionada = imagen.getScaledInstance(66, 51, Image.SCALE_SMOOTH);
         icono = new ImageIcon(imagenRedimensionada);
@@ -158,17 +159,35 @@ public class EditProfileView extends JFrame implements ActionListener{
         nameLabel.setBounds(600, 130, 200, 20);
         panelCentro.add(nameLabel);
 
+        emailField = new JTextField("Ingrese el nuevo correo");
+        emailField.setFont(new Font("Roboto", 1, 12));
+        emailField.setForeground(Color.GRAY);
+        emailField.setBounds(260, 130, 200, 30);
+        panelCentro.add(emailField);
+
         schoolLabel = new JLabel("Escuela: ");
         schoolLabel.setFont(new Font("Roboto", Font.BOLD, 16));
         schoolLabel.setForeground(Color.WHITE);
         schoolLabel.setBounds(600, 200, 200, 20);
         panelCentro.add(schoolLabel);
 
+        passwordField = new JTextField("Ingrese la nueva contraseña");
+        passwordField.setFont(new Font("Roboto", 1, 12));
+        passwordField.setForeground(Color.GRAY);
+        passwordField.setBounds(260, 200, 200, 30);
+        panelCentro.add(passwordField);
+
         profileTypeLabel = new JLabel("Tipo de perfil: ");
         profileTypeLabel.setFont(new Font("Roboto", Font.BOLD, 16));
         profileTypeLabel.setForeground(Color.WHITE);
         profileTypeLabel.setBounds(600, 270, 200, 20);
         panelCentro.add(profileTypeLabel);
+
+        phoneField = new JTextField("Ingrese el nuevo numero de telefono");
+        phoneField.setFont(new Font("Roboto", 1, 12));
+        phoneField.setForeground(Color.GRAY);
+        phoneField.setBounds(260, 270, 200, 30);
+        panelCentro.add(phoneField);
 
         phoneLabel = new JLabel("Telefono: ");
         phoneLabel.setFont(new Font("Roboto", Font.BOLD, 16));
@@ -182,7 +201,8 @@ public class EditProfileView extends JFrame implements ActionListener{
         opcionesLabel.setBounds(110, 90, 195, 30);
         leftPanel.add(opcionesLabel);
 
-        ImageIcon avatar = new ImageIcon("src/main/Datas/avatarProfileDefault.png");
+
+        ImageIcon avatar = new ImageIcon("src/main/Datas/images/avatarProfileDefault.png");
         Image avat = avatar.getImage();
         Image avatRedimensionado = avat.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
         avatar = new ImageIcon(avatRedimensionado);

@@ -9,7 +9,7 @@ public class MainView extends JFrame implements ActionListener{
     private Point puntoInicial;
     private JButton closeButton, maximizeButton, minimizeButton, newsButton, logoutButton, goToEvents, newPublicationButton,
     myPublicationsButton, editProfileButton, extensionGroupButton, studyGroupButton;
-    private JLabel logo, events, calendar, opciones, userName;
+    private JLabel logo, events, calendar, opciones, userName, profileAvatarLabel;
 
     public MainView(){
         setTitle("Campus Virtual Ciencias");
@@ -56,7 +56,7 @@ public class MainView extends JFrame implements ActionListener{
         panelCentro.setPreferredSize(new Dimension(550, 540)); //Para colocarle los tamanios al panel central
 
         //Crear ImageIcon y JLabel para el Icono de Ciencias
-        ImageIcon icono = new ImageIcon("src/main/Datas/logo.jpg");
+        ImageIcon icono = new ImageIcon("src/main/Datas/images/logo.jpg");
         Image imagen = icono.getImage();
         Image imagenRedimensionada = imagen.getScaledInstance(66, 51, Image.SCALE_SMOOTH);
         icono = new ImageIcon(imagenRedimensionada);
@@ -64,6 +64,15 @@ public class MainView extends JFrame implements ActionListener{
         logo.setBorder(BorderFactory.createEmptyBorder(10, 20, 30, 20));
         logo.setBounds(0,0, 90, 90);
         topPanel.add(logo);
+
+        ImageIcon avatar = new ImageIcon("src/main/Datas/images/avatarProfileDefault.png");
+        Image avatarSet = avatar.getImage();
+        Image avatarRedimension = avatarSet.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+        avatar = new ImageIcon(avatarRedimension);
+        profileAvatarLabel = new JLabel(avatar);
+        profileAvatarLabel.setBorder(BorderFactory.createEmptyBorder(0, 20, 30, 20));
+        profileAvatarLabel.setBounds(580,0, 90, 90);
+        topPanel.add(profileAvatarLabel);
 
         northContainer.add(barraTitulo);
         northContainer.add(topPanel);
