@@ -229,10 +229,10 @@ public class SignUpView extends JFrame implements ActionListener, ItemListener{
         }
     }
 
-    public static void main(String[] args){
+/*    public static void main(String[] args){
         SignUpView registro = new SignUpView();
         registro.setVisible(true);
         registro.setLocationRelativeTo(null);
         registro.setResizable(false);
-    }
+    }*/ 
 }

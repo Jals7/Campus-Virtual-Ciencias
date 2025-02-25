@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GroupData {
-    private static final String FILE_PATH = "Datas/groups.txt";
+    private static final String FILE_PATH = "src/main/Datas/groupData.txt";
     private static List<Group> groups = new ArrayList<>();
 
     public static List<Group> getGroups() {
