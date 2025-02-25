@@ -17,7 +17,7 @@ public class StudyGroupView {
     private void showMainInterface() {
         JFrame frame = new JFrame("Gestión de Grupos de Estudio");
         frame.setSize(600, 500);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setLayout(new BorderLayout());
 
@@ -105,7 +105,7 @@ public class StudyGroupView {
         groupListPanel.repaint();
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         SwingUtilities.invokeLater(StudyGroupView::new);
-    }
+    }*/
 }

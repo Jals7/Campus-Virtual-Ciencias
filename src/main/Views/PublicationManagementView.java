@@ -105,12 +105,12 @@ public class PublicationManagementView extends JFrame implements ActionListener{
         }
     }
 
-    public static void main(String args[]){
+    /*public static void main(String args[]){
         PublicationManagementView view = new PublicationManagementView();
         view.setVisible(true);
         view.setBounds(0,0,800,600);
         view.setLocationRelativeTo(null);
         view.setResizable(false);
         System.out.println("Directorio de trabajo: " + System.getProperty("user.dir"));
-    }
+    }*/
 }

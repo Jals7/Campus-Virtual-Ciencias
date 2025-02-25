@@ -91,11 +91,11 @@ public class PublicationPrototipe extends JFrame implements ActionListener{
         }
     }
 
-    public static void main(String args[]){
+    /*public static void main(String args[]){
         PublicationPrototipe ventana = new PublicationPrototipe();
         ventana.setVisible(true);
         ventana.setBounds(0,0,800,600);
         ventana.setResizable(false);
         ventana.setLocationRelativeTo(null);
-    }
+    }*/
 }

@@ -260,11 +260,26 @@ public class CalendarView extends JFrame implements ActionListener{
         if(ae.getSource() == minimizeButton){
             setState(JFrame.ICONIFIED);
         }
+        if(ae.getSource() == goToMainButton){
+            MainView ventana = new MainView();
+            ventana.setVisible(true);
+            ventana.setLocationRelativeTo(null);
+            ventana.setResizable(false);
+        }
+        if(ae.getSource() == logoutButton){
+            LoginView login = new LoginView();
+            login.setVisible(true);
+            login.setLocationRelativeTo(null);
+            login.setResizable(false);
+        }
+        if(ae.getSource() == supportButton){
+            JOptionPane.showMessageDialog(null,"Si desea contactar con Soporte \n mande un un mensaje a correro@correo.com");
+        }
     }
-    public static void main(String args[]){
+    /*public static void main(String args[]){
         CalendarView calendarView = new CalendarView();
         calendarView.setVisible(true);
         calendarView.setLocationRelativeTo(null);
         calendarView.setResizable(false);
-    }
+    }*/
 }

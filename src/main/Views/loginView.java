@@ -223,6 +223,15 @@ public class LoginView extends JFrame implements ActionListener{
             registro.setLocationRelativeTo(null);
             registro.setResizable(false);
         }
+         //Para la accion del boton !!
+        if(ae.getSource() == soporte){
+            JOptionPane.showMessageDialog(null,"Si desea contactar con Soporte \n mande un un mensaje a correo@correo.com");
+        }
+        
+        // Para la accion del boton de cambio de contraseña
+        if(ae.getSource() == olvidoDeClave){
+            JOptionPane.showMessageDialog(null,"Si olvidaste tu contraseña \n mande un un mensaje a contrasena@correo.com ");
+        }    
     }
     public static void main(String args[]){
         LoginView ventanaLogin = new LoginView();
