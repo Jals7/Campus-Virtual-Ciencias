@@ -6,18 +6,18 @@ import Datas.GroupData;
 import javax.swing.*;
 import java.awt.*;
 
-public class ExtensionGroupView {
+public class ExtensionGroupView extends JFrame {
     private JPanel groupListPanel;
 
     public ExtensionGroupView() {
-        GroupData.loadGroupsFromFile();
+        GroupData.loadGroupsFromFile();        
         showMainInterface();
     }
 
     private void showMainInterface() {
         JFrame frame = new JFrame("Gestión de Grupos de Extensión");
         frame.setSize(600, 500);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setLayout(new BorderLayout());
 
@@ -90,8 +90,8 @@ public class ExtensionGroupView {
         groupListPanel.repaint();
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         SwingUtilities.invokeLater(ExtensionGroupView::new);
-    }
+    }*/
 }
 

@@ -21,7 +21,7 @@ public class EventManagementView {
 
     private void showMainInterface() {
         JFrame frame = new JFrame("Gestor de Eventos");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(500, 450);
         frame.setLayout(new BorderLayout());
 
@@ -156,7 +156,7 @@ public class EventManagementView {
         dialog.setVisible(true);
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         SwingUtilities.invokeLater(EventManagementView::new);
-    }
+    }*/
 }

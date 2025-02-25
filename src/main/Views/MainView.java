@@ -280,29 +280,24 @@ public class MainView extends JFrame implements ActionListener{
             editProfile.setLocationRelativeTo(null);
             editProfile.setResizable(false);
         }
-        /*if(ae.getSource() == newPublicationButton){
-            NewPublicationView newPublication = new NewPublicationView();
-            newPublication.setVisible(true);
-            newPublication.setLocationRelativeTo(null);
-            newPublication.setResizable(false);
-        }   
-        if(ae.getSource() == myPublicationsButton){
-            MyPublicationsView myPublications = new MyPublicationsView();
-            myPublications.setVisible(true);
-            myPublications.setLocationRelativeTo(null);
-            myPublications.setResizable(false);
-        }   */
         if(ae.getSource() == extensionGroupButton){
             SwingUtilities.invokeLater(ExtensionGroupView::new);
         }
         if(ae.getSource() == studyGroupButton){
-            SwingUtilities.invokeLater(ExtensionGroupView::new);    
+            SwingUtilities.invokeLater(StudyGroupView::new);    
         }
         if(ae.getSource() == logoutButton){
             LoginView login = new LoginView();
             login.setVisible(true);
             login.setLocationRelativeTo(null);
             login.setResizable(false);
+            dispose();
+        }
+        if(ae.getSource() == goToEvents){
+            CalendarView calendarView = new CalendarView();
+            calendarView.setVisible(true);
+            calendarView.setLocationRelativeTo(null);
+            calendarView.setResizable(false);
             dispose();
         }
     }

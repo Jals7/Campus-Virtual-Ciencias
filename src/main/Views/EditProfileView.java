@@ -295,11 +295,14 @@ public class EditProfileView extends JFrame implements ActionListener{
             login.setLocationRelativeTo(null);
             login.setResizable(false);
         }
+        if(ae.getSource() == supportButton){
+            JOptionPane.showMessageDialog(null,"Si desea contactar con Soporte \n mande un un mensaje a correo@correo.com");
+        } 
     }
-    public static void main(String args[]){
+    /*public static void main(String args[]){
         EditProfileView profileView = new EditProfileView();
         profileView.setVisible(true);
         profileView.setLocationRelativeTo(null);
         profileView.setResizable(false);
-    }
+    }*/
 }
