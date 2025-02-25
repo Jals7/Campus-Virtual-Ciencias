@@ -4,10 +4,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import javax.swing.JOptionPane;
-
-import Views.LoginView;
-
 public class RegisterController{
     public static boolean Register(String id, String nombre, String apellido, String fechaDeNacimiento, String edad, String sexo, String CI, String correo,
     String contrasenia, String carrera, String anioDeIngreso, String escuela, String MateriaDada, String cargo){
