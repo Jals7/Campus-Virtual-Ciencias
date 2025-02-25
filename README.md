@@ -68,14 +68,14 @@ Short Description about the project.
 ***
 ## Modelo de Implementación
 ### Librerias usadas en el proyecto
-  javax.swing y sus componentes.
-  java.awt y sus componentes.
-  java.awt.event y sus componentes.
-  java.awt.event.MouseAdapter Para el moviento de las Ventanas.
-  java.awt.event.MouseEvent Para captar el movimiento del Mouse.
-  java.io.BufferedWriter para manejar la lectura de archivos.
-  java.io.FileWriter.
-  java.io.IOException para el manejo de excepciones de entrada y salida.
+  1. javax.swing y sus componentes.
+  2. java.awt y sus componentes.
+  3. java.awt.event y sus componentes.
+  4. java.awt.event.MouseAdapter Para el moviento de las Ventanas.
+  5. java.awt.event.MouseEvent Para captar el movimiento del Mouse.
+  6. java.io.BufferedWriter para manejar la lectura de archivos.
+  7. java.io.FileWriter.
+  8. java.io.IOException para el manejo de excepciones de entrada y salida.
   
 ### Pasos para ejecutar el programa
   1. Clonar el repositorio en tu PC mediante VSCode y el enlace del Proyecto.
