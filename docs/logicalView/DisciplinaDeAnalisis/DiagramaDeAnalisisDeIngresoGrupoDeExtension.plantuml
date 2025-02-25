@@ -1,0 +1,16 @@
+@startuml DiagramaDeAnalisisDeIngresoGrupoDeExtension
+
+actor User
+boundary ExtensionGroupManegementView
+
+control ExtensionController
+
+entity GroupData
+
+User -- ExtensionGroupManegementView
+
+ExtensionGroupManegementView -- ExtensionController
+
+ExtensionController -- GroupData
+
+@enduml

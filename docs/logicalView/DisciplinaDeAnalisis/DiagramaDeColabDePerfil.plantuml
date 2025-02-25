@@ -1,0 +1,18 @@
+@startuml DiagramaDeColabDePerfil
+
+actor User
+boundary DashboardView
+boundary CalendarView
+boundary NotificationView
+control NewsController
+control ProfileController
+entity userData
+entity Calendar
+User - DashboardView 
+DashboardView --> CalendarView : 5: viewCalendar()
+DashboardView --> NotificationView : 6: viewNews()
+DashboardView - NewsController : 1: editCalendar()\n<&arrow-right>
+DashboardView -- ProfileController : 3: editProfile()\n<&arrow-right>
+ProfileController --> userData : 4: getProfileData()
+NewsController - Calendar : 2: getCalendar()\n<&arrow-right>
+@enduml

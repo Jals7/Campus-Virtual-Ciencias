@@ -1,0 +1,16 @@
+@startuml DiagramaDeColabEditarPublicacion
+
+boundary PublicationManagementView
+
+control PublicationController
+
+entity PublicationData
+
+User - PublicationManagementView : 1: SelectPost()\n 3: EnterNewData()\n 5: ConfirmModification()\n <&arrow-right>
+
+PublicationManagementView - PublicationController : 2: SearchAndRenderPost()\n 4: RenderModifications()\n 6: ValidateData()\n <&arrow-right>
+
+PublicationController - PublicationData : 7: ModifyAndSavePostData()\n <&arrow-right>
+
+@enduml
+

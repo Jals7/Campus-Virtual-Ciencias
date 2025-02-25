@@ -1,0 +1,12 @@
+@startuml NotificationTransitionSequence
+
+actor User
+boundary DashboardView
+control NewsController
+boundary NotificationView
+
+User - DashboardView : 1: viewNews()
+DashboardView --> NewsController : 2: handleNotificationTransition()
+NewsController --> NotificationView : 3: navigateToNotifications()
+
+@enduml

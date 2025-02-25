@@ -1,0 +1,15 @@
+@startuml DiagramaDeColabCrearEvento
+
+boundary EventManegementView
+
+control EventController
+
+entity EventData
+
+User - EventManegementView : 1: IngresarDatosDelNuevoEvento()\n 3: ConfirmarCreacion()\n <&arrow-right>
+
+EventManegementView - EventController : 2: crearEvento()\n 4: ValidarDatos() \n<&arrow-right>
+
+EventController - EventData : 5: GuardarDatosDelEvento() \n<&arrow-right>
+ 
+@enduml

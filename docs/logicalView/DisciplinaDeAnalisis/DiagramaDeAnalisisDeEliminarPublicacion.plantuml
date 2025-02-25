@@ -1,0 +1,14 @@
+@startuml DiagramaDeAnalisisDeEliminarPublicacion
+
+actor User
+boundary PublicationManagementView
+control PublicationController
+entity PublicationData
+
+User -- PublicationManagementView
+
+PublicationManagementView -- PublicationController
+
+PublicationController -- PublicationData
+
+@enduml

@@ -1,0 +1,18 @@
+@startuml DiagramaDeColabIngresarGrupoDeEstudio
+
+actor User
+
+boundary StudyGroupManegementView
+
+control StudyGroupController
+
+entity GroupData
+
+
+User - StudyGroupManegementView : 1: selectStudyGroup()\n 
+
+StudyGroupManegementView -- StudyGroupController : 2: admissionRequest()\n 
+
+StudyGroupController -- GroupData : 3:AdmissionApproval()\n
+
+@enduml

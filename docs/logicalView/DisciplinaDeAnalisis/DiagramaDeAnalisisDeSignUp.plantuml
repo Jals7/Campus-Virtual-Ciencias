@@ -1,0 +1,12 @@
+@startuml DiagramaDeAnalisisDeSignUP
+
+actor User
+boundary MainView 
+control SignUpController
+entity Users
+
+User -- MainView
+MainView -- SignUpController
+SignUpController -- Users
+
+@enduml

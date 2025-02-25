@@ -1,0 +1,16 @@
+@startuml DiagramaDeColabDeEliminarEventos
+
+actor User
+
+boundary EventManegementView
+
+control EventController
+entity EventData
+
+User - EventManegementView : 1: SeleccionarEvento()\n 3: ConfirmarEliminacionDelEventoSeleccionado()\n <&arrow-right>
+
+EventManegementView -- EventController : 2: BuscarEventoSeleccionado()\n 4: EliminarEvento() \n<&arrow-right>
+
+EventController -- EventData : 5: eliminarDatosEvento()
+
+@enduml

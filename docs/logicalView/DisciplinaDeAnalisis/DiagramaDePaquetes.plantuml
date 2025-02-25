@@ -1,0 +1,108 @@
+@startuml Diagrama de paquetes
+
+package "User" {
+    class Users{
+    - Users: List<userData>
+    } 
+}
+
+package "Controllers"{
+    class Controller{}
+    class SignUpController{}
+    class LoginController{}
+    class EventController{}
+    class PublicationController{}
+    class NewsController{}
+    class CalendarController{}
+    class ProfileController{}
+    class ExtensionGroupController{}
+    class StudyGroupController{}
+}
+
+.Controllers.SignUpController-|>Controller
+.Controllers.LoginController-|>Controller
+.Controllers.EventController-|>Controller
+.Controllers.PublicationController-|>Controller
+.Controllers.NewsController--|>Controller
+.Controllers.CalendarController--|>Controller
+.Controllers.ProfileController--|>Controller
+.Controllers.ExtensionGroupController--|>Controller
+.Controllers.StudyGroupController--|>Controller
+
+Controllers - .Interfaces.MainView
+
+.User.Users -- .Datas.userData
+.User.Users -- .Interfaces.MainView
+.User.Users - .Interfaces.DashBoardView
+.Datas.EventData - .Interfaces.GestionDeEventosView
+.Datas.PublicationData - .Interfaces.GestionDePublicacionesView
+.Datas.GroupData - .Interfaces.GestionDeGruposDeEstudioView
+.Datas.GroupData - .Interfaces.GestionDeGruposDeExtensionView
+
+package "Datas" {
+    class userData{
+    -id: int
+    -nombre: String
+    -email: String
+    }
+    class PublicationData{
+    -id: int
+    -titulo: String
+    -contenido: String
+    -autor: Usuario
+    }
+    class EventData{
+    -id: int
+    -nombre: String
+    -fecha: Date
+    -ubicacion: String
+    }
+    class GroupData {
+    -id: int
+    -nombre: String
+    -descripcion: String
+    -miembros: List<Usuario>
+    }
+
+}
+
+package "Interfaces"{
+    class MainView {
+    +SingUp(SingUpController)
+    +Login(LoginUpController)
+    }
+    class GestionDeGruposDeEstudioView {
+    +IngresarGrupoDeEstudio(IngresarGrupoDeEstudioController)
+    +CrearGrupoDeEstudio(CrearGrupoDeEstudioController)
+    }
+    class GestionDeGruposDeExtensionView {
+    +IngresarGrupoDeExtension(IngresarGrupoDeExtensionController)
+    }
+    class DashBoardView {
+    +News(NewsController)
+    +Profile(ProfileController)
+    }
+    class CalendarView {
+    }
+    class NotificationView {
+    }
+    class GestionDePublicacionesView {
+    +CrearPublicacion(CrearPublicacionController)
+    +EditarPublicacion(EditarPublicacionController)
+    +CrearPublicacion(CrearPublicacionController)
+    }
+    class GestionDeEventosView {
+    +CrearEvento(CrearEventoController)
+    +EliminarEvento(EliminarEventoController)
+    }
+
+    MainView -- DashBoardView
+    DashBoardView -- CalendarView
+    DashBoardView -- NotificationView
+    DashBoardView -- GestionDePublicacionesView
+    DashBoardView -- GestionDeEventosView
+    DashBoardView -- GestionDeGruposDeEstudioView
+    DashBoardView -- GestionDeGruposDeExtensionView
+}
+
+@enduml

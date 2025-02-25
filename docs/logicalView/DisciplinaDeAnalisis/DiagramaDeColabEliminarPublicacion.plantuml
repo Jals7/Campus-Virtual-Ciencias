@@ -1,0 +1,18 @@
+@startuml DiagramaDeColabEliminarPublicaion
+
+actor User
+
+boundary PublicationManagementView
+
+control PublicationController
+
+entity PublicationData
+
+User - PublicationManagementView : 1: SelectPost()\n 3: ConfirmDeletionOfSelectedPost()\n <&arrow-right>
+
+PublicationManagementView -- PublicationController : 2: FindSelectedPost()\n 4: DeletePost()\n <&arrow-right>
+
+PublicationController - PublicationData : 5: ConfirmPostDeletion()\n <&arrow-right>
+
+@enduml
+
