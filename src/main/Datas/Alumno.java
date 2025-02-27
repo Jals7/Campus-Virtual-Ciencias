@@ -1,4 +1,4 @@
-package Users;
+package Datas;
 
 public class Alumno extends Personas {
     private String carrera;

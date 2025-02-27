@@ -1,4 +1,4 @@
-package Users;
+package Datas;
 
 public class Administrativo extends Personas {
     private String escuela;

@@ -71,22 +71,25 @@ public class PublicationPrototipe extends JFrame implements ActionListener{
         repaint();
     }
 
-    //Metodo para leer arcivo de Data
+    //Metodo para leer archivo de Data
     public void ReadData(){
         String filePath = "src/main/Datas/PublicationData.txt";
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        try(BufferedReader reader = new BufferedReader(new FileReader(filePath))){
             String line;
-            while ((line = reader.readLine()) != null) {
-                String[] partes = line.split("\\$");
-                if (partes.length == 2) {
+            while((line = reader.readLine()) != null) {
+                String[] partes = line.split(",");
+                if(partes.length == 2){
                     String rutaImagen = partes[0].trim();
                     String texto = partes[1].trim();
-                    // Mostrar la imagen y el texto
-                    BufferedImage imagen = ImageIO.read(new File(rutaImagen));
-                    actualizarVista(texto, imagen);
+                    try {
+                        BufferedImage imagen = ImageIO.read(new File(rutaImagen));
+                        actualizarVista(texto, imagen);
+                    } catch (IOException e) {
+                        JOptionPane.showMessageDialog(this, "Error al cargar la imagen: " + e.getMessage());
+                    }
                 }
             }
-        } catch (IOException e) {
+        }catch(IOException e){
             JOptionPane.showMessageDialog(this, "Error al leer el archivo: " + e.getMessage());
         }
     }
