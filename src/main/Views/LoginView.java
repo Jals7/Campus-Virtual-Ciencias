@@ -204,6 +204,7 @@ public class LoginView extends JFrame implements ActionListener{
             if((email.trim().isEmpty()) || (password.trim().isEmpty())){
                 JOptionPane.showMessageDialog(null,"Debe introducir Usuario y Contraseña.");
             }
+            
             if(LoginController.validateLogin(email, password) == true){
                 this.dispose();
                 MainView ventanaPrincipal = new MainView();

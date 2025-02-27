@@ -1,2 +1,5 @@
 1,estudiante@correo.com,20212223
-2,profesor@correo.com,21222324
+2,profesor@correo.com,2122232424309195$cesar$$cesar$paredes$150595$15$masculino$cesar
+3,c,c
+123$cesar$$cesar$cesar$12345$123$cesar$cesar
+
