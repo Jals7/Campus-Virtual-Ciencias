@@ -1,0 +1,12 @@
+@startuml CalendarTransitionSequence
+
+actor User
+boundary DashboardView
+control CalendarController
+boundary CalendarView
+
+User - DashboardView : 1: viewCalendar()
+DashboardView --> CalendarController : 2: handleCalendarTransition()
+CalendarController --> CalendarView : 3: navigateToCalendar()
+
+@enduml

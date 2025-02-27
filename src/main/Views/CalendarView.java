@@ -239,7 +239,7 @@ public class CalendarView extends JFrame implements ActionListener{
         rightPanel.add(listScrollPane);
     }
 
-    private void updateList() {
+    private void updateList(){
         listModel.clear();
         for (EventData event : controller.getEvents()) {
             listModel.addElement(event.getId() + " - " + event.getName());
@@ -265,6 +265,7 @@ public class CalendarView extends JFrame implements ActionListener{
             ventana.setVisible(true);
             ventana.setLocationRelativeTo(null);
             ventana.setResizable(false);
+            dispose();
         }
         if(ae.getSource() == logoutButton){
             LoginView login = new LoginView();
@@ -272,6 +273,15 @@ public class CalendarView extends JFrame implements ActionListener{
             login.setLocationRelativeTo(null);
             login.setResizable(false);
         }
+
+        if(ae.getSource() == newEventButton){
+            /*EventManagementView eventManagementView = new EventManagementView();
+            eventManagementView.setVisible(true);
+            eventManagementView.setLocationRelativeTo(null);
+            eventManagementView.setResizable(false);*/
+            SwingUtilities.invokeLater(EventManagementView::new);
+        }
+
         if(ae.getSource() == supportButton){
             JOptionPane.showMessageDialog(null,"Si desea contactar con Soporte \n mande un un mensaje a correro@correo.com");
         }

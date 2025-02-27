@@ -1,0 +1,15 @@
+@startuml DiagramaDeAnalisisDeLogin
+
+actor User
+boundary MainView
+boundary RecoverPassword
+control LoginController
+boundary Dashboard
+
+User -- MainView
+MainView -- LoginController
+LoginController -- RecoverPassword
+RecoverPassword  -- Dashboard
+LoginController -- Dashboard
+
+@enduml

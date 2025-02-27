@@ -1,0 +1,15 @@
+@startuml DiagramaDeAnalisisDeGestionDeGrupoDeEstudio
+
+actor User
+boundary StudyGroupManegementView
+
+control StudyGroupController
+
+entity GroupData
+
+User -- StudyGroupManegementView
+
+StudyGroupManegementView -- StudyGroupController
+StudyGroupController-- GroupData
+
+@enduml

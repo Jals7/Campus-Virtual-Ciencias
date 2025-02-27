@@ -8,7 +8,7 @@ public class EditProfileView extends JFrame implements ActionListener{
     private JPanel barraTitulo, topPanel, panelFondo, panelCentro, panelBotones, leftPanel;
     private Point puntoInicial;
     private JButton closeButton, maximizeButton, minimizeButton, newsButton, logoutButton, cancelButton, supportButton, saveButton,
-    deleteProfileButton, changeProfileImgButton, backToMaiButton;
+    deleteProfileButton, changeProfileImgButton, backToMainButton;
     private JLabel logo, nameLabel, schoolLabel, profileTypeLabel, phoneLabel, editViewLabel, userName, opcionesLabel, informacionLabel,
     profileAvatar;
     private JTextField emailField, passwordField, phoneField;
@@ -247,12 +247,12 @@ public class EditProfileView extends JFrame implements ActionListener{
         changeProfileImgButton.addActionListener(this);
         panelCentro.add(changeProfileImgButton);
 
-        backToMaiButton = new JButton("Volver a inicio");
-        backToMaiButton.setFont(new Font("Roboto", 1, 14));
-        backToMaiButton.setBounds(51, 260, 195, 30);
-        backToMaiButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        backToMaiButton.addActionListener(this);
-        leftPanel.add(backToMaiButton);
+        backToMainButton = new JButton("Volver a inicio");
+        backToMainButton.setFont(new Font("Roboto", 1, 14));
+        backToMainButton.setBounds(51, 260, 195, 30);
+        backToMainButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        backToMainButton.addActionListener(this);
+        leftPanel.add(backToMainButton);
         
         deleteProfileButton = new JButton("Borrar tu perfil de usuario");
         deleteProfileButton.setFont(new Font("Roboto", 1, 12));
@@ -283,11 +283,12 @@ public class EditProfileView extends JFrame implements ActionListener{
         if(ae.getSource() == minimizeButton){
             setState(JFrame.ICONIFIED);
         }
-        if(ae.getSource() == backToMaiButton){
+        if(ae.getSource() == backToMainButton){
             MainView ventana = new MainView();
             ventana.setVisible(true);
             ventana.setLocationRelativeTo(null);
             ventana.setResizable(false);
+            dispose();
         }
         if(ae.getSource() == logoutButton){
             LoginView login = new LoginView();

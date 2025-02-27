@@ -1,0 +1,13 @@
+@startuml EditCalendarSequence
+
+actor User
+boundary DashboardView
+control CalendarController
+entity Calendar
+
+User - DashboardView : 1: editCalendar()
+DashboardView --> CalendarController : 2: handleEditCalendar()
+CalendarController --> Calendar : 3: updateCalendarData()
+Calendar --> CalendarController : 4: confirmation()
+
+@enduml

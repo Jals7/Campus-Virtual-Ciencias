@@ -7,7 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
 
-public class EventManagementView {
+public class EventManagementView extends JFrame{
     private EventController controller;
     private DefaultListModel<String> listModel;
     private JList<String> eventList;
@@ -86,6 +86,7 @@ public class EventManagementView {
 
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setResizable(false);
     }
 
     private void updateList() {

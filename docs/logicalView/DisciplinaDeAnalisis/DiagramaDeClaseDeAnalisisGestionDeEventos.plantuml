@@ -1,0 +1,20 @@
+@startuml DiagramaDeAnalisisDeEventos
+
+actor User
+boundary EventManegementView
+
+control EventController
+
+
+
+entity EventData
+
+
+User -- EventManegementView
+EventManegementView -- EventController
+
+
+
+EventController -- EventData
+
+@enduml

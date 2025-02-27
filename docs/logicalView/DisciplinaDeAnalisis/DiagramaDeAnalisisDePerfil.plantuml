@@ -1,0 +1,25 @@
+@startuml DiagramaDeAnalisisDePerfil
+
+actor User
+boundary DashboardView
+boundary CalendarView
+boundary NotificationView
+control NewsController
+control ProfileController
+control CalendarController
+control NewsController
+entity userData
+entity Calendar
+
+User - DashboardView
+DashboardView -- ProfileController
+ProfileController -- userData
+NewsController - Calendar
+
+DashboardView - CalendarController
+CalendarController - CalendarView
+CalendarView - Calendar
+DashboardView - NewsController
+NewsController - NotificationView
+
+@enduml

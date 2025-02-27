@@ -1,0 +1,14 @@
+@startuml DiagramaDeColabDeLogin
+
+actor User
+boundary MainView
+boundary RecoverPassword
+control LoginController
+boundary Dashboard
+
+User -- MainView : 1: Login(String username, String Password)\n<&arrow-right>
+MainView -- LoginController : 2: Login()\n<&arrow-right>
+LoginController -- RecoverPassword : 4: recoveyPassword() \n<&arrow-right>
+LoginController -- Dashboard : 3: getUser()\n<&arrow-right>
+RecoverPassword  -- Dashboard : 5: changePassword()\n<&arrow-right>
+@enduml

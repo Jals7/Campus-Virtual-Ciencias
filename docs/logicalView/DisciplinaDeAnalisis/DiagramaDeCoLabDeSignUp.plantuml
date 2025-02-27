@@ -1,0 +1,11 @@
+@startuml DiagramaDeColabDeSingUp
+
+actor User
+boundary MainView 
+control SingUpController
+entity Users
+
+User -- MainView : 1: SingUp()
+MainView -- SingUpController : 2: searchUser()\n<&arrow-right>
+SingUpController -- Users : 3: getUser()\n<&arrow-right>
+@enduml

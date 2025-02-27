@@ -279,6 +279,7 @@ public class MainView extends JFrame implements ActionListener{
             editProfile.setVisible(true);
             editProfile.setLocationRelativeTo(null);
             editProfile.setResizable(false);
+            dispose();
         }
         if(ae.getSource() == extensionGroupButton){
             SwingUtilities.invokeLater(ExtensionGroupView::new);

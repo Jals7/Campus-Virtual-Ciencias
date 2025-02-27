@@ -65,4 +65,20 @@ Short Description about the project.
 #### Diagrama de flujo de pantallas prototipo
 ![DiagramaDeFlujoEntreInterfaces](https://github.com/user-attachments/assets/452ac937-11ee-44ef-8cae-a77c2d1164b2)
 
-
+***
+## Modelo de Implementación
+### Librerias usadas en el proyecto
+  1. javax.swing y sus componentes.
+  2. java.awt y sus componentes.
+  3. java.awt.event y sus componentes.
+  4. java.awt.event.MouseAdapter Para el moviento de las Ventanas.
+  5. java.awt.event.MouseEvent Para captar el movimiento del Mouse.
+  6. java.io.BufferedWriter para manejar la lectura de archivos.
+  7. java.io.FileWriter.
+  8. java.io.IOException para el manejo de excepciones de entrada y salida.
+  
+### Pasos para ejecutar el programa
+  1. Clonar el repositorio en tu PC mediante VSCode y el enlace del Proyecto.
+  2. Instalar las extensiones de Extension Pack for Java en VSCode.
+  3. Reiniciar VSCode para que las Extensiones recarguen.
+  4. Buscar la clase de Java LoginView.Java en la ruta src/main/Views y ejecutarla en VSCode con la tecla F5.

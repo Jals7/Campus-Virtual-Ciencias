@@ -1,0 +1,126 @@
+@startuml Diagrama de clases de analisis
+
+class MainView {
+ +SingUp(SingUpController)
+ +Login(LoginUpController)
+}
+class GestionDeGruposDeEstudioView {
++IngresarGrupoDeEstudio(IngresarGrupoDeEstudioController)
++CrearGrupoDeEstudio(CrearGrupoDeEstudioController)
+}
+class GestionDeGruposDeExtensionView {
++IngresarGrupoDeExtension(IngresarGrupoDeExtensionController)
+}
+class DashBoardView {
++News(NewsController)
++Profile(ProfileController)
+}
+class CalendarView {
+}
+class NotificationView {
+}
+class GestionDePublicacionesView {
++CrearPublicacion(CrearPublicacionController)
++EditarPublicacion(EditarPublicacionController)
++CrearPublicacion(CrearPublicacionController)
+}
+class GestionDeEventosView {
++CrearEvento(CrearEventoController)
++EliminarEvento(EliminarEventoController)
+}
+
+class SignUpController
+class LoginUpController
+class PublicationController
+class EventController
+class ProfileController
+class NewsController
+class StudyGroupController
+class ExtensionGroupController
+class CalendarController
+
+class Users{
+- Users: List<userData>
+}
+
+class userData {
+  -id: int
+  -nombre: String
+  -email: String
+}
+
+class PublicationData {
+  -id: int
+  -titulo: String
+  -contenido: String
+  -autor: Usuario
+}
+
+class EventData {
+  -id: int
+  -nombre: String
+  -fecha: Date
+  -ubicacion: String
+}
+
+
+class GroupData {
+  -id: int
+  -nombre: String
+  -descripcion: String
+  -miembros: List<Usuario>
+}
+
+class Calendar {
+  -id: int
+  -nombre: String
+  -descripcion: String
+  -propietario: Usuario
+  -zonaHoraria: String
+  -fechaCreacion: Date
+  -ultimaActualizacion: Date
+  -eventos: List<Evento>
+  -notificacionesActivas: boolean
+  -color: String
+  -publico: boolean
+  -compartidoCon: List<Usuario>
+}
+
+Users <.. MainView
+
+userData <.. DashBoardView
+Calendar <.. DashBoardView
+PublicationData <.. GestionDePublicacionesView
+EventData <.. GestionDeEventosView
+GroupData <.. GestionDeGruposDeEstudioView
+GroupData <.. GestionDeGruposDeExtensionView
+
+
+
+
+GestionDeGruposDeEstudioView --> StudyGroupController
+
+GestionDeGruposDeExtensionView --> ExtensionGroupController
+
+MainView --> SignUpController
+MainView --> LoginUpController
+MainView --> CalendarController
+
+GestionDePublicacionesView -->PublicationController
+
+GestionDeEventosView --> EventController
+
+DashBoardView --> ProfileController
+DashBoardView --> NewsController
+
+
+MainView *-- DashBoardView
+DashBoardView *-- CalendarView
+DashBoardView *-- GestionDeGruposDeEstudioView
+DashBoardView *-- GestionDeGruposDeExtensionView
+DashBoardView *-- NotificationView
+DashBoardView *-- GestionDePublicacionesView
+DashBoardView *-- GestionDeEventosView
+
+
+@enduml

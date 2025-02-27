@@ -1,0 +1,18 @@
+@startuml DiagramaDeColabIngresarGrupoDeExtension
+
+actor User
+
+boundary ExtensionGroupManegementView
+
+control ExtensionGroupController
+
+entity GroupData
+
+
+User - ExtensionGroupManegementView : 1: SelectExtensionGroup()\n 
+
+ExtensionGroupManegementView -- ExtensionGroupController : AdmissionRequest()\n 
+
+ExtensionGroupController -- GroupData : 3:Admission approval()\n
+
+@enduml
