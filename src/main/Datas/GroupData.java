@@ -5,13 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GroupData {
-<<<<<<< HEAD
+
     //Se define la ruta del archivo donde se guardaran los grupos
-    private static final String FILE_PATH = "Datas/groups.txt";
-    //Lista de grupos para cargarlos en memoria
-=======
     private static final String FILE_PATH = "src/main/Datas/groupData.txt";
->>>>>>> f4b2d0dc97fc681862255e916a52daabd0cb0f5b
+
     private static List<Group> groups = new ArrayList<>();
 
     //Devuelve la lista de groups

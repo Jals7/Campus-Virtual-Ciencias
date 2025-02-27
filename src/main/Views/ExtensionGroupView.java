@@ -6,23 +6,16 @@ import java.awt.*;
 import javax.swing.*;
 
 
-<<<<<<< HEAD
-public class ExtensionGroupView {
-    //Panel donde se mostrarán los grupos de extensión existentes
-=======
-public class ExtensionGroupView extends JFrame {
->>>>>>> f4b2d0dc97fc681862255e916a52daabd0cb0f5b
-    private JPanel groupListPanel;
 
-    //Constructor 
-    public ExtensionGroupView() {
-<<<<<<< HEAD
+
+    //Panel donde se mostrarán los grupos de extensión existentes
+    public class ExtensionGroupView{
+        private JPanel groupListPanel;
+         //Constructor 
+        public ExtensionGroupView(){
         //Se cargan los grupos desde un archivo 
         GroupData.loadGroupsFromFile();
         //Se construye la interfaz grafica
-=======
-        GroupData.loadGroupsFromFile();        
->>>>>>> f4b2d0dc97fc681862255e916a52daabd0cb0f5b
         showMainInterface();
     }
     //Metodo para mostrar la venta principal 

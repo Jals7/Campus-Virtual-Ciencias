@@ -1,3 +1,5 @@
 1,estudiante@correo.com,20212223
 2,profesor@correo.com,212223241
-1,a,a
+1,a,a1,correo@prueba.com,777,Jals,Salcedo,07/05/2003,21,M,29595489,Computacion,2021
+1,correo@prueba.com,777,Jals,Salcedo,07/05/2003,21,M,29595489,Computacion,2021
+1,correo@prueba.com,777,Jals,Salcedo,07/05/2003,21,M,29595489,Computacion,2021
