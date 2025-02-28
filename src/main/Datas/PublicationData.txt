@@ -1,3 +1,2 @@
-C:\Users\J4L57\Desktop\Campus Virtual Ciencias\src\main\Datas\selfie.jpg$Viejito el meme
-null$
-null$
+C:\Users\J4L57\Desktop\Campus Virtual Ciencias\src\main\Datas\images\selfie.jpg,Prueba
+C:Users\J4L57\Desktop\Campus Virtual Ciencias\src\main\Datas\images\selfie.jpg,TestUnitario

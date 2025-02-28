@@ -6,44 +6,51 @@ import java.awt.event.*;
 import java.awt.*;
 import java.io.*;
 import java.awt.image.BufferedImage;
+import Controllers.PublicationController;
 
 public class PublicationManagementView extends JFrame implements ActionListener{
     private JLabel imageLabel;
     private BufferedImage image;
-    private JButton importButton, publishButton;
+    private JButton importButton, publishButton, cancelButton;
     private JFileChooser filechooser;
     private JTextArea textarea;
     private JScrollPane scrollpane;
     public String textPublish = "";
     private String imagePath;
+    PublicationController publicationControl = new PublicationController();
 
     public PublicationManagementView(){
         setTitle("Gestion de publicacion");
         setLayout(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
         //Crear botones para importar la imagen y publicar
         importButton = new JButton("Importar Image");
         importButton.addActionListener(this);
-        importButton.setBounds(70, 400, 150, 30);
+        importButton.setBounds(500, 360, 150, 30);
         add(importButton);
+
+        cancelButton = new JButton("Cancelar");
+        cancelButton.addActionListener(this);
+        cancelButton.setBounds(500, 500, 150, 30);
+        add(cancelButton);
 
         publishButton = new JButton("Publicar");
         publishButton.addActionListener(this);
-        publishButton.setBounds(250, 400, 150, 30);
+        publishButton.setBounds(500, 430, 150, 30);
         add(publishButton);
 
         //Crear y mover el Label de la imagen
         imageLabel = new JLabel("Importa una imagen");
-        imageLabel.setBounds(50, 50, 480, 320);
+        imageLabel.setBounds(50, 20, 480, 320);
         add(imageLabel);
         
         //Crear textarea y Scroll
         textarea = new JTextArea();
-        textarea.setFont(new Font("Andale Mono", 0, 9));
+        textarea.setFont(new Font("Roboto", 0, 9));
         textarea.setForeground(new Color(0,0,0));
         scrollpane = new JScrollPane(textarea);
-        scrollpane.setBounds(550,50,200,400);
+        scrollpane.setBounds(50,350,400,200);
         add(scrollpane);
 
     }
@@ -71,13 +78,13 @@ public class PublicationManagementView extends JFrame implements ActionListener{
         }
     }
 
-    public BufferedImage getImage(){
+    /*public BufferedImage getImage(){
         ImageIcon icon = (ImageIcon) imageLabel.getIcon();
         if (icon != null) {
             return (BufferedImage) icon.getImage();
         }
         return null;
-    }
+    }*/
 
     //Funcion para controlar las acciones de los botones
     public void actionPerformed(ActionEvent ae){
@@ -88,29 +95,27 @@ public class PublicationManagementView extends JFrame implements ActionListener{
         //Obtener el evento del boton publicar
         if(ae.getSource() == publishButton){
             textPublish = textarea.getText();
-            writeToData(imagePath, textPublish);
-            this.setVisible(false);
+            int isOk = 0;
+            isOk = publicationControl.writeToData(imagePath, textPublish);
+            if(isOk == 1){
+                JOptionPane.showMessageDialog(this, "Publicación exitosa");
+            }
+            else if(isOk == 2){
+                JOptionPane.showMessageDialog(this, "Error al publicar");
+            }
+            this.dispose();
+        }
+        if(ae.getSource() == cancelButton){
+            this.dispose();
         }
     }
 
-    // Metodo para escribir en el archivo de Data
-    private void writeToData(String imagePath, String textPublish){
-        String filePath = "src/main/Datas/PublicationData.txt";
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))){
-            writer.write(imagePath + "$" + textPublish);
-            writer.newLine();
-            JOptionPane.showMessageDialog(this, "Publicación guardada exitosamente.");
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error al guardar la publicación: " + e.getMessage());
-        }
-    }
-
-    /*public static void main(String args[]){
+    public static void main(String args[]){
         PublicationManagementView view = new PublicationManagementView();
         view.setVisible(true);
         view.setBounds(0,0,800,600);
         view.setLocationRelativeTo(null);
         view.setResizable(false);
         System.out.println("Directorio de trabajo: " + System.getProperty("user.dir"));
-    }*/
+    }
 }
