@@ -1,11 +1,11 @@
-package Users;
+package Datas;
 
-public class Alumno extends Personas {
+public class Alumno extends Persona {
     private String carrera;
     private int anoDeIngreso;
 
-    public Alumno(String nombre, String apellido, String fechaDeNacimiento, int edad, String sexo, String CI, String correo, String contrasena, String roll, String carrera, int anoDeIngreso) {
-        super(nombre, apellido, fechaDeNacimiento, edad, sexo, CI, correo, contrasena, roll);
+    public Alumno(int id, String nombre, String apellido, String fechaDeNacimiento, int edad, String sexo, String CI, String correo, String contrasena,int numTlf, String carrera, int anoDeIngreso) {
+        super(id, nombre, apellido, fechaDeNacimiento, edad, sexo, CI, correo, contrasena, numTlf);
         this.carrera = carrera;
         this.anoDeIngreso = anoDeIngreso;
     }

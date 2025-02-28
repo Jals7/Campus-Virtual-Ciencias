@@ -9,7 +9,7 @@ import Controllers.RegisterController;
 // Clase para la ventana de registro de usuarios
 public class SignUpView extends JFrame implements ActionListener, ItemListener{
     // Campos de texto para los datos del usuario
-    private JTextField txtNombre, txtApellido, txtFechaNacimiento, txtEdad, txtSexo, txtCI, txtCorreo, txtContrasena;
+    private JTextField txtNombre, txtApellido, txtFechaNacimiento, txtEdad, txtSexo, txtCI, txtCorreo, txtContrasena, txtNumTlf;
     private JTextField txtCarrera, txtAnoDeIngreso, txtEscuela, txtCargo, txtUltimaMateriaDada;
     private JButton registerButton;
     private JButton backButton;
@@ -93,6 +93,7 @@ public class SignUpView extends JFrame implements ActionListener, ItemListener{
         createLabelAndTextField("Cédula:", 300);
         createLabelAndTextField("Correo:", 340);
         createLabelAndTextField("Contraseña:", 380);
+        createLabelAndTextField("Numero de Telefono", 420);
 
         // Botón para registrar
         registerButton = new JButton("Registrar");
@@ -126,6 +127,7 @@ public class SignUpView extends JFrame implements ActionListener, ItemListener{
         else if (labelText.contains("Cédula")) txtCI = textField;
         else if (labelText.contains("Correo")) txtCorreo = textField;
         else if (labelText.contains("Contraseña")) txtContrasena = textField;
+        else if (labelText.contains("Numero de Telefono")) txtNumTlf = textField;
     }
 
     // Manejar eventos de los botones
@@ -145,7 +147,10 @@ public class SignUpView extends JFrame implements ActionListener, ItemListener{
             String escuela = txtEscuela.getText();
             String materiaDada = txtUltimaMateriaDada.getText();
             String cargo = txtCargo.getText();
+            String numTlf = txtNumTlf.getText();
             String selected = (String) optionCombo.getSelectedItem();
+            
+
             String id = "0";
             if(selected.equals("Alumno")){
                 id = "1";
@@ -158,8 +163,10 @@ public class SignUpView extends JFrame implements ActionListener, ItemListener{
             }
             
             //Se evalua el retorno de la funcion del registro para saber si el registro fue exitoso
-            if(RegisterController.Register(id, nombre, apellido,fechaNacimiento,edad, sexo, CI, correo,
-            contrasena, carrera, anioDeIngreso, escuela, materiaDada, cargo) == true){
+            if(RegisterController.Register(id, nombre, apellido,fechaNacimiento,edad, 
+            sexo, CI, correo,
+            contrasena, carrera, anioDeIngreso, 
+            escuela, materiaDada, cargo, numTlf) == true){
                 // Mostrar mensaje de registro exitoso
                 JOptionPane.showMessageDialog(this, "Registro exitoso");
                 // Redirigir a la pantalla de Login
@@ -229,10 +236,11 @@ public class SignUpView extends JFrame implements ActionListener, ItemListener{
         }
     }
 
-/*    public static void main(String[] args){
+   //* 
+    public static void main(String[] args){
         SignUpView registro = new SignUpView();
         registro.setVisible(true);
         registro.setLocationRelativeTo(null);
         registro.setResizable(false);
-    }*/ 
+    }// */
 }

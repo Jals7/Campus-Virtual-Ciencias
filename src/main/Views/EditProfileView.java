@@ -3,6 +3,11 @@ package Views;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import Datas.UserSession;
+import Datas.Persona;
+import Datas.Alumno;
+import Datas.Profesor;
+import Datas.Administrativo;
 
 public class EditProfileView extends JFrame implements ActionListener{
     private JPanel barraTitulo, topPanel, panelFondo, panelCentro, panelBotones, leftPanel;
@@ -13,7 +18,19 @@ public class EditProfileView extends JFrame implements ActionListener{
     profileAvatar;
     private JTextField emailField, passwordField, phoneField;
 
+    
     public EditProfileView(){
+        // Obtener el tipo de usuario que ha iniciado sesion
+        Persona usuario = UserSession.getInstance().getPersona();
+       
+      /*if(usuario.getId()==1){
+            Alumno alumno = (Alumno) usuario;
+        }else if(usuario.getId()==2){
+            Profesor profesor = (Profesor) usuario;
+        }else if(usuario.getId()==3){
+            Administrativo administrativo = (Administrativo) usuario;
+        } */ 
+
         setTitle("Campus Virtual Ciencias");
         setSize(1280,720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -141,7 +158,7 @@ public class EditProfileView extends JFrame implements ActionListener{
         editViewLabel.setBounds(300, 30, 200, 20);
         panelCentro.add(editViewLabel);
 
-        userName = new JLabel("Nombre de Usuario");
+        userName = new JLabel( usuario.getNombre());
         userName.setFont(new Font("Roboto", Font.BOLD, 16));
         userName.setForeground(Color.WHITE);
         userName.setBounds(720, 22, 200, 20);
@@ -153,13 +170,14 @@ public class EditProfileView extends JFrame implements ActionListener{
         informacionLabel.setBounds(640, 60, 200, 20);
         panelCentro.add(informacionLabel);
 
-        nameLabel = new JLabel("Nombre y Apellido: ");
+        //nameLabel = new JLabel("Nombre y Apellido: "+ usuario.getNombre() + " " + usuario.getApellido());
+        nameLabel = new JLabel("Nombre y Apellido: \n"  + usuario.getNombre() + " " + usuario.getApellido());
         nameLabel.setFont(new Font("Roboto", Font.BOLD, 16));
         nameLabel.setForeground(Color.WHITE);
         nameLabel.setBounds(600, 130, 200, 20);
         panelCentro.add(nameLabel);
 
-        emailField = new JTextField("Ingrese el nuevo correo");
+        emailField = new JTextField(usuario.getCorreo());
         emailField.setFont(new Font("Roboto", 1, 12));
         emailField.setForeground(Color.GRAY);
         emailField.setBounds(260, 130, 200, 30);
@@ -171,7 +189,7 @@ public class EditProfileView extends JFrame implements ActionListener{
         schoolLabel.setBounds(600, 200, 200, 20);
         panelCentro.add(schoolLabel);
 
-        passwordField = new JTextField("Ingrese la nueva contraseña");
+        passwordField = new JTextField(usuario.getContrasenia());
         passwordField.setFont(new Font("Roboto", 1, 12));
         passwordField.setForeground(Color.GRAY);
         passwordField.setBounds(260, 200, 200, 30);

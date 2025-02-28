@@ -1,11 +1,11 @@
-package Users;
+package Datas;
 
-public class Administrativo extends Personas {
+public class Administrativo extends Persona {
     private String escuela;
     private String cargo;
 
-    public Administrativo(String nombre, String apellido, String fechaDeNacimiento, int edad, String sexo, String CI, String correo, String contrasena, String roll, String escuela, String cargo) {
-        super(nombre, apellido, fechaDeNacimiento, edad, sexo, CI, correo, contrasena, roll);
+    public Administrativo(int id, String nombre, String apellido, String fechaDeNacimiento, int edad, String sexo, String CI, String correo, String contrasena,int numTlf, String escuela, String cargo) {
+        super(id, nombre, apellido, fechaDeNacimiento, edad, sexo, CI, correo, contrasena, numTlf);
         this.escuela = escuela;
         this.cargo = cargo;
     }

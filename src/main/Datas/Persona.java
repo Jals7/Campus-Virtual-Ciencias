@@ -1,6 +1,7 @@
-package Users;
+package Datas;
 
-public class Personas {
+public class Persona {
+    private int id;
     private String nombre;
     private String apellido;
     private String fechaDeNacimiento;
@@ -8,10 +9,11 @@ public class Personas {
     private String sexo;
     private String CI;
     private String correo;
-    private String contrasena;
-    private String roll;
+    private String Contrasenia;
+    private int numTlf;
 
-    public Personas(String nombre, String apellido, String fechaDeNacimiento, int edad, String sexo, String CI, String correo, String contrasena, String roll) {
+    public Persona(int id, String nombre, String apellido, String fechaDeNacimiento, int edad, String sexo, String CI, String correo, String Contrasenia, int numTlf) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaDeNacimiento = fechaDeNacimiento;
@@ -19,11 +21,20 @@ public class Personas {
         this.sexo = sexo;
         this.CI = CI;
         this.correo = correo;
-        this.contrasena = contrasena;
-        this.roll = roll;
+        this.Contrasenia = Contrasenia;
+        this.numTlf = numTlf;
+        
     }
 
     // Getters y Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }    
+    
     public String getNombre() {
         return nombre;
     }
@@ -80,19 +91,19 @@ public class Personas {
         this.correo = correo;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getContrasenia() {
+        return Contrasenia;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
+    public void setContrasenia(String Contrasenia) {
+        this.Contrasenia = Contrasenia;
+    }    
 
-    public String getRoll() {
-        return roll;
-    }
+    public int getNumTlf() {
+        return numTlf;
+    }   
 
-    public void setRoll(String roll) {
-        this.roll = roll;
+    public void setNumTlf(int numTlf) {
+        this.numTlf = numTlf;
     }
 }

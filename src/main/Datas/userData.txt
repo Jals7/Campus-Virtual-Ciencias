@@ -1,5 +1,5 @@
-1,estudiante@correo.com,20212223
-2,profesor@correo.com,2122232424309195$cesar$$cesar$paredes$150595$15$masculino$cesar
-3,c,c
-123$cesar$$cesar$cesar$12345$123$cesar$cesar
-
+1,l,l,l,l,1990,15,l,1990,l,1990
+1,k,k,k,k,00,00,k,00,k,00
+1,cesar@a.com,1234,cesar,paredes,1995,29,mascuino,24309195,computacion,2012
+1,a,a,nombre,apellido,150595,29,masculino,24309195,carrera,2012,0000
+1,,,,,,,,,,,
