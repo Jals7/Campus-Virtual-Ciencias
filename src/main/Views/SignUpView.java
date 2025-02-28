@@ -9,7 +9,7 @@ import Controllers.RegisterController;
 // Clase para la ventana de registro de usuarios
 public class SignUpView extends JFrame implements ActionListener, ItemListener{
     // Campos de texto para los datos del usuario
-    private JTextField txtNombre, txtApellido, txtFechaNacimiento, txtEdad, txtSexo, txtCI, txtCorreo, txtContrasena, txtNumTlf;
+    private JTextField txtNombre, txtApellido, txtFechaNacimiento, txtEdad, txtSexo, txtCI, txtCorreo, txtContrasena;
     private JTextField txtCarrera, txtAnoDeIngreso, txtEscuela, txtCargo, txtUltimaMateriaDada;
     private JButton registerButton;
     private JButton backButton;
@@ -127,7 +127,6 @@ public class SignUpView extends JFrame implements ActionListener, ItemListener{
         else if (labelText.contains("Cédula")) txtCI = textField;
         else if (labelText.contains("Correo")) txtCorreo = textField;
         else if (labelText.contains("Contraseña")) txtContrasena = textField;
-        else if (labelText.contains("Numero de Telefono")) txtNumTlf = textField;
     }
 
     // Manejar eventos de los botones
@@ -147,7 +146,6 @@ public class SignUpView extends JFrame implements ActionListener, ItemListener{
             String escuela = txtEscuela.getText();
             String materiaDada = txtUltimaMateriaDada.getText();
             String cargo = txtCargo.getText();
-            String numTlf = txtNumTlf.getText();
             String selected = (String) optionCombo.getSelectedItem();
             
 
@@ -166,7 +164,7 @@ public class SignUpView extends JFrame implements ActionListener, ItemListener{
             if(RegisterController.Register(id, nombre, apellido,fechaNacimiento,edad, 
             sexo, CI, correo,
             contrasena, carrera, anioDeIngreso, 
-            escuela, materiaDada, cargo, numTlf) == true){
+            escuela, materiaDada, cargo) == true){
                 // Mostrar mensaje de registro exitoso
                 JOptionPane.showMessageDialog(this, "Registro exitoso");
                 // Redirigir a la pantalla de Login
