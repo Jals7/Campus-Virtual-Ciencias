@@ -22,24 +22,20 @@ public class LoginController {
                     int id = Integer.parseInt(data[0].trim());
                     String dataEmail = data[1].trim();
                     String dataPassword = data[2].trim();
-                    JOptionPane.showMessageDialog(null,"a");
-        
+                           
                     if (dataEmail.equals(email) && dataPassword.equals(password)) {
-                        JOptionPane.showMessageDialog(null,"y");
+                        
                         String nombre = data[3].trim();
                         String apellido = data[4].trim();
                         String fechaDeNacimiento = data[5].trim();
                         int edad = Integer.parseInt(data[6].trim());
                         String sexo = data[7].trim();
-                        String CI = data[8].trim();
-                        JOptionPane.showMessageDialog(null,"z");
-                        int numTlf = 000;
-                        JOptionPane.showMessageDialog(null,"b");
+                        String CI = data[8].trim();                        
+                        int numTlf = 000;                        
                        
                         Persona usuario = null;
 
-                        if (id == 1) {
-                            JOptionPane.showMessageDialog(null,"c");
+                        if (id == 1) {                            
                             String carrera = data[10].trim();
                             int anoDeIngreso = Integer.parseInt(data[11].trim());
                             usuario = new Alumno(id, nombre, apellido, fechaDeNacimiento, edad, sexo, CI, email, password, numTlf, carrera, anoDeIngreso);
