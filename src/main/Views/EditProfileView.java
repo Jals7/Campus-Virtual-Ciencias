@@ -21,14 +21,14 @@ public class EditProfileView extends JFrame implements ActionListener{
     
     public EditProfileView(){
         // Obtener el tipo de usuario que ha iniciado sesion
-        Persona usuario = UserSession.getInstance().getPersona();
+        Persona currentUser = UserSession.getInstance().getCurrentUser();
        
-      /*if(usuario.getId()==1){
-            Alumno alumno = (Alumno) usuario;
-        }else if(usuario.getId()==2){
-            Profesor profesor = (Profesor) usuario;
-        }else if(usuario.getId()==3){
-            Administrativo administrativo = (Administrativo) usuario;
+      /*if(currentUser.getId()==1){
+            Alumno alumno = (Alumno) currentUser;
+        }else if(currentUser.getId()==2){
+            Profesor profesor = (Profesor) currentUser;
+        }else if(currentUser.getId()==3){
+            Administrativo administrativo = (Administrativo) currentUser;
         } */ 
 
         setTitle("Campus Virtual Ciencias");
@@ -158,7 +158,7 @@ public class EditProfileView extends JFrame implements ActionListener{
         editViewLabel.setBounds(300, 30, 200, 20);
         panelCentro.add(editViewLabel);
 
-        userName = new JLabel( usuario.getNombre());
+        userName = new JLabel( currentUser.getNombre());
         userName.setFont(new Font("Roboto", Font.BOLD, 16));
         userName.setForeground(Color.WHITE);
         userName.setBounds(720, 22, 200, 20);
@@ -170,14 +170,20 @@ public class EditProfileView extends JFrame implements ActionListener{
         informacionLabel.setBounds(640, 60, 200, 20);
         panelCentro.add(informacionLabel);
 
-        //nameLabel = new JLabel("Nombre y Apellido: "+ usuario.getNombre() + " " + usuario.getApellido());
-        nameLabel = new JLabel("Nombre y Apellido: \n"  + usuario.getNombre() + " " + usuario.getApellido());
+        //nameLabel = new JLabel("Nombre y Apellido: "+ currentUser.getNombre() + " " + currentUser.getApellido());
+        nameLabel = new JLabel("Nombre y Apellido: " );
         nameLabel.setFont(new Font("Roboto", Font.BOLD, 16));
         nameLabel.setForeground(Color.WHITE);
         nameLabel.setBounds(600, 130, 200, 20);
         panelCentro.add(nameLabel);
+ 
+        nameLabel  = new JLabel(currentUser.getNombre() + " " + currentUser.getApellido());
+        nameLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+        nameLabel.setForeground(Color.WHITE);   
+        nameLabel.setBounds(600 , 150, 200, 20);
+        panelCentro.add(nameLabel);
 
-        emailField = new JTextField(usuario.getCorreo());
+        emailField = new JTextField(currentUser.getCorreo());
         emailField.setFont(new Font("Roboto", 1, 12));
         emailField.setForeground(Color.GRAY);
         emailField.setBounds(260, 130, 200, 30);
@@ -189,7 +195,27 @@ public class EditProfileView extends JFrame implements ActionListener{
         schoolLabel.setBounds(600, 200, 200, 20);
         panelCentro.add(schoolLabel);
 
-        passwordField = new JTextField(usuario.getContrasenia());
+        if(currentUser instanceof Alumno){
+            nameLabel = new JLabel(((Alumno) currentUser).getCarrera());
+            nameLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+            nameLabel.setForeground(Color.WHITE);   
+            nameLabel.setBounds(600 , 150, 200, 20);
+            panelCentro.add(nameLabel);
+        }else if(currentUser instanceof Profesor){
+            nameLabel = new JLabel(((Profesor) currentUser).getEscuela()); 
+            nameLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+            nameLabel.setForeground(Color.WHITE);   
+            nameLabel.setBounds(600 , 150, 200, 20);
+            panelCentro.add(nameLabel);
+        }else if(currentUser instanceof Administrativo){
+            nameLabel = new JLabel(((Administrativo) currentUser).getEscuela());
+            nameLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+            nameLabel.setForeground(Color.WHITE);   
+            nameLabel.setBounds(600 , 150, 200, 20);
+            panelCentro.add(nameLabel);
+        }
+
+        passwordField = new JTextField(currentUser.getContrasenia());
         passwordField.setFont(new Font("Roboto", 1, 12));
         passwordField.setForeground(Color.GRAY);
         passwordField.setBounds(260, 200, 200, 30);

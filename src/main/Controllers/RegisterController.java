@@ -19,7 +19,8 @@ public class RegisterController{
                     writer.write("," + carrera + "," + anioDeIngreso);
                 }
                 if(id.equals("2")) {
-                    writer.write("," + escuela + "," + anioDeIngreso + "," + MateriaDada + "," + cargo);
+                   writer.write("," + escuela + "," + anioDeIngreso + "," + MateriaDada);
+                // writer.write("," + escuela + "," + anioDeIngreso + "," + MateriaDada + "," + cargo);
                 }
                 if(id.equals("3")){
                     writer.write("," + escuela + "," + cargo);

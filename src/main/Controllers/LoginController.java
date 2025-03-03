@@ -31,7 +31,7 @@ public class LoginController {
                         int edad = Integer.parseInt(data[6].trim());
                         String sexo = data[7].trim();
                         String CI = data[8].trim();                        
-                        int numTlf = 000;                        
+                        int numTlf = Integer.parseInt(data[9].trim());                       
                        
                         Persona usuario = null;
 
@@ -44,8 +44,10 @@ public class LoginController {
                             String escuela = data[10].trim();
                             int anoDeIngreso = Integer.parseInt(data[11].trim());
                             String ultimaMateriaDada = data[12].trim();
-                            String cargo = data[13].trim();
-                            usuario = new Profesor(id, nombre, apellido, fechaDeNacimiento, edad, sexo, CI, email, password, numTlf, escuela, anoDeIngreso, ultimaMateriaDada, cargo);
+                            //String cargo = data[13].trim();
+                            //usuario = new Profesor(id, nombre, apellido, fechaDeNacimiento, edad, sexo, CI, email, password, numTlf, escuela, anoDeIngreso, ultimaMateriaDada, cargo);
+                            usuario = new Profesor(id, nombre, apellido, fechaDeNacimiento, edad, sexo, CI, email, password, numTlf, escuela, anoDeIngreso, ultimaMateriaDada);
+
                         } else if (id == 3 ) {
                             String escuela = data[10].trim();
                             String cargo = data[11].trim();

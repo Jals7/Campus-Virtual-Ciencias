@@ -29,9 +29,8 @@ public class RegisterTest{
 
         //Act
         //Prueba 1, Prueba Correcta.
-        result = RegisterController.Register("1","Jals","Salcedo","07/05/2003","21","M","29595489",
-        "correo@prueba.com","777","Computacion", "2021", "Computacion", "", "");
-
+        result = RegisterController.Register("2", "Cesar", "Paredes", "15/05/95", "29", "Masculino", "24309195", "C@gmail.com",
+        "c","", "2012", "computacion", "Ingenierio de Software", "Profesor 1");
         
         //Assert
         assertEquals(true, result);

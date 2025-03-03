@@ -43,6 +43,7 @@ public class RegisterView extends JFrame implements ActionListener, ItemListener
         txtCarrera = new JTextField();
         txtCarrera.setBounds(750, 100, 200, 30);
         add(txtCarrera);
+        
         cargoLabel = new JLabel("Cargo: ");
         cargoLabel.setBounds(600, 140, 100, 30);
         cargoLabel.setVisible(false);
@@ -51,12 +52,14 @@ public class RegisterView extends JFrame implements ActionListener, ItemListener
         txtCargo.setBounds(750, 140, 200, 30);
         txtCargo.setVisible(false);
         add(txtCargo);
+        
         anioDeIngresoLabel = new JLabel("Año de ingreso: ");
         anioDeIngresoLabel.setBounds(600, 140, 100, 30);
         add(anioDeIngresoLabel);
         txtAnoDeIngreso = new JTextField();
         txtAnoDeIngreso.setBounds(750, 140, 200, 30);
         add(txtAnoDeIngreso);
+        
         escuelaLabel = new JLabel("Escuela: ");
         escuelaLabel.setBounds(600, 100, 100, 30);
         escuelaLabel.setVisible(false);
@@ -65,6 +68,7 @@ public class RegisterView extends JFrame implements ActionListener, ItemListener
         txtEscuela.setBounds(750, 100, 200, 30);
         txtEscuela.setVisible(false);
         add(txtEscuela);
+        
         MateriaDadaLabel = new JLabel("Ultima Materia Dada: ");
         MateriaDadaLabel.setBounds(600, 180, 150, 30);
         MateriaDadaLabel.setVisible(false);
@@ -156,15 +160,13 @@ public class RegisterView extends JFrame implements ActionListener, ItemListener
             else if(selected.equals("Profesor")){
                 id = "2";
             }
-            else if(selected.equals("Administrador")){
+            else if(selected.equals("Administrativo")){
                 id = "3";
             }
             
             //Se evalua el retorno de la funcion del registro para saber si el registro fue exitoso
             if(RegisterController.Register(id, nombre, apellido,fechaNacimiento,edad, 
-            sexo, CI, correo,
-            contrasena, carrera, anioDeIngreso, 
-            escuela, materiaDada, cargo) == true){
+            sexo, CI, correo, contrasena, carrera, anioDeIngreso, escuela, materiaDada, cargo) == true){
                 // Mostrar mensaje de registro exitoso
                 JOptionPane.showMessageDialog(this, "Registro exitoso");
                 // Redirigir a la pantalla de Login

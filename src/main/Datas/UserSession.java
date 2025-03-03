@@ -2,7 +2,7 @@ package Datas;
 
 public class UserSession {
     private static UserSession instance;
-    private Persona persona;
+    private Persona currentUser;
 
     private UserSession() {}
 
@@ -13,11 +13,15 @@ public class UserSession {
         return instance;
     }
 
-    public Persona getPersona() {
-        return persona;
+    public Persona getCurrentUser() {
+        return currentUser;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public void setPersona(Persona currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    public void clearSession() {
+        currentUser = null;
     }
 }
