@@ -33,7 +33,7 @@ public class LoginController {
                         String sexo = data[7].trim();
                         String CI = data[8].trim();
                         JOptionPane.showMessageDialog(null,"z");
-                        int numTlf = Integer.parseInt(data[9].trim());
+                        int numTlf = 000;
                         JOptionPane.showMessageDialog(null,"b");
                        
                         Persona usuario = null;

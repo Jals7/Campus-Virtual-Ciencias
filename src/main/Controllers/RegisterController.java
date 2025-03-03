@@ -13,7 +13,7 @@ public class RegisterController{
             JOptionPane.showMessageDialog(null,"a");
                 BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/Datas/userData.txt", true));
                 writer.write(id + "," + correo + "," + contrasenia + "," + nombre + "," + apellido 
-                + "," + fechaDeNacimiento + "," +edad + "," + sexo + "," + CI);
+                + "," + fechaDeNacimiento + "," +edad + "," + sexo + "," + CI + "," + "000");
                         JOptionPane.showMessageDialog(null,"b");
                 // Guardar datos específicos según el rol
                 if(id.equals("1")){

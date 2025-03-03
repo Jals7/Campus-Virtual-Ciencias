@@ -218,7 +218,7 @@ public class LoginView extends JFrame implements ActionListener{
         //Para la accion del boton registrar
         if(ae.getSource() == botonRegistrarse){
             this.dispose();
-            SignUpView registro = new SignUpView();
+            RegisterView registro = new RegisterView();
             registro.setVisible(true);
             registro.setLocationRelativeTo(null);
             registro.setResizable(false);
