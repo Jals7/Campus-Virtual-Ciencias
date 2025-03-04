@@ -1,12 +1,12 @@
 <<<<<<< HEAD
-1,l,l,l,l,1990,15,l,1990,l,1990
-1,k,k,k,k,00,00,k,00,k,00
-1,cesar@a.com,1234,cesar,paredes,1995,29,mascuino,24309195,computacion,2012
-1,a,a,nombre,apellido,150595,29,masculino,24309195,carrera,2012,0000
-1,,,,,,,,,,,
-1,hola@gmail.com,1234,Fran,Z,21/12/2005,19,Masculino,35125132,Computacion,2022
+1,a,a,nombre,apellido,150595,29,masculino,24309195,04129775941,,2012,0
+1,a,a,nombre,apellido,150595,29,masculino,24309195,04129775941,,2012,0
+1,a,a,nombre,apellido,150595,29,masculino,24309195,04129775941,,2012,0
+1,a,a,nombre,apellido,150595,29,masculino,24309195,04129775941,,2012,0
+1,a,a,nombre,apellido,150595,29,masculino,24309195,04129775941,,2012,0
+1,a,a,nombre,apellido,150595,29,masculino,24309195,04129775941,,2012,0
 =======
 3,3,3,3,3,3/3/3333,3,3,3,000,3,3
-1,1,1,1,1,1/1/1111,1,1,1,000,1,1
+1,a,a,nombre,apellido,150595,29,masculino,24309195,04129775941,,2012,0
 2,2,2,2,2,2/2/2222,2,2,2,000,profesor,2,2,matematica
 >>>>>>> Implementacion_Singleton_y_Funcionalidades

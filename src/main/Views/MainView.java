@@ -3,16 +3,18 @@ package Views;
 import javax.swing.*;
 
 import Controllers.EventController;
+import Controllers.PublicationController;
 import Datas.EventData;
 import Datas.Persona;
 import Datas.UserSession;
 
-
 import java.awt.*;
 import java.awt.event.*;
+import java.util.List;
 
 public class MainView extends JFrame implements ActionListener{
     private JPanel barraTitulo, topPanel, panelFondo, panelCentro, panelBotones, leftPanel, rightPanel;
+    private JScrollPane scrollPane;
     private Point puntoInicial;
     private JButton closeButton, maximizeButton, minimizeButton, newsButton, logoutButton, goToEvents, newPublicationButton,
     myPublicationsButton, editProfileButton, extensionGroupButton, studyGroupButton;
@@ -20,10 +22,15 @@ public class MainView extends JFrame implements ActionListener{
     private EventController controller;
     private DefaultListModel<String> listModel;
     private JList<String> eventList;
+    private List<String[]> publicaciones;
+    private PublicationController pubController;
 
     public MainView(){
         
         Persona currentUser = UserSession.getInstance().getCurrentUser();
+        pubController = new PublicationController();
+        int prueba = pubController.loadData();
+        publicaciones = pubController.getData();
 
         setTitle("Campus Virtual Ciencias");
         setSize(1280,720);
@@ -65,9 +72,11 @@ public class MainView extends JFrame implements ActionListener{
         northContainer.setLayout(new BoxLayout(northContainer, BoxLayout.Y_AXIS)); //Para organizar verticalmente los paneles.
         
         panelCentro = new JPanel();
-        panelCentro.setLayout(null);
+        panelCentro.setLayout(new BoxLayout(panelCentro, BoxLayout.Y_AXIS));
         panelCentro.setBackground(new Color(3, 34, 63));
         panelCentro.setPreferredSize(new Dimension(550, 540)); //Para colocarle los tamanios al panel central
+        scrollPane = new JScrollPane(panelCentro);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); // Siempre mostrar la barra de desplazamiento vertical
 
         //Crear ImageIcon y JLabel para el Icono de Ciencias
         ImageIcon icono = new ImageIcon("src/main/Datas/images/logo.jpg");
@@ -99,8 +108,8 @@ public class MainView extends JFrame implements ActionListener{
         gbcCentro.gridx = 1; //Columna 1 derecha de leftPanel
         gbcCentro.gridy = 0;
         gbcCentro.fill = GridBagConstraints.BOTH; //Rellenar en ambas direcciones
-        PanelExtra.add(panelCentro, gbcCentro);
-
+        //PanelExtra.add(panelCentro, gbcCentro);
+        PanelExtra.add(scrollPane, gbcCentro);
         //Boton de cerrar
         closeButton = new JButton("X");
         closeButton.setBackground(new Color(3, 34, 63));
@@ -257,6 +266,9 @@ public class MainView extends JFrame implements ActionListener{
         JScrollPane listScrollPane = new JScrollPane(eventList);
         listScrollPane.setBounds(0,330,300,320);
         rightPanel.add(listScrollPane);
+
+        //Cargar publicaciones
+        loadPublications(publicaciones);
     }
 
     private void updateList(){
@@ -264,6 +276,26 @@ public class MainView extends JFrame implements ActionListener{
         for (EventData event : controller.getEvents()) {
             listModel.addElement(event.getId() + " - " + event.getName());
         }
+    }
+    private void loadPublications(List<String[]> publicaciones){
+        //Cargar las publicaciones del usuario
+        for (String[] publicacionData : publicaciones) {
+            String rutaImagen = publicacionData[0]; // Primer valor: ruta de la imagen
+            String nombrePublicacion = publicacionData[1]; // Segundo valor: nombre de la publicación
+
+            // Crear un panel para la publicación
+            PublicationPanel publicacionPanel = new PublicationPanel(rutaImagen, nombrePublicacion);
+
+            // Agregar el panel al panelCentral
+            panelCentro.add(publicacionPanel);
+
+            // Agregar un espacio entre publicaciones
+            panelCentro.add(Box.createRigidArea(new Dimension(0, 10)));
+        }
+
+        // Actualizar la interfaz
+        panelCentro.revalidate();
+        panelCentro.repaint();
     }
 
     public void actionPerformed(ActionEvent ae){
