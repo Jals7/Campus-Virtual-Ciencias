@@ -7,18 +7,18 @@ import Controllers.RegisterController;
 
 
 // Clase para la ventana de registro de usuarios
-public class SignUpView extends JFrame implements ActionListener, ItemListener{
+public class RegisterView extends JFrame implements ActionListener, ItemListener{
     // Campos de texto para los datos del usuario
     private JTextField txtNombre, txtApellido, txtFechaNacimiento, txtEdad, txtSexo, txtCI, txtCorreo, txtContrasena;
     private JTextField txtCarrera, txtAnoDeIngreso, txtEscuela, txtCargo, txtUltimaMateriaDada;
     private JButton registerButton;
     private JButton backButton;
-    private JComboBox optionCombo;
+    private JComboBox<String> optionCombo;
     private JLabel carreraLabel, anioDeIngresoLabel, escuelaLabel, cargoLabel, MateriaDadaLabel;
 
     // Constructor para inicializar la ventana de registro
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public SignUpView(){
+    public RegisterView(){
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1280, 720);
@@ -43,6 +43,7 @@ public class SignUpView extends JFrame implements ActionListener, ItemListener{
         txtCarrera = new JTextField();
         txtCarrera.setBounds(750, 100, 200, 30);
         add(txtCarrera);
+        
         cargoLabel = new JLabel("Cargo: ");
         cargoLabel.setBounds(600, 140, 100, 30);
         cargoLabel.setVisible(false);
@@ -51,12 +52,14 @@ public class SignUpView extends JFrame implements ActionListener, ItemListener{
         txtCargo.setBounds(750, 140, 200, 30);
         txtCargo.setVisible(false);
         add(txtCargo);
+        
         anioDeIngresoLabel = new JLabel("Año de ingreso: ");
         anioDeIngresoLabel.setBounds(600, 140, 100, 30);
         add(anioDeIngresoLabel);
         txtAnoDeIngreso = new JTextField();
         txtAnoDeIngreso.setBounds(750, 140, 200, 30);
         add(txtAnoDeIngreso);
+        
         escuelaLabel = new JLabel("Escuela: ");
         escuelaLabel.setBounds(600, 100, 100, 30);
         escuelaLabel.setVisible(false);
@@ -65,6 +68,7 @@ public class SignUpView extends JFrame implements ActionListener, ItemListener{
         txtEscuela.setBounds(750, 100, 200, 30);
         txtEscuela.setVisible(false);
         add(txtEscuela);
+        
         MateriaDadaLabel = new JLabel("Ultima Materia Dada: ");
         MateriaDadaLabel.setBounds(600, 180, 150, 30);
         MateriaDadaLabel.setVisible(false);
@@ -93,7 +97,7 @@ public class SignUpView extends JFrame implements ActionListener, ItemListener{
         createLabelAndTextField("Cédula:", 300);
         createLabelAndTextField("Correo:", 340);
         createLabelAndTextField("Contraseña:", 380);
-        createLabelAndTextField("Numero de Telefono", 420);
+       // createLabelAndTextField("Numero de Telefono", 420);
 
         // Botón para registrar
         registerButton = new JButton("Registrar");
@@ -156,15 +160,13 @@ public class SignUpView extends JFrame implements ActionListener, ItemListener{
             else if(selected.equals("Profesor")){
                 id = "2";
             }
-            else if(selected.equals("Administrador")){
+            else if(selected.equals("Administrativo")){
                 id = "3";
             }
             
             //Se evalua el retorno de la funcion del registro para saber si el registro fue exitoso
             if(RegisterController.Register(id, nombre, apellido,fechaNacimiento,edad, 
-            sexo, CI, correo,
-            contrasena, carrera, anioDeIngreso, 
-            escuela, materiaDada, cargo) == true){
+            sexo, CI, correo, contrasena, carrera, anioDeIngreso, escuela, materiaDada, cargo) == true){
                 // Mostrar mensaje de registro exitoso
                 JOptionPane.showMessageDialog(this, "Registro exitoso");
                 // Redirigir a la pantalla de Login
@@ -234,9 +236,9 @@ public class SignUpView extends JFrame implements ActionListener, ItemListener{
         }
     }
 
-   //* 
+   /* 
     public static void main(String[] args){
-        SignUpView registro = new SignUpView();
+        RegisterView registro = new RegisterView();
         registro.setVisible(true);
         registro.setLocationRelativeTo(null);
         registro.setResizable(false);

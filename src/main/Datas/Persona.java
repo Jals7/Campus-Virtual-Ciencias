@@ -10,9 +10,10 @@ public class Persona {
     private String CI;
     private String correo;
     private String Contrasenia;
-    private int numTlf;
+    private String  numTlf;
+    private String escuela;
 
-    public Persona(int id, String nombre, String apellido, String fechaDeNacimiento, int edad, String sexo, String CI, String correo, String Contrasenia, int numTlf) {
+    public Persona(int id, String nombre, String apellido, String fechaDeNacimiento, int edad, String sexo, String CI, String correo, String Contrasenia, String numTlf, String escuela) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -23,6 +24,7 @@ public class Persona {
         this.correo = correo;
         this.Contrasenia = Contrasenia;
         this.numTlf = numTlf;
+        this.escuela = escuela;
         
     }
 
@@ -99,11 +101,19 @@ public class Persona {
         this.Contrasenia = Contrasenia;
     }    
 
-    public int getNumTlf() {
+    public String getNumTlf() {
         return numTlf;
     }   
 
-    public void setNumTlf(int numTlf) {
+    public void setNumTlf(String numTlf) {
         this.numTlf = numTlf;
+    }
+    
+    public String getEscuela() {
+        return escuela;
+    }
+    
+    public void setEscuela(String escuela) {
+        this.escuela = escuela;
     }
 }

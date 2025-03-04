@@ -6,7 +6,11 @@ import Datas.Persona;
 import Datas.Profesor;
 import Datas.UserSession;
 import java.io.*;
+<<<<<<< HEAD
 import javax.swing.JOptionPane;
+=======
+
+>>>>>>> Implementacion_Singleton_y_Funcionalidades
 
 public class LoginController {
     public static boolean validateLogin(String email, String password) {
@@ -16,45 +20,46 @@ public class LoginController {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
                
-                if (data.length > 0) {
+                if (data.length > 1) {
                     int id = Integer.parseInt(data[0].trim());
                     String dataEmail = data[1].trim();
                     String dataPassword = data[2].trim();
-                    JOptionPane.showMessageDialog(null,"a");
-        
+                           
                     if (dataEmail.equals(email) && dataPassword.equals(password)) {
-                        JOptionPane.showMessageDialog(null,"y");
+                        
                         String nombre = data[3].trim();
                         String apellido = data[4].trim();
                         String fechaDeNacimiento = data[5].trim();
                         int edad = Integer.parseInt(data[6].trim());
                         String sexo = data[7].trim();
-                        String CI = data[8].trim();
-                        JOptionPane.showMessageDialog(null,"z");
-                        int numTlf = Integer.parseInt(data[9].trim());
-                        JOptionPane.showMessageDialog(null,"b");
-                       
+                        String CI = data[8].trim();                        
+                        String numTlf = data[9].trim();                       
+                        String escuela = data[10].trim();
+
                         Persona usuario = null;
 
                         if (id == 1) {
-                            JOptionPane.showMessageDialog(null,"c");
-                            String carrera = data[10].trim();
                             int anoDeIngreso = Integer.parseInt(data[11].trim());
-                            usuario = new Alumno(id, nombre, apellido, fechaDeNacimiento, edad, sexo, CI, email, password, numTlf, carrera, anoDeIngreso);
-                        
+                            usuario = new Alumno(id, nombre, apellido, fechaDeNacimiento, edad, sexo, CI, email, password, numTlf, escuela, anoDeIngreso ) ;
+                            //JOptionPane.showMessageDialog(null,"encontrado alumno");
+
                         } else if (id == 2 ) {
-                            String escuela = data[10].trim();
+
                             int anoDeIngreso = Integer.parseInt(data[11].trim());
                             String ultimaMateriaDada = data[12].trim();
-                            String cargo = data[13].trim();
-                            usuario = new Profesor(id, nombre, apellido, fechaDeNacimiento, edad, sexo, CI, email, password, numTlf, escuela, anoDeIngreso, ultimaMateriaDada, cargo);
+                            //String cargo = data[13].trim();
+                            //usuario = new Profesor(id, nombre, apellido, fechaDeNacimiento, edad, sexo, CI, email, password, numTlf, escuela, anoDeIngreso, ultimaMateriaDada, cargo);
+                            usuario = new Profesor(id, nombre, apellido, fechaDeNacimiento, edad, sexo, CI, email, password, numTlf, escuela, anoDeIngreso, ultimaMateriaDada);
+                            //JOptionPane.showMessageDialog(null,"encontrado profesor");
                         } else if (id == 3 ) {
-                            String escuela = data[10].trim();
+                           
                             String cargo = data[11].trim();
                             usuario = new Administrativo(id, nombre, apellido, fechaDeNacimiento, edad, sexo, CI, email, password,numTlf, escuela, cargo);
+                            //JOptionPane.showMessageDialog(null,"encontrado admin");
                         }
 
                         if (usuario != null) {
+                            //JOptionPane.showMessageDialog(null,"iniciado");
                             UserSession.getInstance().setPersona(usuario);
                             return true;
                         }
@@ -64,6 +69,7 @@ public class LoginController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //JOptionPane.showMessageDialog(null,"no encontrado");
         return false;
     }
 }
