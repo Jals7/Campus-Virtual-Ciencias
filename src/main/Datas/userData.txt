@@ -3,3 +3,4 @@
 1,cesar@a.com,1234,cesar,paredes,1995,29,mascuino,24309195,computacion,2012
 1,a,a,nombre,apellido,150595,29,masculino,24309195,carrera,2012,0000
 1,,,,,,,,,,,
+1,hola@gmail.com,1234,Fran,Z,21/12/2005,19,Masculino,35125132,Computacion,2022

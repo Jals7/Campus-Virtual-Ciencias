@@ -1,9 +1,9 @@
 package Views;
 
-import javax.swing.*;
+import Controllers.LoginController;
 import java.awt.*;
 import java.awt.event.*;
-import Controllers.LoginController;
+import javax.swing.*;
 
 public class LoginView extends JFrame implements ActionListener{
     private JPanel panelFondo, topPanel, panelCentro, barraTitulo, panelBotones;
@@ -168,7 +168,7 @@ public class LoginView extends JFrame implements ActionListener{
         olvidoDeClave.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         olvidoDeClave.addActionListener(this);
 
-        soporte = new JButton("!!");
+        soporte = new JButton("!!"); //👨‍🔧 este emoji lo puedes poner para el boton de soporte
         soporte.setFont(new Font("Roboto", 2, 18));
         soporte.setBounds(440, 260,50, 30);
         soporte.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

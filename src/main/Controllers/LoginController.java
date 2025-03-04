@@ -1,13 +1,11 @@
 package Controllers;
 
-import Datas.Persona;
-import Datas.Alumno;
-import Datas.Profesor;
 import Datas.Administrativo;
+import Datas.Alumno;
+import Datas.Persona;
+import Datas.Profesor;
 import Datas.UserSession;
-
 import java.io.*;
-
 import javax.swing.JOptionPane;
 
 public class LoginController {
