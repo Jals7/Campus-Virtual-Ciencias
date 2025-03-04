@@ -6,11 +6,6 @@ import Datas.Persona;
 import Datas.Profesor;
 import Datas.UserSession;
 import java.io.*;
-<<<<<<< HEAD
-import javax.swing.JOptionPane;
-=======
-
->>>>>>> Implementacion_Singleton_y_Funcionalidades
 
 public class LoginController {
     public static boolean validateLogin(String email, String password) {
