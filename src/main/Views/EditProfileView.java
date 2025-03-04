@@ -3,6 +3,7 @@ package Views;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import Controllers.EditProfileController;
 import Datas.UserSession;
 import Datas.Persona;
 import Datas.Alumno;
@@ -14,23 +15,15 @@ public class EditProfileView extends JFrame implements ActionListener{
     private Point puntoInicial;
     private JButton closeButton, maximizeButton, minimizeButton, newsButton, logoutButton, cancelButton, supportButton, saveButton,
     deleteProfileButton, changeProfileImgButton, backToMainButton;
-    private JLabel logo, nameLabel, schoolLabel, profileTypeLabel, phoneLabel, editViewLabel, userName, opcionesLabel, informacionLabel,
-    profileAvatar;
-    private JTextField emailField, passwordField, phoneField;
+    private JLabel logo, nameLabel, schoolLabel, profileTypeLabel, phoneLabel, editViewLabel, userNameLabel, opcionesLabel, informacionLabel,
+    profileAvatar, rolLabel, carreraLabel, emailLabel, passwordLabel, numLabel, materiaLabel, cargoLabel; 
+    private JTextField emailField, passwordField, phoneField, materiaField, cargoField;
 
     
     public EditProfileView(){
         // Obtener el tipo de usuario que ha iniciado sesion
         Persona currentUser = UserSession.getInstance().getCurrentUser();
-       
-      /*if(currentUser.getId()==1){
-            Alumno alumno = (Alumno) currentUser;
-        }else if(currentUser.getId()==2){
-            Profesor profesor = (Profesor) currentUser;
-        }else if(currentUser.getId()==3){
-            Administrativo administrativo = (Administrativo) currentUser;
-        } */ 
-
+        
         setTitle("Campus Virtual Ciencias");
         setSize(1280,720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -158,11 +151,11 @@ public class EditProfileView extends JFrame implements ActionListener{
         editViewLabel.setBounds(300, 30, 200, 20);
         panelCentro.add(editViewLabel);
 
-        userName = new JLabel( currentUser.getNombre());
-        userName.setFont(new Font("Roboto", Font.BOLD, 16));
-        userName.setForeground(Color.WHITE);
-        userName.setBounds(720, 22, 200, 20);
-        topPanel.add(userName);
+        userNameLabel = new JLabel( currentUser.getNombre() + " " + currentUser.getApellido());
+        userNameLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+        userNameLabel.setForeground(Color.WHITE);
+        userNameLabel.setBounds(720, 22, 200, 20);
+        topPanel.add(userNameLabel);
 
         informacionLabel = new JLabel("Informacion");
         informacionLabel.setFont(new Font("Roboto", Font.BOLD, 16));
@@ -174,60 +167,143 @@ public class EditProfileView extends JFrame implements ActionListener{
         nameLabel = new JLabel("Nombre y Apellido: " );
         nameLabel.setFont(new Font("Roboto", Font.BOLD, 16));
         nameLabel.setForeground(Color.WHITE);
-        nameLabel.setBounds(600, 130, 200, 20);
+        nameLabel.setBounds(600, 110, 200, 20);
         panelCentro.add(nameLabel);
- 
+     
         nameLabel  = new JLabel(currentUser.getNombre() + " " + currentUser.getApellido());
         nameLabel.setFont(new Font("Roboto", Font.BOLD, 16));
         nameLabel.setForeground(Color.WHITE);   
-        nameLabel.setBounds(600 , 150, 200, 20);
-        panelCentro.add(nameLabel);
+        nameLabel.setBounds(600 , 130, 200, 20);
+        panelCentro.add(nameLabel); 
 
-        emailField = new JTextField(currentUser.getCorreo());
+        
+        schoolLabel = new JLabel("Escuela: ");
+        schoolLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+        schoolLabel.setForeground(Color.WHITE);
+        schoolLabel.setBounds(600, 180, 200, 20);
+        panelCentro.add(schoolLabel);
+        
+        profileTypeLabel = new JLabel("Tipo de perfil: ");        
+        profileTypeLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+        profileTypeLabel.setForeground(Color.WHITE);
+        profileTypeLabel.setBounds(600, 250, 200, 20);
+        panelCentro.add(profileTypeLabel);
+
+        carreraLabel = new JLabel(currentUser.getEscuela());
+        carreraLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+        carreraLabel.setForeground(Color.WHITE);   
+        carreraLabel.setBounds(600 ,200, 200, 20); 
+        panelCentro.add(carreraLabel);
+
+        if(currentUser instanceof Alumno){            
+
+            rolLabel = new JLabel("Alumno");
+            rolLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+            rolLabel.setForeground(Color.WHITE);   
+            rolLabel.setBounds(600 ,270, 200, 20); 
+            panelCentro.add(rolLabel);
+
+        }else if(currentUser instanceof Profesor){
+
+            rolLabel = new JLabel("Profesor");
+            rolLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+            rolLabel.setForeground(Color.WHITE);   
+            rolLabel.setBounds(600 ,270, 200, 20); 
+            panelCentro.add(rolLabel);
+
+            materiaLabel = new JLabel("Ultima Materia dada:"); 
+            materiaLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+            materiaLabel.setForeground(Color.WHITE);   
+            materiaLabel.setBounds(600, 380, 200, 20);
+            panelCentro.add(materiaLabel);
+            
+            materiaLabel = new JLabel(((Profesor) currentUser).getUltimaMateriaDada()); 
+            materiaLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+            materiaLabel.setForeground(Color.WHITE);   
+            materiaLabel.setBounds(600, 400, 200, 20);
+            panelCentro.add(materiaLabel);
+
+            materiaLabel = new JLabel("Ingrese la nueva Materia:");
+            materiaLabel.setFont(new Font("Roboto", Font.BOLD, 14));
+            materiaLabel.setForeground(Color.WHITE);
+            materiaLabel.setBounds(260, 310, 250, 20);
+            panelCentro.add(materiaLabel);
+            
+            materiaField = new JTextField("");
+            materiaField.setFont(new Font("Roboto", Font.BOLD  , 12));
+            materiaField.setForeground(Color.GRAY);
+            materiaField.setBounds(260, 330, 200, 30);
+            panelCentro.add(materiaField);
+            
+
+        }else if(currentUser instanceof Administrativo){
+
+            rolLabel = new JLabel("Administrativo");
+            rolLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+            rolLabel.setForeground(Color.WHITE);   
+            rolLabel.setBounds(600 ,270, 200, 20); 
+            panelCentro.add(rolLabel);
+
+            cargoLabel = new JLabel("Cargo:"); 
+            cargoLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+            cargoLabel.setForeground(Color.WHITE);   
+            cargoLabel.setBounds(600, 380, 200, 20);
+            panelCentro.add(cargoLabel);
+
+            cargoLabel = new JLabel(((Administrativo) currentUser).getCargo());
+            cargoLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+            cargoLabel.setForeground(Color.WHITE);   
+            cargoLabel.setBounds(600 , 400, 200, 20); // Subir 20 pixeles
+            panelCentro.add(cargoLabel);
+
+            cargoLabel = new JLabel("Ingrese el nuevo cargo:");
+            cargoLabel.setFont(new Font("Roboto", Font.BOLD, 14));
+            cargoLabel.setForeground(Color.WHITE);
+            cargoLabel.setBounds(260, 310, 250, 20);
+            panelCentro.add(cargoLabel);
+            
+            cargoField = new JTextField("");
+            cargoField.setFont(new Font("Roboto", Font.BOLD  , 12));
+            cargoField.setForeground(Color.GRAY);
+            cargoField.setBounds(260, 330, 200, 30);
+            panelCentro.add(cargoField);
+
+        }
+
+        //contrasena
+        passwordLabel = new JLabel("Ingrese la nueva contraseña:");
+        passwordLabel.setFont(new Font("Roboto", Font.BOLD, 14));
+        passwordLabel.setForeground(Color.WHITE);
+        passwordLabel.setBounds(260, 180, 250, 20);
+        panelCentro.add(passwordLabel);
+        
+        passwordField = new JTextField("");
+        passwordField.setFont(new Font("Roboto", Font.BOLD  , 12));
+        passwordField.setForeground(Color.GRAY);
+        passwordField.setBounds(260, 200, 200, 30);
+        panelCentro.add(passwordField);
+        
+        //correo 
+        emailLabel = new JLabel("Ingrese el nuevo correo:");
+        emailLabel.setFont(new Font("Roboto", Font.BOLD, 14));
+        emailLabel.setForeground(Color.WHITE);
+        emailLabel.setBounds(260, 110, 250, 20);
+        panelCentro.add(emailLabel);
+
+        emailField = new JTextField("");
         emailField.setFont(new Font("Roboto", 1, 12));
         emailField.setForeground(Color.GRAY);
         emailField.setBounds(260, 130, 200, 30);
         panelCentro.add(emailField);
+        
+        //TLF
+        phoneLabel = new JLabel("Ingrese el nuevo telefono:");
+        phoneLabel.setFont(new Font("Roboto", Font.BOLD, 14));
+        phoneLabel.setForeground(Color.WHITE);
+        phoneLabel.setBounds(260, 250, 250, 20);
+        panelCentro.add(phoneLabel);
 
-        schoolLabel = new JLabel("Escuela: ");
-        schoolLabel.setFont(new Font("Roboto", Font.BOLD, 16));
-        schoolLabel.setForeground(Color.WHITE);
-        schoolLabel.setBounds(600, 200, 200, 20);
-        panelCentro.add(schoolLabel);
-
-        if(currentUser instanceof Alumno){
-            nameLabel = new JLabel(((Alumno) currentUser).getCarrera());
-            nameLabel.setFont(new Font("Roboto", Font.BOLD, 16));
-            nameLabel.setForeground(Color.WHITE);   
-            nameLabel.setBounds(600 , 150, 200, 20);
-            panelCentro.add(nameLabel);
-        }else if(currentUser instanceof Profesor){
-            nameLabel = new JLabel(((Profesor) currentUser).getEscuela()); 
-            nameLabel.setFont(new Font("Roboto", Font.BOLD, 16));
-            nameLabel.setForeground(Color.WHITE);   
-            nameLabel.setBounds(600 , 150, 200, 20);
-            panelCentro.add(nameLabel);
-        }else if(currentUser instanceof Administrativo){
-            nameLabel = new JLabel(((Administrativo) currentUser).getEscuela());
-            nameLabel.setFont(new Font("Roboto", Font.BOLD, 16));
-            nameLabel.setForeground(Color.WHITE);   
-            nameLabel.setBounds(600 , 150, 200, 20);
-            panelCentro.add(nameLabel);
-        }
-
-        passwordField = new JTextField(currentUser.getContrasenia());
-        passwordField.setFont(new Font("Roboto", 1, 12));
-        passwordField.setForeground(Color.GRAY);
-        passwordField.setBounds(260, 200, 200, 30);
-        panelCentro.add(passwordField);
-
-        profileTypeLabel = new JLabel("Tipo de perfil: ");
-        profileTypeLabel.setFont(new Font("Roboto", Font.BOLD, 16));
-        profileTypeLabel.setForeground(Color.WHITE);
-        profileTypeLabel.setBounds(600, 270, 200, 20);
-        panelCentro.add(profileTypeLabel);
-
-        phoneField = new JTextField("Ingrese el nuevo numero de telefono");
+        phoneField = new JTextField("");
         phoneField.setFont(new Font("Roboto", 1, 12));
         phoneField.setForeground(Color.GRAY);
         phoneField.setBounds(260, 270, 200, 30);
@@ -236,8 +312,24 @@ public class EditProfileView extends JFrame implements ActionListener{
         phoneLabel = new JLabel("Telefono: ");
         phoneLabel.setFont(new Font("Roboto", Font.BOLD, 16));
         phoneLabel.setForeground(Color.WHITE);
-        phoneLabel.setBounds(600, 340, 200, 20);
+        phoneLabel.setBounds(600, 320, 200, 20);
         panelCentro.add(phoneLabel);
+
+
+        //verifica si el telefono esta registrado
+        if(currentUser.getNumTlf().equals("000")){
+            numLabel = new JLabel("No registrado");
+            numLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+            numLabel.setForeground(Color.WHITE);   
+            numLabel.setBounds(600 , 340, 200, 20);
+            panelCentro.add(numLabel);
+        }else{
+            numLabel = new JLabel(currentUser.getNumTlf());
+            numLabel.setFont(new Font("Roboto", Font.BOLD, 16));
+            numLabel.setForeground(Color.WHITE);   
+            numLabel.setBounds(600 , 340, 200, 20);
+            panelCentro.add(numLabel);
+        }
 
         opcionesLabel = new JLabel("Opciones");
         opcionesLabel.setFont(new Font("Roboto", Font.BOLD, 16));
@@ -343,11 +435,89 @@ public class EditProfileView extends JFrame implements ActionListener{
         if(ae.getSource() == supportButton){
             JOptionPane.showMessageDialog(null,"Si desea contactar con Soporte \n mande un un mensaje a correo@correo.com");
         } 
+        if(ae.getSource() == saveButton){
+         
+        Persona currentUser = UserSession.getInstance().getCurrentUser();
+         
+        if (currentUser instanceof Alumno) {
+        
+            if(passwordField.getText().equals("") && emailField.getText().equals("") && phoneField.getText().equals("")){
+                JOptionPane.showMessageDialog(null,"No hay datos para actualizar");
+            }else{
+                if(!passwordField.getText().equals("")){
+                    currentUser.setContrasenia(passwordField.getText());
+                }
+                if(!emailField.getText().equals("")){
+                    currentUser.setCorreo(emailField.getText());
+                }
+                if(!phoneField.getText().equals("")){
+                    currentUser.setNumTlf(phoneField.getText());
+                }
+                
+                if(EditProfileController.updateProfile(currentUser)){
+                    JOptionPane.showMessageDialog(null,"Perfil actualizado correctamente");
+                }else{
+                    JOptionPane.showMessageDialog(null,"Error al actualizar el perfil");
+                }
+
+            }
+        } else if (currentUser instanceof Profesor) {
+            if(passwordField.getText().equals("") && emailField.getText().equals("") && phoneField.getText().equals("") && materiaField.getText().equals("")){
+                JOptionPane.showMessageDialog(null,"No hay datos para actualizar");
+            }else{
+                if(!passwordField.getText().equals("")){
+                    currentUser.setContrasenia(passwordField.getText());
+                }
+                if(!emailField.getText().equals("")){
+                    currentUser.setCorreo(emailField.getText());
+                }
+                if(!phoneField.getText().equals("")){
+                    currentUser.setNumTlf(phoneField.getText());
+                }
+                if(!materiaField.getText().equals("")){
+                    ((Profesor) currentUser).setUltimaMateriaDada(materiaField.getText());
+                }
+                
+                if(EditProfileController.updateProfile(currentUser)){
+                    JOptionPane.showMessageDialog(null,"Perfil actualizado correctamente");
+                }else{
+                    JOptionPane.showMessageDialog(null,"Error al actualizar el perfil");
+                }
+
+            }
+        } else if (currentUser instanceof Administrativo) {
+            if(passwordField.getText().equals("") && emailField.getText().equals("") && phoneField.getText().equals("")){
+                JOptionPane.showMessageDialog(null,"No hay datos para actualizar");
+            }else{
+                if(!passwordField.getText().equals("")){
+                    currentUser.setContrasenia(passwordField.getText());
+                }
+                if(!emailField.getText().equals("")){
+                    currentUser.setCorreo(emailField.getText());
+                }
+                if(!phoneField.getText().equals("")){
+                    currentUser.setNumTlf(phoneField.getText());
+                }
+                
+                if(EditProfileController.updateProfile(currentUser)){
+                    JOptionPane.showMessageDialog(null,"Perfil actualizado correctamente");
+                }else{
+                    JOptionPane.showMessageDialog(null,"Error al actualizar el perfil");
+                }
+
+            }
+        }
+        }    
+
     }
-    /*public static void main(String args[]){
-        EditProfileView profileView = new EditProfileView();
-        profileView.setVisible(true);
-        profileView.setLocationRelativeTo(null);
-        profileView.setResizable(false);
-    }*/
+    /*
+    public static void main(String args[]){
+        
+        if (LoginController.validateLogin("2", "2")){
+            EditProfileView profileView = new EditProfileView();
+            profileView.setVisible(true);
+            profileView.setLocationRelativeTo(null);
+            profileView.setResizable(false);
+        }
+    }//*/
 }

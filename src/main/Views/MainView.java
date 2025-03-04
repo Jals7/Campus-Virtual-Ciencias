@@ -4,6 +4,9 @@ import javax.swing.*;
 
 import Controllers.EventController;
 import Datas.EventData;
+import Datas.Persona;
+import Datas.UserSession;
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -19,6 +22,9 @@ public class MainView extends JFrame implements ActionListener{
     private JList<String> eventList;
 
     public MainView(){
+        
+        Persona currentUser = UserSession.getInstance().getCurrentUser();
+
         setTitle("Campus Virtual Ciencias");
         setSize(1280,720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -179,7 +185,7 @@ public class MainView extends JFrame implements ActionListener{
         opciones.setBounds(115, 30, 200, 20);
         leftPanel.add(opciones);
 
-        userName = new JLabel("Nombre de Usuario");
+        userName = new JLabel(currentUser.getNombre() + " " + currentUser.getApellido());
         userName.setFont(new Font("Roboto", Font.BOLD, 16));
         userName.setForeground(Color.WHITE);
         userName.setBounds(720, 22, 200, 20);

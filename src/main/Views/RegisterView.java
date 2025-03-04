@@ -13,7 +13,7 @@ public class RegisterView extends JFrame implements ActionListener, ItemListener
     private JTextField txtCarrera, txtAnoDeIngreso, txtEscuela, txtCargo, txtUltimaMateriaDada;
     private JButton registerButton;
     private JButton backButton;
-    private JComboBox optionCombo;
+    private JComboBox<String> optionCombo;
     private JLabel carreraLabel, anioDeIngresoLabel, escuelaLabel, cargoLabel, MateriaDadaLabel;
 
     // Constructor para inicializar la ventana de registro
@@ -236,7 +236,7 @@ public class RegisterView extends JFrame implements ActionListener, ItemListener
         }
     }
 
-   //* 
+   /* 
     public static void main(String[] args){
         RegisterView registro = new RegisterView();
         registro.setVisible(true);
