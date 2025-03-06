@@ -17,7 +17,7 @@ public class EditProfileTest {
         Persona currentUser = null; 
 
         // Act
-        if (LoginController.validateLogin("correo@prueba.com", "777")) {
+        if (LoginController.validateLogin("admin@admin.com", "admin123*")) {
             currentUser = UserSession.getInstance().getCurrentUser();
             currentUser.setCorreo("nuevocorreo@gmail.com");
             currentUser.setContrasenia("1234");
