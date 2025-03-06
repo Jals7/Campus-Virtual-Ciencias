@@ -52,6 +52,7 @@ public class PublicationManagementView extends JFrame implements ActionListener{
         //Crear y mover el Label de la imagen
         imageLabel = new JLabel("Importa una imagen");
         imageLabel.setBounds(50, 20, 480, 320);
+        imageLabel.setForeground(new Color(255, 255, 255));
         mainPanel.add(imageLabel);
         
         //Crear textarea y Scroll
