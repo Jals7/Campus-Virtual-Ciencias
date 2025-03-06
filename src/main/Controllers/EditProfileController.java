@@ -68,16 +68,16 @@ public class EditProfileController {
         // Datos específicos según el tipo de usuario
         if (currentUser instanceof Alumno) {
             Alumno alumno = (Alumno) currentUser;
-            nuevaLinea.append(",").append(alumno.getEscuela()).append(",")
+            nuevaLinea.append(alumno.getEscuela()).append(",")
                       .append(alumno.getAnoDeIngreso());
         } else if (currentUser instanceof Profesor) {
             Profesor profesor = (Profesor) currentUser;
-            nuevaLinea.append(",").append(profesor.getEscuela()).append(",")
+            nuevaLinea.append(profesor.getEscuela()).append(",")
                       .append(profesor.getAnoDeIngreso()).append(",")
                       .append(profesor.getUltimaMateriaDada());
         } else if (currentUser instanceof Administrativo) {
             Administrativo admin = (Administrativo) currentUser;
-            nuevaLinea.append(",").append(admin.getEscuela()).append(",")
+            nuevaLinea.append(admin.getEscuela()).append(",")
                       .append(admin.getCargo());
         }
 
