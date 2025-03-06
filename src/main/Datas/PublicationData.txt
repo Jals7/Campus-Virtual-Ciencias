@@ -1,3 +1,1 @@
-src\main\Datas\images\selfie.jpg,Prueba
-src/main/Datas/images/peso.jpg,JJajjajajajjaja
-src/main/Datas/images/meses.jpg,asdasdasd
+src/main/Datas/images/selfie.jpg,prueba
