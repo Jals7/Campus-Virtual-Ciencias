@@ -82,3 +82,11 @@ Short Description about the project.
   2. Instalar las extensiones de Extension Pack for Java en VSCode.
   3. Reiniciar VSCode para que las Extensiones recarguen.
   4. Buscar la clase de Java LoginView.Java en la ruta src/main/Views y ejecutarla en VSCode con la tecla F5.
+
+### Modelo de pruebas
+  1. EditProfileTest.java
+  2. EventControllerTest.java
+  3. ExtensionGroupControllerTest.java
+  4. PublicationTest.java
+  5. RegisterTest.java
+  6. RegisterTestPruebas.java
