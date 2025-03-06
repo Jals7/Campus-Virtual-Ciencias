@@ -74,7 +74,7 @@ public class MainView extends JFrame implements ActionListener{
         panelCentro = new JPanel();
         panelCentro.setLayout(new BoxLayout(panelCentro, BoxLayout.Y_AXIS));
         panelCentro.setBackground(new Color(3, 34, 63));
-        //panelCentro.setPreferredSize(new Dimension(550, 540)); //Para colocarle los tamanios al panel central
+        panelCentro.setPreferredSize(new Dimension(550, 540)); //Para colocarle los tamanios al panel central
         scrollPane = new JScrollPane(panelCentro);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); // Siempre mostrar la barra de desplazamiento vertical
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -100,6 +100,15 @@ public class MainView extends JFrame implements ActionListener{
         northContainer.add(barraTitulo);
         northContainer.add(topPanel);
         
+        //Panel extra que sirve para centrar el rectangulo central donde van los JTEXTFIELD
+        JPanel PanelExtra = new JPanel(new GridBagLayout());
+        PanelExtra.setBackground(new Color(252,203,111));
+        //Configurar GridBagConstraints para panelCentro, esto sirve para alinear en el grid los paneles
+        GridBagConstraints gbcCentro = new GridBagConstraints();
+        gbcCentro.gridx = 1; //Columna 1 derecha de leftPanel
+        gbcCentro.gridy = 0;
+        gbcCentro.fill = GridBagConstraints.BOTH; //Rellenar en ambas direcciones
+        PanelExtra.add(scrollPane, gbcCentro);
         //Boton de cerrar
         closeButton = new JButton("X");
         closeButton.setBackground(new Color(3, 34, 63));
@@ -137,28 +146,34 @@ public class MainView extends JFrame implements ActionListener{
         panelBotones.add(maximizeButton);
         panelBotones.add(closeButton);
         barraTitulo.add(panelBotones);
+
+        panelFondo.add(PanelExtra, BorderLayout.CENTER);
         panelFondo.add(northContainer, BorderLayout.NORTH);
+        add(panelFondo);
 
         //Paneles izquierdo y derecho
         leftPanel = new JPanel();
         leftPanel.setLayout(null);
         leftPanel.setBackground(new Color(3, 34, 63));
         leftPanel.setPreferredSize(new Dimension(300, 540));
+        GridBagConstraints gbcLeft = new GridBagConstraints();
+        gbcLeft.gridx = 0; // Columna 0
+        gbcLeft.gridy = 0; // Fila 0
+        gbcLeft.anchor = GridBagConstraints.WEST; // Anclar a la izquierda
+        gbcLeft.insets = new Insets(0, 0, 0, 50);
+        PanelExtra.add(leftPanel, gbcLeft);
 
         rightPanel = new JPanel();
         rightPanel.setLayout(null);
         rightPanel.setBackground(new Color(3, 34, 63));
         rightPanel.setPreferredSize(new Dimension(300, 540));
+        GridBagConstraints gbcRight = new GridBagConstraints();
+        gbcRight.gridx = 2;
+        gbcRight.gridy = 0;
+        gbcRight.anchor = GridBagConstraints.EAST;
+        gbcRight.insets = new Insets(0, 50, 0, 0);
+        PanelExtra.add(rightPanel, gbcRight);
 
-        //Crear un panel principal para organizar los paneles laterales y el JScrollPane
-        JPanel mainContentPanel = new JPanel(new BorderLayout());
-        mainContentPanel.add(leftPanel, BorderLayout.WEST);
-        mainContentPanel.add(scrollPane, BorderLayout.CENTER);
-        mainContentPanel.add(rightPanel, BorderLayout.EAST);
-
-        //Agregar el panel principal al panelFondo
-        panelFondo.add(mainContentPanel, BorderLayout.CENTER);
-        add(panelFondo);
         //JLABELS de paneles
         events = new JLabel("Eventos");
         events.setFont(new Font("Roboto", Font.BOLD, 16));
@@ -269,8 +284,6 @@ public class MainView extends JFrame implements ActionListener{
 
             //Crear un panel para la publicación
             PublicationPanel publicacionPanel = new PublicationPanel(rutaImagen, nombrePublicacion);
-
-            publicacionPanel.setPreferredSize(new Dimension(600, 600)); // Ajusta el tamaño según sea necesario
 
             //Agregar el panel al panelCentral
             panelCentro.add(publicacionPanel);

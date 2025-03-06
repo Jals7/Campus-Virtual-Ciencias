@@ -78,14 +78,6 @@ public class PublicationManagementView extends JFrame implements ActionListener{
         }
     }
 
-    /*public BufferedImage getImage(){
-        ImageIcon icon = (ImageIcon) imageLabel.getIcon();
-        if (icon != null) {
-            return (BufferedImage) icon.getImage();
-        }
-        return null;
-    }*/
-
     //Funcion para controlar las acciones de los botones
     public void actionPerformed(ActionEvent ae){
         //Obtener el evento del boton de importar
@@ -109,13 +101,5 @@ public class PublicationManagementView extends JFrame implements ActionListener{
             this.dispose();
         }
     }
-
-    public static void main(String args[]){
-        PublicationManagementView view = new PublicationManagementView();
-        view.setVisible(true);
-        view.setBounds(0,0,800,600);
-        view.setLocationRelativeTo(null);
-        view.setResizable(false);
-        System.out.println("Directorio de trabajo: " + System.getProperty("user.dir"));
-    }
 }
+

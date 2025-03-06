@@ -1,12 +1,2 @@
-<<<<<<< HEAD
-1,a,a,nombre,apellido,150595,29,masculino,24309195,04129775941,,2012,0
-1,a,a,nombre,apellido,150595,29,masculino,24309195,04129775941,,2012,0
-1,a,a,nombre,apellido,150595,29,masculino,24309195,04129775941,,2012,0
-1,a,a,nombre,apellido,150595,29,masculino,24309195,04129775941,,2012,0
-1,a,a,nombre,apellido,150595,29,masculino,24309195,04129775941,,2012,0
-1,a,a,nombre,apellido,150595,29,masculino,24309195,04129775941,,2012,0
-=======
-3,3,3,3,3,3/3/3333,3,3,3,000,3,3
-1,a,a,nombre,apellido,150595,29,masculino,24309195,04129775941,,2012,0
-2,2,2,2,2,2/2/2222,2,2,2,000,profesor,2,2,matematica
->>>>>>> Implementacion_Singleton_y_Funcionalidades
+1,a,a,nombre,apellido,150595,29,masculino,24309195,121212,,,2012
+1,ejemplo@correo.com,777,Jelvis,Larreal,07/05/2003,21,Masculino,29.595.489,000,Ciencias,2025

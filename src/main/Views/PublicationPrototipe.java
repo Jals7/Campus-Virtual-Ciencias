@@ -23,7 +23,7 @@ public class PublicationPrototipe extends JFrame implements ActionListener{
         //Crear Label titulo y darle formato
         titulo = new JLabel("Campus Virtual Ciencias");
         titulo.setBounds(240, 30, 350, 50);
-        titulo.setFont(new Font("Andale Mono", 3, 30));
+        titulo.setFont(new Font("Roboto", 3, 30));
         add(titulo);
 
         //Crear Botones
@@ -94,11 +94,11 @@ public class PublicationPrototipe extends JFrame implements ActionListener{
         }
     }
 
-    /*public static void main(String args[]){
+    public static void main(String args[]){
         PublicationPrototipe ventana = new PublicationPrototipe();
         ventana.setVisible(true);
         ventana.setBounds(0,0,800,600);
         ventana.setResizable(false);
         ventana.setLocationRelativeTo(null);
-    }*/
+    }
 }
