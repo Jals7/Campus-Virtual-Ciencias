@@ -13,7 +13,7 @@ public class CalendarView extends JFrame implements ActionListener{
     private Point puntoInicial;
     private JButton closeButton, maximizeButton, minimizeButton, newsButton, logoutButton, newEventButton,
     calendarMarkButton, goToMainButton, supportButton;
-    private JLabel logo, eventsLabel, calendarLabel, opciones, userName, profileAvatarLabel;
+    private JLabel logo, eventsLabel, calendarLabel, opciones, userName, profileAvatarLabel, calendarImage;
     private EventController controller;
     private DefaultListModel<String> listModel;
     private JList<String> eventList;
@@ -81,6 +81,16 @@ public class CalendarView extends JFrame implements ActionListener{
         profileAvatarLabel.setBorder(BorderFactory.createEmptyBorder(0, 20, 30, 20));
         profileAvatarLabel.setBounds(580,0, 90, 90);
         topPanel.add(profileAvatarLabel);
+
+        //Calendar Image
+        ImageIcon calendarIcon = new ImageIcon("src/main/Datas/images/calendar.png");
+        Image calendarImg = calendarIcon.getImage();
+        Image calendarImageRedimensionada = calendarImg.getScaledInstance(400, 400, Image.SCALE_SMOOTH);
+        calendarIcon = new ImageIcon(calendarImageRedimensionada);
+        calendarImage = new JLabel(calendarIcon);
+        calendarImage.setBorder(BorderFactory.createEmptyBorder(10, 20, 30, 20));
+        calendarImage.setBounds(70,70,400,400);
+        panelCentro.add(calendarImage);
 
         northContainer.add(barraTitulo);
         northContainer.add(topPanel);
@@ -275,11 +285,8 @@ public class CalendarView extends JFrame implements ActionListener{
         }
 
         if(ae.getSource() == newEventButton){
-            /*EventManagementView eventManagementView = new EventManagementView();
-            eventManagementView.setVisible(true);
-            eventManagementView.setLocationRelativeTo(null);
-            eventManagementView.setResizable(false);*/
             SwingUtilities.invokeLater(EventManagementView::new);
+            this.dispose();
         }
 
         if(ae.getSource() == supportButton){

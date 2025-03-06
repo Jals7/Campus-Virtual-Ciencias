@@ -432,6 +432,13 @@ public class EditProfileView extends JFrame implements ActionListener{
             login.setLocationRelativeTo(null);
             login.setResizable(false);
         }
+        if(ae.getSource()== cancelButton){
+            emailField.setText("");
+            passwordField.setText("");
+            phoneField.setText("");
+            materiaField.setText("");
+            cargoField.setText("");
+        }
         if(ae.getSource() == supportButton){
             JOptionPane.showMessageDialog(null,"Si desea contactar con Soporte \n mande un un mensaje a correo@correo.com");
         } 
@@ -510,14 +517,4 @@ public class EditProfileView extends JFrame implements ActionListener{
         }    
 
     }
-    /*
-    public static void main(String args[]){
-        
-        if (LoginController.validateLogin("2", "2")){
-            EditProfileView profileView = new EditProfileView();
-            profileView.setVisible(true);
-            profileView.setLocationRelativeTo(null);
-            profileView.setResizable(false);
-        }
-    }//*/
 }

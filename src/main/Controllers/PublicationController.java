@@ -60,14 +60,14 @@ public class PublicationController{
                     // Verificar si el comentario pertenece a esta publicación
                     if(linea.startsWith(nombrePublicacion + ",")){
                         comentarios.add(linea); //Agregar el comentario a la lista
-                        return comentarios;
                     }
                 }
+                return comentarios;
             }catch(IOException e){
                 JOptionPane.showMessageDialog(null,"No se lograron cargar los comentarios.");
             }
         }
-        return null;
+        return comentarios;
     }
 
     //Metodo para agregar un comentario al archivo

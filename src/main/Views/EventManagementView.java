@@ -32,6 +32,7 @@ public class EventManagementView extends JFrame{
         descriptionField = new JTextField();
         organizerField = new JTextField();
         JButton addButton = new JButton("Agregar Evento");
+        JButton volver = new JButton("Volver");
 
         listModel = new DefaultListModel<>();
         updateList();
@@ -54,6 +55,7 @@ public class EventManagementView extends JFrame{
         panel.add(organizerLabel);
         panel.add(organizerField);
         panel.add(addButton);
+        panel.add(volver);
 
         frame.add(panel, BorderLayout.NORTH);
         frame.add(listScrollPane, BorderLayout.CENTER);
@@ -70,6 +72,14 @@ public class EventManagementView extends JFrame{
             nameField.setText("");
             descriptionField.setText("");
             organizerField.setText("");
+        });
+
+        volver.addActionListener(e -> {
+            CalendarView calendarView = new CalendarView();
+            calendarView.setVisible(true);
+            calendarView.setLocationRelativeTo(null);
+            calendarView.setResizable(false);
+            this.dispose();
         });
 
         eventList.addMouseListener(new MouseAdapter() {
@@ -156,8 +166,4 @@ public class EventManagementView extends JFrame{
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }
-
-    /*public static void main(String[] args) {
-        SwingUtilities.invokeLater(EventManagementView::new);
-    }*/
 }

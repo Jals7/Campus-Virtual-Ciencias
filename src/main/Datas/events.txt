@@ -1,6 +1,6 @@
-1,Tarea,Mate,Mate 10
-2,asd,prueba1,yo
-3,asd,asd,asd
-4,awd,awd,awd
-5,Test Event,Test Description,Test Organizer
-6,Test Event,Test Description,Test Organizer
+1,Tareas Grupales,Mate,Mate 10
+2,Reunion Grupal,prueba1,yo
+3,Evento de excursion,asd,asd
+4,Trabajo de campo,awd,awd
+5,Feria,Test Description,Test Organizer
+6,Aniversario de facultad,Test Description,Test Organizer

@@ -18,7 +18,7 @@ public class MainView extends JFrame implements ActionListener{
     private Point puntoInicial;
     private JButton closeButton, maximizeButton, minimizeButton, newsButton, logoutButton, goToEvents, newPublicationButton,
     myPublicationsButton, editProfileButton, extensionGroupButton, studyGroupButton;
-    private JLabel logo, events, calendar, opciones, userName, profileAvatarLabel;
+    private JLabel logo, events, calendar, opciones, userName, profileAvatarLabel, calendarImage;
     private EventController controller;
     private DefaultListModel<String> listModel;
     private JList<String> eventList;
@@ -87,6 +87,16 @@ public class MainView extends JFrame implements ActionListener{
         logo.setBorder(BorderFactory.createEmptyBorder(10, 20, 30, 20));
         logo.setBounds(0,0, 90, 90);
         topPanel.add(logo);
+
+        //Calendar Image
+        ImageIcon calendarIcon = new ImageIcon("src/main/Datas/images/calendar.png");
+        Image calendarImg = calendarIcon.getImage();
+        Image calendarImageRedimensionada = calendarImg.getScaledInstance(230, 230, Image.SCALE_SMOOTH);
+        calendarIcon = new ImageIcon(calendarImageRedimensionada);
+        calendarImage = new JLabel(calendarIcon);
+        calendarImage.setBorder(BorderFactory.createEmptyBorder(10, 20, 30, 20));
+        calendarImage.setBounds(10,30,300,300);
+
         //Agregar avatar
         ImageIcon avatar = new ImageIcon("src/main/Datas/images/avatarProfileDefault.png");
         Image avatarSet = avatar.getImage();
@@ -149,6 +159,9 @@ public class MainView extends JFrame implements ActionListener{
         rightPanel.setLayout(null);
         rightPanel.setBackground(new Color(3, 34, 63));
         rightPanel.setPreferredSize(new Dimension(300, 540));
+        
+        //Agregar Calendario
+        rightPanel.add(calendarImage);
 
         //Crear un panel principal para organizar los paneles laterales y el JScrollPane
         JPanel mainContentPanel = new JPanel(new BorderLayout());
@@ -324,6 +337,14 @@ public class MainView extends JFrame implements ActionListener{
             calendarView.setLocationRelativeTo(null);
             calendarView.setResizable(false);
             dispose();
+        }
+        if(ae.getSource() == newPublicationButton){
+            PublicationManagementView pubview = new PublicationManagementView();
+            pubview.setBounds(0,0,800,600);
+            pubview.setVisible(true);
+            pubview.setResizable(false);
+            pubview.setLocationRelativeTo(null);
+            this.dispose();
         }
     }
 }

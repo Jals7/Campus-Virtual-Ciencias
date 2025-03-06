@@ -41,15 +41,33 @@ public class PublicationPanel extends JPanel{
         nombreLabel.setForeground(Color.BLACK);
 
         // Panel para el campo de comentario y el botón
-        JPanel comentarioPanel = new JPanel(new BorderLayout());
+        JPanel comentarioPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
         // Campo de texto para el comentario
         comentarioField = new JTextField();
         comentarioField.setFont(new Font("Roboto", Font.PLAIN, 12));
+        comentarioField.setPreferredSize(new Dimension(400, 30));
 
         JButton comentarButton = new JButton("Comentar");
         comentarButton.setFont(new Font("Roboto", Font.BOLD, 12));
+        JButton comentariosButton = new JButton("Comentarios");
+        comentariosButton.setFont(new Font("Roboto", Font.BOLD, 12));
 
+        comentariosButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                //Abrir la ventana de comentarios
+                if(comentariosWindow == null){
+                    comentarios = controller.loadComents(nombrePublicacion);
+                    comentariosWindow = new ComentariosWindow(comentarios);
+                }
+                comentariosWindow.update();
+
+                //Mostrar la ventana si está oculta
+                comentariosWindow.setVisible(true);
+
+            }
+        });
         // Acción del botón "Comentar"
         comentarButton.addActionListener(new ActionListener(){
             @Override
@@ -58,33 +76,24 @@ public class PublicationPanel extends JPanel{
 
                 if(comentarioTexto.isEmpty()){
                     comentarios.clear();
-                    //Si el campo está vacío, leer los comentarios desde el archivo
-                    comentarios = controller.loadComents(nombrePublicacion);
                 }else{
                     //Si el campo no está vacío, agregar el comentario al archivo y a la lista
                     String name = currentUser.getNombre();
                     String comentarioCompleto = nombrePublicacion + "," + name + "," + comentarioTexto;
                     controller.writeComents(comentarioCompleto);
+                    if(comentarios == null){
+                        comentarios = new ArrayList<>(); // Inicializar si es null
+                    }
                     comentarios.add(comentarioCompleto); // Agregar el comentario a la lista
                     comentarioField.setText(""); // Limpiar el campo de texto
                 }
-
-                //Si la ventana de comentarios no está creada, crearla
-                if(comentariosWindow == null){
-                    comentariosWindow = new ComentariosWindow(comentarios);
-                }
-
-                //Actualizar la lista de comentarios en la ventana
-                comentariosWindow.update();
-
-                //Mostrar la ventana si está oculta
-                comentariosWindow.setVisible(true);
             }
         });
-
-        comentarioPanel.add(comentarioField, BorderLayout.CENTER);
-        comentarioPanel.add(comentarButton, BorderLayout.EAST);
+        comentarioPanel.add(comentarioField);
+        comentarioPanel.add(comentarButton);
+        comentarioPanel.add(comentariosButton);
         comentarioPanel.setBackground(new Color(3, 34, 63));
+
         comentarioLabel = new JLabel();
         comentarioLabel.setFont(new Font("Roboto", Font.PLAIN, 12));
         comentarioLabel.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0));
@@ -109,7 +118,7 @@ public class PublicationPanel extends JPanel{
         private JTextPane textPane;
 
         public ComentariosWindow(List<String> comentarios){
-            this.comentarios = comentarios;
+            this.comentarios = comentarios != null ? comentarios : new ArrayList<>();
 
             setTitle("Comentarios");
             setSize(300, 400);
