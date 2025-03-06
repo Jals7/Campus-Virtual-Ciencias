@@ -212,44 +212,52 @@ public class MainView extends JFrame implements ActionListener{
         logoutButton.addActionListener(this);
         topPanel.add(logoutButton);
 
+        Dimension buttonSize = new Dimension(180, 30);
+
         goToEvents = new JButton("Ver eventos");
         goToEvents.setFont(new Font("Roboto", 1, 14));
-        goToEvents.setBounds(80, 430, 140, 30);
+        goToEvents.setPreferredSize(buttonSize);
+        goToEvents.setBounds(60, 430, 180, 30);
         goToEvents.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         goToEvents.addActionListener(this);
         leftPanel.add(goToEvents);
 
         editProfileButton = new JButton("Editar Perfil");
         editProfileButton.setFont(new Font("Roboto", 1, 14));
-        editProfileButton.setBounds(71, 80, 155, 30);
+        editProfileButton.setPreferredSize(buttonSize);
+        editProfileButton.setBounds(60, 80, 180, 30);
         editProfileButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         editProfileButton.addActionListener(this);
         leftPanel.add(editProfileButton);
 
         newPublicationButton = new JButton("Nueva Publicacion");
         newPublicationButton.setFont(new Font("Roboto", 1, 14));
-        newPublicationButton.setBounds(71, 150, 155, 30);
+        newPublicationButton.setPreferredSize(buttonSize);
+        newPublicationButton.setBounds(60, 150, 180, 30);
         newPublicationButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         newPublicationButton.addActionListener(this);
         leftPanel.add(newPublicationButton);
 
         myPublicationsButton = new JButton("Mis publicaciones");
         myPublicationsButton.setFont(new Font("Roboto", 1, 14));
-        myPublicationsButton.setBounds(71, 220, 155, 30);
+        myPublicationsButton.setPreferredSize(buttonSize);
+        myPublicationsButton.setBounds(60, 220, 180, 30);
         myPublicationsButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         myPublicationsButton.addActionListener(this);
         leftPanel.add(myPublicationsButton);
 
         extensionGroupButton = new JButton("Ver Grupos de Extension");
         extensionGroupButton.setFont(new Font("Roboto", 1, 14));
-        extensionGroupButton.setBounds(51, 290, 195, 30);
+        extensionGroupButton.setPreferredSize(buttonSize);
+        extensionGroupButton.setBounds(60, 290, 180, 30);
         extensionGroupButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         extensionGroupButton.addActionListener(this);
         leftPanel.add(extensionGroupButton);
 
         studyGroupButton = new JButton("Ver Grupos de Estudio");
         studyGroupButton.setFont(new Font("Roboto", 1, 14));
-        studyGroupButton.setBounds(51, 360, 195, 30);
+        studyGroupButton.setPreferredSize(buttonSize);
+        studyGroupButton.setBounds(60, 360, 180, 30);
         studyGroupButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         studyGroupButton.addActionListener(this);
         leftPanel.add(studyGroupButton);

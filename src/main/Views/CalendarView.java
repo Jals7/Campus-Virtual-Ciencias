@@ -212,28 +212,28 @@ public class CalendarView extends JFrame implements ActionListener{
 
         newEventButton = new JButton("Gestionar eventos");
         newEventButton.setFont(new Font("Roboto", 1, 14));
-        newEventButton.setBounds(71, 110, 160, 30);
+        newEventButton.setBounds(60, 110, 180, 30);
         newEventButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         newEventButton.addActionListener(this);
         leftPanel.add(newEventButton);
         
-        calendarMarkButton = new JButton("Marcar evento en calendario");
+        calendarMarkButton = new JButton("Marcar evento");
         calendarMarkButton.setFont(new Font("Roboto", 1, 12));
-        calendarMarkButton.setBounds(58, 210, 185, 30);
+        calendarMarkButton.setBounds(60, 210, 180, 30);
         calendarMarkButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         calendarMarkButton.addActionListener(this);
         leftPanel.add(calendarMarkButton);
 
         goToMainButton = new JButton("Volver a inicio");
         goToMainButton.setFont(new Font("Roboto", 1, 14));
-        goToMainButton.setBounds(71, 310, 155, 30);
+        goToMainButton.setBounds(60, 310, 180, 30);
         goToMainButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         goToMainButton.addActionListener(this);
         leftPanel.add(goToMainButton);
 
         supportButton = new JButton("Contacta al soporte");
         supportButton.setFont(new Font("Roboto", 1, 14));
-        supportButton.setBounds(51, 410, 195, 30);
+        supportButton.setBounds(60, 410, 180, 30);
         supportButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         supportButton.addActionListener(this);
         leftPanel.add(supportButton);
