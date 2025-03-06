@@ -15,7 +15,7 @@ public class RegisterView extends JFrame implements ActionListener, ItemListener
     private JComboBox<String> optionCombo;
     private JLabel carreraLabel, anioDeIngresoLabel, escuelaLabel, cargoLabel, MateriaDadaLabel;
     private JPanel mainPanel;
-    private JPasswordField txtContrasena;
+    private JTextField txtContrasena;
 
     // Constructor para inicializar la ventana de registro
     @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -163,7 +163,7 @@ public void actionPerformed(ActionEvent ae) {
         String sexo = txtSexo.getText();
         String CI = txtCI.getText();
         String correo = txtCorreo.getText();
-        String contrasena = txtContrasena.getPassword().toString();
+        String contrasena = txtContrasena.getText();
         String carrera = txtCarrera.getText();
         String anioDeIngreso = txtAnoDeIngreso.getText();
         String escuela = txtEscuela.getText();

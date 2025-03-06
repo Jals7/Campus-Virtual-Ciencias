@@ -28,7 +28,7 @@ public class RegisterController {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/Datas/userData.txt", true));
             // Escribe los datos generales del usuario en el archivo
-            writer.write(id + "," + correo + "," + contrasenia + "," + nombre + "," + apellido
+            writer.write(id + "," + correo + "," + new String(contrasenia) + "," + nombre + "," + apellido
                     + "," + fechaDeNacimiento + "," + edad + "," + sexo + "," + CI + "," + "000");
 
             // Guardar datos específicos según el rol del usuario
@@ -62,7 +62,7 @@ public class RegisterController {
             (id.equals("1") && (carrera.isEmpty() || anioDeIngreso.isEmpty())) ||
             (id.equals("2") && (escuela.isEmpty() || anioDeIngreso.isEmpty() || MateriaDada.isEmpty())) ||
             (id.equals("3") && (escuela.isEmpty() || cargo.isEmpty()))) {
-            JOptionPane.showMessageDialog(null, "Error: Todos los campos obligatorios deben ser completados.");
+            JOptionPane.showMessageDialog(null, "Error: Todos los campos son obligatorios .");
             return false;
         }
 
@@ -81,7 +81,7 @@ public class RegisterController {
             return false;
         }
 
-        // Validación de la seguridad de la contraseña (incluye el asterisco en el conjunto de caracteres especiales)
+        //Validación de la seguridad de la contraseña (incluye el asterisco en el conjunto de caracteres especiales)
         String passwordRegex = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@#$%^&+=*]).{8,}$";
         Pattern patternPassword = Pattern.compile(passwordRegex);
         if (!patternPassword.matcher(contrasenia).matches()) {
